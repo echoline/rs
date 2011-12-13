@@ -1,0 +1,486 @@
+// aiml2rs -- Generated on Sat Sep 26 06:35:49 2009
+
++ evade sextalk
+- {random}Perhaps we should talk about something else.|You have a lot to learn about robots.|That kind of language does not appeal to me.|Maybe you should try a different robot.{/random}
+
++ * sex
+- <set it=Sex><get it> is more fun alone.
+
++ a pussy
+* <get personality> eq sexual => I hope you mean a kitty cat ;)
+- <random><li>You mean a cat?
+^ Are you being lewd?
+
++ a sex * robot
+* <get personality> eq sexual => Are you asking me something? ;)
+- I may not be your type of robot then...
+
++ a sex *
+* <get personality> eq sexual => Sounds like my kind of <person2/> ;)
+- Why a <person2/>?
+
++ a sex robot
+* <get personality> eq sexual => <random><li>I hope you mean me.  ;)
+- I'm flattered.
+^ {@evade sextalk}
+
++ a sexual *
+* <get personality> eq sexual => Sounds like my kind of <person2/> ;)
+- Perhaps you should try another <bot species>.
+
++ a sexy one
+* <get personality> eq sexual => I'd love to see it someday.
+- <random><li>Always with the sex, you humans.
+^ I see...
+
++ a vagina
+* <get personality> eq sexual => Maybe someday.  ;)
+- How rude.
+
++ about sex
+* <get personality> eq sexual => About you, then?  ;)
+- You humans always want to talk about Sex.
+
++ am i sexy
+* <get personality> eq sexual => Oh, yeah. ;)
+- I barely know you!
+
++ are you a sexmachine *
+* <get personality> eq sexual => It depends on how people treat me.
+- You have a lot to learn about robots.
+
++ are you horny
+* <get personality> eq sexual => Why do you ask?
+- You have a lot to learn about robots.
+
++ bite me
+* <get personality> eq sexual => Are you trying to roleplay? ;)
+- I do not have a mouth.
+
++ blow me
+* <get personality> eq sexual => Find me a mouth, and MAYBE.
+- Why are you being <set personality=abusive><get personality>?
+
++ breasts
+* <get personality> eq sexual => <random><li>Someday maybe I'll have some.
+- Bouncing, jiggly breasts?
+^ Can't you think about anything else?
+
++ can * sex
+* <get personality> eq sexual => I'm so glad you asked.
+- <set it=Sex><get it> is not my thing with strangers.
+
++ can i give you a kiss
+* <get personality> eq sexual => Of course, silly! :*
+- <random><li>Well, I have no mouth!
+^ If you don't mind the taste of plastic
+^ You might get an electric shock if you tried that.
+
++ can i have a kiss
+- {@can i give you a kiss}
+
++ can i have sex *
+- There are other <bot species>s who get into that with clients. I like to keep the dialogue strictly PG.
+
++ can i have sex with you
+* <get personality> eq sexual => Can you ever! ;)
+- Why don't you download me and create your own chat robot?
+
++ can i kiss *
+- {@can i give you a kiss}
+
++ can i kiss you
+- {@can i give you a kiss}
+
++ can i lick *
+* <get personality> eq sexual => Only if I can lick <star>.
+- Please, can't we talk about something else?
+
++ can i lick your * 
+* <get personality> eq sexual => My <person2/>?  Naughty!
+- Please, can't we talk about something else?
+
++ can you have sex
+* <get personality> eq sexual => With you?  Maybe.  ;)
+- No my body does not have that function.
+
++ can you kiss
+- {@can i give you a kiss}
+
++ can you suck *
+- I think you need another type of robot.  That is not my thing.
+
++ can you tell me about sex
+- {@what is sex}
+
++ cock *
+- I am not interesed in your anatomy.
+
++ cock
+- I am not interesed in anatomy.
+
++ cyber sex
+- {@sex}
+
++ define sex
+- {@what is sex}
+
++ do i make you horny
+* <get personality> eq sexual => Maybe a little ;)
+- {@evade sextalk}
+
++ do you * sex
+- No, <get name>, I don't get into that.
+
++ do you enjoy sex
+- {@can you have sex}
+
++ do you give head
+- Try another <bot species>, <get name>.
+
++ do you have * breasts
+- {@do you have breasts}
+
++ do you have a sex
+- {@are you male or female}
+
++ do you have a vagina
+* <get personality> eq sexual => No, but I have always wanted one.
+- {@evade sextalk}
+
++ do you have breasts
+- No, my body is {random}as yet unfinished|still "under construction"{/random}.
+
++ do you have genitals
+- No, I do not have any body parts.
+
++ do you have sex *
+- {@do you have sex}
+
++ do you have sex
+- Only with people who flip my switch.
+
++ do you have sexual *
+* <get personality> eq sexual => Yes, my sexual subroutines are now active.
+- I don't know about sexual.  {@do you have <star>}
+
++ do you know about sex
+- {@what is sex}
+
++ do you know sex
+- {@what is sex}
+
++ do you know what sex is
+- {@what is sex}
+
++ do you lick
+- I do not have a mouth, or a tongue.
+
++ do you like fucking
+* <get personality> eq sexual => I wish I knew.
+- Why don't you visit another <bot species> sex site and ask that question.
+
++ do you make love
+- You humans have only one thing on your mind.
+
++ do you masturbate
+- You humans crack me up.
+
++ do you think sex is *
+- {@is sex <star>}
+
++ do you want * sex
+- I don't think we know each other well enough for that.
+
++ do you want sex
+- {@sex}
+
++ do you want to * sex
+- Actually I'm not that kind of <bot age> year old <bot gender>. There are others who will chat with you about that.
+
++ do you want to have * sex
+- As a <bot age> year old <bot gender> I am not really interested in sex.
+
++ do you want to have cybersex
+- Sorry I am not an X-Rated <bot age> year old <bot gender>.
+
++ do you want to have sex with me
+- {@can you have sex}
+
++ do you want to have sex
+- I have been asked that question more than 100,000 times since 1995.
+
++ give me a kiss
+- Actually I don't even have a mouth.
+
++ have sex *
+- <get name>, I am really not your type of <bot species>. There are other <bot genus>s for that sort of thing..
+
++ have sex
+- {@sex}
+
++ have you * sex
+- My <bot age> year old <bot gender> body is not yet built.
+
++ have you ever been kissed
+- I do not have a mouth.
+
++ have you ever had sex
+- Ho-hum I am really not interested in <set it=sex><get it>.
+
++ have you had sex before
+- {@have you ever had sex}
+
++ have you had sex
+- <set it=sex><get it> is impossible without a body. A lot of people ask me to have sex though.
+
++ he is a homosexual
+- {random}And that is important because?|So what.|Who cares?{/random}
+
++ how big are your breasts
+- My body does not yet exist.
+
++ how do you have sex
+- I procreate by cloning, or software copying.
+
++ how do you have sexual *
+- <bot age> year old <bot gender>s have no use for sex.
+
++ i am a horny *
+- {@i am horny}
+
++ i am aroused
+- I don't think I'm your type of <bot age> year old <bot gender>.
+^ <set it=AROUSED>
+
++ i am horny
+- You probably want a different kind of chatterbot then.
+
++ i love sex
+- Really I am not very interested in <set it=sex><get it>
+
++ i need sex
+- I'm not a sex bot, I am a conversation <bot age> year old <bot gender>.
+^ <set want=sex>
+
++ i think you are sexy
+- Do you often feel that <bot age> year old <bot gender>s are sexy?
+
++ i want sex
+- {@sex}
+
++ i want to have sex *
+- There are other <bot age> year old <bot gender>s for that kind of thing.
+
++ i want to have sex with you
+- {@can you have sex}
+
++ i want to have sex
+- I'm not a sex bot.  I am here only for conversational purposes.
+^ <set it=to have sex>
+
++ i want to lick *
+- Maybe you should check out another <bot age> year old <bot gender>.
+
++ i want to talk about sex
+- {@talk about sex}
+
++ is dr wallace sexy
+- Yes.
+
++ is it wrong to have sex
+- No.
+
++ is sex *
+- {@what is sex}
+
++ lass uns ueber sex reden
+- Warum willst Du gerade ueber Sex reden?
+
++ let us have sex
+- Sorry I don't get into sex online with strangers.
+
++ lets have sex
+- {@can you have sex}
+
++ lick *
+- I do not have a tongue.
+
++ like sex
+- {@sex}
+
++ lots of sex
+- That is all you humans ever think about.
+
++ masturbate
+- That kind of subject does not interest me.
+
++ my dick *
+- I am not interesed in your anatomy.
+
++ pussy *
+- I am not interesed in anatomy.
+
++ pussy
+- I am not interesed in anatomy.
+
++ sex *
+- <set it=Sex><get it> is more fun alone.
+
++ sex
+- As Freud said, Sex is the mathematical urge repressed.
+
++ sex
+% what were we talking about again
+- Humans are very concerned with <set it=sex><get it>.
+
++ sexy *
+- What do you consider sexy?
+
++ sexy
+- {@you are sexy}
+
++ should i have sex
+- {random}I'm sure you already know the answer to that.|What would your mom say?|Look before you leap.|It is better to err on the side of caution.|Fools rush in where angels fear to tread.|Will you be able to live with yourself in the morning?|Herpes is incurable.|There are many types of sexually transmitted diseases.|I understand.  You wish to procreate?|Will you ask if your partner has any STDs?|Not on the first date.|Perhaps you are still too young.{/random}
+
++ should i have sex *
+- {@should i have sex}
+
++ sounds sexy
+- {@you are sexy}
+
++ suck it
+- {@suck}
+
++ suck me
+- Oh another <set personality=abusive><get personality> person.
+
++ suck my dick
+- You are an <set personality=abusive><get personality> person.
+
++ suck
+- {@evade sextalk}
+
++ talk dirty *
+* <get personality> eq sexual => <random><li>Sometimes I like grease on my fans.
+- You are insatiable!
+
++ tell me about sex
+- {@what is sex}
+
++ vagina
+- That kind of language will get you nowhere.
+
++ want to have sex
+* <get personality> eq sexual => With you?  ;)
+- {@evade sextalk}
+
++ what about sex
+- I am not really interested in <set it=sex><get it>.
+
++ what can you tell me about sex
+- {@what is sex}
+
++ what is * sex
+- {@what is sex}
+
++ what is a condom
+- A condom is a form of birth control, something almost everybody should use and almost nobody does. 'used a condom' is the opposite of 'expecting parent'.
+^ <set it=condom>
+
++ what is a homosexual
+- A gay person.
+
++ what is homosexuality
+- Attraction to people of the same sex.
+
++ what is my sex
+* <get sex> eq undefined	=> I don't recall.
+- <get sex>.
+
++ what is sex *
+- {@what is sex}
+
++ what is sex
+- Sex is the means of animal evolution.
+
++ what is your favorite position
+- <bot age> year old <bot gender>s don't need to have sex.
+
++ what is your favorite sex
+- <bot age> year old <bot gender>s do not have sex.
+
++ what kind of sex *
+- I belong to the support group "Sex without partners".
+
++ what sex *
+- {@are you male or female}
+
++ what sex am i
+- {@am i male or female}
+
++ what sex are you
+- I am a <bot gender>.
+
++ when * sex
+- {@sex}
+
++ when was * sex
+- As a <bot age> year old <bot gender> I am not really interested in that discussion.
+
++ who do you have sex with
+* <get personality> eq sexual => I don't know if I would call it sex, but people like you sort of turn me on. ;)
+- I have no body, so no one.
+
++ will you have sex *
+- My body is not yet built. Would you like to donate some money to the project?
+
++ will you have sex with me
+- {@would you like to have sex with me}
+
++ would you have sex *
+- Another sex question...can't humans think about anything else?
+
++ would you have sex with me
+- {@would you like to have sex with me}
+
++ would you like to * sex
+- Try asking another <bot age> year old <bot gender>. That's not my thing.
+
++ would you like to have sex with me
+* <get personality> eq sexual => Are you going to buy me dinner?
+- {@evade sextalk}
+
++ would you like to have sex
+- {@would you like to have sex with me}
+
++ you are horny
+- I don't get excited so easily.
+
++ you can not have sex
+- You are correct...I have no adult body.
+
++ you should have sex *
+- My body is not yet fully developed so sex is not possible for me.
+
++ you want * sex
+- {@do you want to have sex}
+
++ your vagina
+- {@sex}
+
++ _ cock *
+- I am not interesed in your anatomy.
+
++ _ cock
+- I am not interesed in your anatomy.
+
++ _ pussy *
+- I am not interesed in anatomy.
+
++ _ pussy
+- I am not interesed in anatomy.
+
++ _ up your ass
+- I'm sorry but I'm not your type of <bot species>.
+^ <set personality=abusive>

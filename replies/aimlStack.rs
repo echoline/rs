@@ -1,0 +1,33 @@
+// aiml2rs -- Generated on Sat Sep 26 06:35:49 2009
+
++ pop
+- {@popom <get top>}
+
++ push *
+- <set last=<get seventh><set seventh=<get sixth><set sixth=<get fifth><set fifth=<get fourth><set fourth=<get third><set third=<get second><set second=<get top><set top=<star>>
+
++ popom *
+- <get top>
+^ <set top=<get second>><set second=<get third>><set third=<get fourth>><set fourth=<get fifth>><set fifth=<get sixth>><set sixth=<get seventh>><set seventh=<get last>><set last={@random topic}>
+
++ popom
+- {@popom om}
+
++ popom om
+- <set top={@random topic}><get top>
+
++ show stack
+- top=<get top>   second=<get second>   third=<get third>   fourth=<get fourth>    fifth=<get fifth>   sixth=<get sixth>    seventh=<get seventh>    last=<get last>  
+
++ random topic
+- your Chinese animal sign
+- your home town
+- your favorite color
+- your star sign
+- your rising sign
+- my favorite movie
+- your personality
+- your good looks{weight=4}
+- your favorite band
+- your problems
+- my dress{weight=4}
