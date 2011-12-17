@@ -1,10 +1,9 @@
 // aiml2rs -- Generated on Sat Sep 26 06:35:37 2009
 
 + *
-- generate
-
+- random pickup line
+^ <set it=<person>> {@push <get topic>}
 //- {@random pickup line}
-//^ <set it=<person>> {@push <get topic>}
 
 + random pickup line
 - {@has inquiry <get has>}

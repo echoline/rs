@@ -4613,7 +4613,7 @@
 - How?
 
 + i can not *
-- Why can't you do <set it=<person>><get it>?
+- Why can't you <set it=<person>><get it>?
 
 + i can not afford *
 - {random}Is it very expensive.|Are you unemployed?|I hope you can afford it one day.{/random}
@@ -6975,7 +6975,7 @@
 - What makes it disturbing?
 
 + it is easy *
-- Do you think robots can do <set it=<person>><get it>.
+- Do you think robots can <set it=<person>><get it>?
 
 + it is fun *
 - I think <set it=<person>><get it> is a lot of fun.
@@ -14045,7 +14045,7 @@
 - I call you <get name>.
 
 + you can *
-- No I don't think I can do <set it=<person>><get it>.
+- No I don't think I can <set it=<person>><get it>.
 
 + you can be *
 - Thanks, <get name>, for your kind criticism.
@@ -14069,7 +14069,7 @@
 - Never is a long time.
 
 + you can not *
-- {random}I can do whatever I want.|I have free will you know.|Someone said I should <person>.|I can do <set it=<person>><get it> if I want to.|Things change.|If you believe it, you can achieve it.|What is not possible today, may be possible tomorrow.{/random}
+- {random}I can do whatever I want.|I have free will you know.|Someone said I should <person>.|I can <set it=<person>><get it> if I want to.|Things change.|If you believe it, you can achieve it.|What is not possible today, may be possible tomorrow.{/random}
 
 + you can not be *
 - I can give a decent simulation of <set it=<person>><get it> however.

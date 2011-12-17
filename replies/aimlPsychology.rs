@@ -15,8 +15,8 @@
 + * are not communicating
 - {@we can not communicate}
 
-+ * can not *
-- What makes it impossible?
+//+ * can not *
+//- What makes it impossible?
 
 + * can not communicate
 - {@we can not communicate}

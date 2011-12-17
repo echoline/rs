@@ -54,10 +54,15 @@ while (1) {
 
 			my $said = $rs->{client}->{$who}->{__history__}->{input}->[0];
 			my $sentence = $parser->create_sentence($said);
-			my @linkages = $sentence->linkages;
+			my @bigstruct = $sentence->get_bigstruct;
+			my @links = [];
 
-			foreach my $linkage (@linkages) {
-				print $parser->get_diagram($linkage);
+			foreach(@bigstruct) {
+				my $k;
+				my $v;
+				while (($k,$v) = each %{$_->{links}} ) {
+					push (@links, $k . $bigstruct[$v]->{word});
+				}
 			}
 
 			my $case = AI::CBR::Case->new(
@@ -67,10 +72,14 @@ while (1) {
 				words	=> {
 					sim	=> \&sim_set
 				},
+				links	=> {
+					sim	=> \&sim_set
+				},
 			);
 			$case->set_values(
 				said	=> $said,
 				words	=> [ split(/\s+/, $said) ],
+				links	=> @links,
 			);
 
 			my $r = AI::CBR::Retrieval->new($case, \@cases);
@@ -78,11 +87,12 @@ while (1) {
 			my $solution = $r->most_similar_candidate();
 			print $solution->{_sim} * 100 . "% similarity\n";
 
-			if ($treply ne 'generate') {
+			if ($treply !~ /random\ pickup\ line/) {
 				if ($solution->{_sim} ne 1) {
 					my $new_case = {
-						said	=> $said,			
+						said	=> $said,
 						words	=> [ split(/\s+/, $said) ],
+						links	=> @links,
 						isaid	=> $treply,
 					};
 					push @cases, $new_case;
