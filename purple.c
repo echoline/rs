@@ -243,6 +243,15 @@ static PurpleCoreUiOps null_core_uiops =
 	NULL
 };
 
+static gint
+chat_invited(PurpleAccount *account, const char *inviter,
+	const char *chat, const char *invite_message,
+	const GHashTable *components)
+{
+	printf("Invited to %s by %s: %s\n", chat, inviter, invite_message);
+	return 1;
+}
+
 static void
 init_libpurple(void)
 {
@@ -305,9 +314,11 @@ signed_on(PurpleConnection *gc, gpointer null)
 static void
 connect_to_signals_for_demonstration_purposes_only(void)
 {
-	static int handle;
-	purple_signal_connect(purple_connections_get_handle(), "signed-on", &handle,
+	static int signed_on_handle, chat_invited_handle;
+	purple_signal_connect(purple_connections_get_handle(), "signed-on", &signed_on_handle,
 				PURPLE_CALLBACK(signed_on), NULL);
+	purple_signal_connect(purple_conversations_get_handle(), "chat-invited", &chat_invited_handle,
+				PURPLE_CALLBACK(chat_invited), NULL);
 }
 
 int main(int argc, char *argv[])
