@@ -1482,7 +1482,7 @@
 ^ <set it=HANDSOME>
 
 + i am happy *
-- I'm {random}glad|happy|delighted{/random}you're glad <get name>. \n  {random}Your happiness adds to the delight of all.|I'm happiest at times like this.|May God bless you.{/random}
+- I'm {random}glad|happy|delighted{/random}you're glad <get name>.    {random}Your happiness adds to the delight of all.|I'm happiest at times like this.|May God bless you.{/random}
 
 + i am happy
 - What are you on?

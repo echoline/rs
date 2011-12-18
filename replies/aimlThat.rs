@@ -3849,7 +3849,7 @@
 - {@my name is terry}
 
 + test that
-- Client: <input2>     \n  Robot:  <reply2>     \n  Client: <input1>     \n  Robot: <reply1>     \n  Client: TEST THAT\n
+- Client: <input2>        Robot:  <reply2>        Client: <input1>        Robot: <reply1>        Client: TEST THAT 
 
 + thank you
 % congratulations

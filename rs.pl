@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 use IO::Socket;
+use Storable;
 
 # Use our local library.
 # use lib ".";
@@ -47,11 +48,23 @@ while (1) {
 	print $who . ': ' . $msg . "\n";
 	my $reply = '';
 	my @msg_array = split(/[\.\?\!]/, $msg);
+
+	if (open(my $fh, '<', 'sessions/' . $who)) {
+		my $stuff = '';
+		while (<$fh>) {
+			$stuff .= $_;
+		}
+		$rs->{frozen}->{$who} = Storable::thaw($stuff);
+		close($fh);
+	}
+
 	$rs->thawUservars($who);
 	foreach (@msg_array) {
 		if ($_ =~ /[a-zA-Z0-9]/) {
 			my $treply = $rs->reply($who, $_);
-
+			if (length($treply) eq 0) {
+				$treply = 'random pickup line';
+			}
 			my $said = $rs->{client}->{$who}->{__history__}->{input}->[0];
 			my $sentence = $parser->create_sentence($said);
 			my @bigstruct = $sentence->get_bigstruct;
@@ -90,10 +103,10 @@ while (1) {
 			if ($treply !~ /random\ pickup\ line/) {
 				if ($solution->{_sim} ne 1) {
 					my $new_case = {
+						isaid	=> $treply,
 						said	=> $said,
 						words	=> [ split(/\s+/, $said) ],
 						links	=> @links,
-						isaid	=> $treply,
 					};
 					push @cases, $new_case;
 				}
@@ -111,6 +124,11 @@ while (1) {
 		$reply = ":)";
 	}
 	$rs->freezeUservars($who);
+	if (open(my $fh, '>', 'sessions/' . $who)) {
+		print $fh Storable::freeze( $rs->{frozen}->{$who} );
+		close($fh);
+	}
+	
 	$client->send($reply);
 	print 'me: ' . $reply . "\n---" . time . "\n";
 	$client->close;

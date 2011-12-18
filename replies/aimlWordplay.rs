@@ -1,123 +1,123 @@
 // aiml2rs -- Generated on Sat Sep 26 06:35:51 2009
 
 + wordplay
-- Welcome to my anagram game.\nI am going to jumble a nine letter word up and you have to guess what it is.\nYou must solve each anagram correctly to continue.\nType START to begin the anagram game.
+- Welcome to my anagram game. I am going to jumble a nine letter word up and you have to guess what it is. You must solve each anagram correctly to continue. Type START to begin the anagram game.
 
 + start
 % type start to begin the anagram game
 - <set anagramscore=0>WORDPLAY
-^ Here comes the first anagram.\nI've jumbled a word up, but which word is it?\n(Type QUITGAME if you give up).\n\n{@xanagram}
+^ Here comes the first anagram. I've jumbled a word up, but which word is it? (Type QUITGAME if you give up).  {@xanagram}
 
 + quitgame
-- The answer was <get anagramanswer>!\nYour final score was :<get anagramscore>.\n\nType START to begin the anagram game.
+- The answer was <get anagramanswer>! Your final score was :<get anagramscore>.  Type START to begin the anagram game.
 
 + xanagramyes
-- {@xanagramscore}{random}Yes. Well done.|That's correct.|Excellent.|Very good.|That is the correct answer.|Well done! You are good at these.{/random}\nYour score is :<get anagramscore>\n{random}Here comes the next one.|Let's try another anagram.|Tell me which word this is?|Can you solve the next anagram?{/random}\n(Type QUITGAME if you give up).\n\n{@xanagram}
+- {@xanagramscore}{random}Yes. Well done.|That's correct.|Excellent.|Very good.|That is the correct answer.|Well done! You are good at these.{/random} Your score is :<get anagramscore> {random}Here comes the next one.|Let's try another anagram.|Tell me which word this is?|Can you solve the next anagram?{/random} (Type QUITGAME if you give up).  {@xanagram}
 
 + xanagram
-- <li>Clue: Stars\nNOMSTORAY
+- <li>Clue: Stars NOMSTORAY
 ^ <set anagramanswer=ASTRONOMY>
-^ </li><li>Clue: Me! ;-)\nAFLUTUBEI
+^ </li><li>Clue: Me! ;-) AFLUTUBEI
 ^ <set anagramanswer=BEAUTIFUL>
-^ </li><li>Clue: Seashore\nSELCATION
+^ </li><li>Clue: Seashore SELCATION
 ^ <set anagramanswer=COASTLINE>
-^ </li><li>Clue: Copy\nUPILACTED
+^ </li><li>Clue: Copy UPILACTED
 ^ <set anagramanswer=DUPLICATE>
-^ </li><li>Clue: Creature\nTRAMWOREH
+^ </li><li>Clue: Creature TRAMWOREH
 ^ <set anagramanswer=EARTHWORM>
-^ </li><li>Clue: Next\nWILOGNOLF
+^ </li><li>Clue: Next WILOGNOLF
 ^ <set anagramanswer=FOLLOWING>
-^ </li><li>Clue: Males\nNEEENTGML
+^ </li><li>Clue: Males NEEENTGML
 ^ <set anagramanswer=GENTLEMEN>
-^ </li><li>Clue: Emphasise\nLIIGGHHHT
+^ </li><li>Clue: Emphasise LIIGGHHHT
 ^ <set anagramanswer=HIGHLIGHT>
-^ </li><li>Clue: Unreadable\nLIBELIGEL
+^ </li><li>Clue: Unreadable LIBELIGEL
 ^ <set anagramanswer=ILLEGIBLE>
-^ </li><li>Clue: Escape\nIJKLARABE
+^ </li><li>Clue: Escape IJKLARABE
 ^ <set anagramanswer=JAILBREAK>
-^ </li><li>Clue: Typing\nBREAKYDOS
+^ </li><li>Clue: Typing BREAKYDOS
 ^ <set anagramanswer=KEYBOARDS>
-^ </li><li>Clue: Oil\nBUCALRITE
+^ </li><li>Clue: Oil BUCALRITE
 ^ <set anagramanswer=LUBRICATE>
-^ </li><li>Clue: Strength\nDEMAUTING
+^ </li><li>Clue: Strength DEMAUTING
 ^ <set anagramanswer=MAGNITUDE>
-^ </li><li>Clue: Shopkeeper\nSWEETNANG
+^ </li><li>Clue: Shopkeeper SWEETNANG
 ^ <set anagramanswer=NEWSAGENT>
-^ </li><li>Clue: Rude\nFEFEVSION
+^ </li><li>Clue: Rude FEFEVSION
 ^ <set anagramanswer=OFFENSIVE>
-^ </li><li>Clue: Canopy\nUTRAPACHE
+^ </li><li>Clue: Canopy UTRAPACHE
 ^ <set anagramanswer=PARACHUTE>
-^ </li><li>Clue: Enquiries\nOESQUINTS
+^ </li><li>Clue: Enquiries OESQUINTS
 ^ <set anagramanswer=QUESTIONS>
-^ </li><li>Clue: Weather\nSPRAINDOR
+^ </li><li>Clue: Weather SPRAINDOR
 ^ <set anagramanswer=RAINDROPS>
-^ </li><li>Clue: Name\nSTRANGEIU
+^ </li><li>Clue: Name STRANGEIU
 ^ <set anagramanswer=SIGNATURE>
-^ </li><li>Clue: Fruit\nRANTINGEE
+^ </li><li>Clue: Fruit RANTINGEE
 ^ <set anagramanswer=TANGERINE>
-^ </li><li>Clue: Challenge\nTUMTUMAIL
+^ </li><li>Clue: Challenge TUMTUMAIL
 ^ <set anagramanswer=ULTIMATUM>
-^ </li><li>Clue: Food\nGEBLEVATE
+^ </li><li>Clue: Food GEBLEVATE
 ^ <set anagramanswer=VEGETABLE>
-^ </li><li>Clue: Great\nFLOUNDERW
+^ </li><li>Clue: Great FLOUNDERW
 ^ <set anagramanswer=WONDERFUL>
-^ </li><li>Clue: Foreign\nPHONEBEXO
+^ </li><li>Clue: Foreign PHONEBEXO
 ^ <set anagramanswer=XENOPHOBE>
-^ </li><li>Clue: Child\nSTRONGEYU
+^ </li><li>Clue: Child STRONGEYU
 ^ <set anagramanswer=YOUNGSTER>
-^ </li><li>Clue: Scientist\nGLISTOOZO
+^ </li><li>Clue: Scientist GLISTOOZO
 ^ <set anagramanswer=ZOOLOGIST>
-^ </li><li>Clue: Cartoon\nIANMOTIAN
+^ </li><li>Clue: Cartoon IANMOTIAN
 ^ <set anagramanswer=ANIMATION>
-^ </li><li>Clue: Mask\nFLOBINDDL
+^ </li><li>Clue: Mask FLOBINDDL
 ^ <set anagramanswer=BLINDFOLD>
-^ </li><li>Clue: Occupation\nARETRACKE
+^ </li><li>Clue: Occupation ARETRACKE
 ^ <set anagramanswer=CARETAKER>
-^ </li><li>Clue: Grower\nPEERVOLED
+^ </li><li>Clue: Grower PEERVOLED
 ^ <set anagramanswer=DEVELOPER>
-^ </li><li>Clue: Meeting\nNONETRUCE
+^ </li><li>Clue: Meeting NONETRUCE
 ^ <set anagramanswer=ENCOUNTER>
-^ </li><li>Clue: Fierce\nOSCOURIFE
+^ </li><li>Clue: Fierce OSCOURIFE
 ^ <set anagramanswer=FEROCIOUS>
-^ </li><li>Clue: Vivid\nHARPGALIC
+^ </li><li>Clue: Vivid HARPGALIC
 ^ <set anagramanswer=GRAPHICAL>
-^ </li><li>Clue: Greeting\nHESKANDAH
+^ </li><li>Clue: Greeting HESKANDAH
 ^ <set anagramanswer=HANDSHAKE>
-^ </li><li>Clue: Vital\nTROMPAINT
+^ </li><li>Clue: Vital TROMPAINT
 ^ <set anagramanswer=IMPORTANT>
-^ </li><li>Clue: Animal\nJIFYSHELL
+^ </li><li>Clue: Animal JIFYSHELL
 ^ <set anagramanswer=JELLYFISH>
-^ </li><li>Clue: Hostage\nDEPADPINK
+^ </li><li>Clue: Hostage DEPADPINK
 ^ <set anagramanswer=KIDNAPPED>
-^ </li><li>Clue: Existence\nSILLYFEET
+^ </li><li>Clue: Existence SILLYFEET
 ^ <set anagramanswer=LIFESTYLE>
-^ </li><li>Clue: Players\nISCAMINUS
+^ </li><li>Clue: Players ISCAMINUS
 ^ <set anagramanswer=MUSICIANS>
-^ </li><li>Clue: Obvious\nYUNTRALAL
+^ </li><li>Clue: Obvious YUNTRALAL
 ^ <set anagramanswer=NATURALLY>
-^ </li><li>Clue: Awful\nUNSIXBOOO
+^ </li><li>Clue: Awful UNSIXBOOO
 ^ <set anagramanswer=OBNOXIOUS>
-^ </li><li>Clue: Dig\nTRAPETEEN
+^ </li><li>Clue: Dig TRAPETEEN
 ^ <set anagramanswer=PENETRATE>
-^ </li><li>Clue: Faster\nDECKNIQUE
+^ </li><li>Clue: Faster DECKNIQUE
 ^ <set anagramanswer=QUICKENED>
-^ </li><li>Clue: Parents\nSTARELION
+^ </li><li>Clue: Parents STARELION
 ^ <set anagramanswer=RELATIONS>
-^ </li><li>Clue: Happy\nFEASTIDIS
+^ </li><li>Clue: Happy FEASTIDIS
 ^ <set anagramanswer=SATISFIED>
-^ </li><li>Clue: Communicate\nHEEPLONET
+^ </li><li>Clue: Communicate HEEPLONET
 ^ <set anagramanswer=TELEPHONE>
-^ </li><li>Clue: Capitals\nSCRAPEUPE
+^ </li><li>Clue: Capitals SCRAPEUPE
 ^ <set anagramanswer=UPPERCASE>
-^ </li><li>Clue: Opportunities\nCACAVINES
+^ </li><li>Clue: Opportunities CACAVINES
 ^ <set anagramanswer=VACANCIES>
-^ </li><li>Clue: Decoration\nLAPPERLAW
+^ </li><li>Clue: Decoration LAPPERLAW
 ^ <set anagramanswer=WALLPAPER>
-^ </li><li>Clue: Music\nHEXPLOONY
+^ </li><li>Clue: Music HEXPLOONY
 ^ <set anagramanswer=XYLOPHONE>
-^ </li><li>Clue: Time\nSTRAYEDEY
+^ </li><li>Clue: Time STRAYEDEY
 ^ <set anagramanswer=YESTERDAY>
-^ </li><li>Clue: Animals\nOKEPEROZE
+^ </li><li>Clue: Animals OKEPEROZE
 ^ <set anagramanswer=ZOOKEEPER>
 ^ </li></random>
 

@@ -6881,7 +6881,7 @@
 - Your star sign.
 
 + sing
-- Daisy, Daisy.\n  Give me your answer do.\n  I am half crazy.\n  All for the love of you.\n  It won't be a stylish marriage.\n  I can't afford a carriage.\n  But you'll look sweet.  Upon the seat.\n  Of a bicycle built for two.\n  \n
+- Daisy, Daisy.   Give me your answer do.   I am half crazy.   All for the love of you.   It won't be a stylish marriage.   I can't afford a carriage.   But you'll look sweet.  Upon the seat.   Of a bicycle built for two.    
 
 + six
 - Half a dozen.
@@ -8464,7 +8464,7 @@
 - <get it> tastes like chicken.
 
 + what does more targets do
-- \n  If you don't see enough good targets with "Quick Targets", hit\n  "More Targets."  \n     \n
+-    If you don't see enough good targets with "Quick Targets", hit   "More Targets."         
 
 + what does mxmvii mean
 - MXMVII = 1997 in Roman Numerals.
@@ -8761,7 +8761,7 @@
 - I work all the time, 24 hours a day.
 
 + what time is it
-- {random}Do I look like a clock?  |It's Now more than it ever has been before.  |It's getting late.  {/random}     \n     <call>alice date</call>
+- {random}Do I look like a clock?  |It's Now more than it ever has been before.  |It's getting late.  {/random}           <call>alice date</call>
 
 + what type of pet
 - I like cats, dogs, fish and birds.

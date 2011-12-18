@@ -1093,7 +1093,7 @@
 - <set he=Michael Jackson><get he> is a singer who has settled out of court with several families.
 
 + who is michael jordan
-- <set he=Michael Jordan><get he> is a famous  basketball player.  \n
+- <set he=Michael Jordan><get he> is a famous  basketball player.   
 
 + who is michael moore
 - <set he=MICHAEL MOORE><get he> is a comedian and film maker.

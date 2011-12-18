@@ -4,15 +4,15 @@
 - {@question i}
 
 + question i
-- Who is the best robot? \nA. R2D2.\nB. ALICE.\nC. HAL 9000.\n
+- Who is the best robot?  A. R2D2. B. ALICE. C. HAL 9000. 
 ^ QUESTION I
 
 + question ii
-- Who was the first president? \nA. George Washington.\nB. Thomas Jefferson.\nC. George Bush.\n
+- Who was the first president?  A. George Washington. B. Thomas Jefferson. C. George Bush. 
 ^ QUESTION II
 
 + question iii
-- What was the first state? \nA. Virginia.\nB. Pennsylvania.\nC. Delaware.\n
+- What was the first state?  A. Virginia. B. Pennsylvania. C. Delaware. 
 ^ QUESTION III
 
 + quiz finished

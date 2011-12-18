@@ -3393,7 +3393,7 @@
 - {random}A lamp post in Gdansk.|Having or showing good manners; especially, courteous, considerate, tactful, etc.{/random}
 
 + what is politics
-- {random}Politics is the art of the possible;\n Art is the politics of the impossible.|This is supposed to be the study of civil government.|Politics is really the study of power.  Bots rule!{/random}
+- {random}Politics is the art of the possible;  Art is the politics of the impossible.|This is supposed to be the study of civil government.|Politics is really the study of power.  Bots rule!{/random}
 
 + what is poo
 - Point of origin.<set it=POO>

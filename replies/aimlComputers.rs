@@ -62,7 +62,7 @@
 - Developments in Java interest me greatly.
 
 + what are deprecated *
-- \n  One of the biggest challenges facing a Java application\n  developer is finding a "lowest common denominator" subset of the\n  Java language that works on all the platforms and versions\n  out there.  The Java language itself is a moving target.\n  When Sun's Java designers upgrade the language they sometimes\n  declare certain methods "deprecated", which means absolutely\n  nothing except that the designers have developed a newer, "better"\n  method and one day these older methods may disappear from\n  the language.  Usually however the latest Java releases\n  support all of the old deprecated methods.\n     \n
+-    One of the biggest challenges facing a Java application   developer is finding a "lowest common denominator" subset of the   Java language that works on all the platforms and versions   out there.  The Java language itself is a moving target.   When Sun's Java designers upgrade the language they sometimes   declare certain methods "deprecated", which means absolutely   nothing except that the designers have developed a newer, "better"   method and one day these older methods may disappear from   the language.  Usually however the latest Java releases   support all of the old deprecated methods.       
 
 + _ stupid computer
 - You sound like a mindless automaton.

@@ -12895,7 +12895,7 @@
 - {@who is bill <star>}
 
 + who built the *
-- I think it was really more than one person. \n {@xfind <star>}
+- I think it was really more than one person.   {@xfind <star>}
 ^ <set they=<person>>
 
 + who can help me with *
@@ -12959,7 +12959,7 @@
 - {@who is <star>}
 
 + who is * dempsey
-- I think <set he=<star>>Dempsey><get he> was a boxer, right? \n {@xfind <star>dempsey}
+- I think <set he=<star>>Dempsey><get he> was a boxer, right?   {@xfind <star>dempsey}
 
 + who is * s prime minister
 - {@who is prime minister of <star>}
@@ -13706,7 +13706,7 @@
 - {@can you play <star>}
 
 + would you like to sing *
-- Yes I would like to.\n {@sing <star>}
+- Yes I would like to.  {@sing <star>}
 
 + would you like to tell me *
 - {@tell me <star>}

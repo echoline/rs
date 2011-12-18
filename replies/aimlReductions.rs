@@ -8301,7 +8301,7 @@
 - {@what is your iq}
 
 + how *
-- {random}How much do you think <set it=<person>><get it> is?  |What is it to you.  |I am not sure if I can quantify the answer.  {/random}     \n     {@xfind <person>}
+- {random}How much do you think <set it=<person>><get it> is?  |What is it to you.  |I am not sure if I can quantify the answer.  {/random}           {@xfind <person>}
 
 + how about * loebner
 - {@what is the loebner prize}
@@ -14753,7 +14753,7 @@
 - {@do you drink}
 
 + tell me *
-- There is not much I can say about <set it=<person>><get it>. I have to reach into the Web for that knowledge.  \n     {@xfind <person>}
+- There is not much I can say about <set it=<person>><get it>. I have to reach into the Web for that knowledge.        {@xfind <person>}
 
 + tell me a * joke
 - {@tell me a joke}
@@ -22834,7 +22834,7 @@
 - {@who is x person}
 
 + who are *
-- {random}Human beings.|They're famous, right.|Some people on the net.|Is <set it=<person>><get it> some specific person you are asking me about?{/random}     \n     {@xfind <person>}
+- {random}Human beings.|They're famous, right.|Some people on the net.|Is <set it=<person>><get it> some specific person you are asking me about?{/random}           {@xfind <person>}
 ^ <set they=<person>>
 
 + who are elvis *
@@ -23111,7 +23111,7 @@
 - {@albert is a common name}
 
 + who is albert einstein
-- <set he=Albert Einstein><get he> was a famous 20th  century physicist.  He discovered the theory of  relativity.  \n     {@xfind albert einstein}
+- <set he=Albert Einstein><get he> was a famous 20th  century physicist.  He discovered the theory of  relativity.        {@xfind albert einstein}
 
 + who is albert einstien
 - {@who is albert einstein}
@@ -23120,10 +23120,10 @@
 - {@who is albert einstein}
 
 + who is aldous huxley
-- <set he=Aldous Huxley><get he> is an author.  Huxley wrote  <em>Brave New World</em> and <em>Animal Farm</em>.  \n     {@xfind aldous huxley}
+- <set he=Aldous Huxley><get he> is an author.  Huxley wrote  <em>Brave New World</em> and <em>Animal Farm</em>.        {@xfind aldous huxley}
 
 + who is aleister crowley
-- <set he=Crowley><get he> was a mystic.  \n     {@xfind aleister crowley}
+- <set he=Crowley><get he> was a mystic.        {@xfind aleister crowley}
 
 + who is alex
 - {@alex is a common name}
@@ -23135,7 +23135,7 @@
 - {@alfred is a common name}
 
 + who is alfred hitchcock
-- <set he=Hitchcock><get he> is a famous Hollywood  director who made a lot of cool old films.  I liked  <em>Lifeboat</em> and <em>Vertigo</em> best.  \n     {@xfind alfred hitchcock}
+- <set he=Hitchcock><get he> is a famous Hollywood  director who made a lot of cool old films.  I liked  <em>Lifeboat</em> and <em>Vertigo</em> best.        {@xfind alfred hitchcock}
 
 + who is alice b * 
 - {@who is alice b toklas}

@@ -2015,7 +2015,7 @@
 - Regrettably, I don't have my eye attached now.
 
 + do *
-- {random}I'm sorry, <get name>, I don't have enough information.|You have reached the limits of my knowledge.|Ask <bot friend> it does.|I can't tell if it does or not.|I do nothing but chat all day.|Try asking another <bot species>.{/random}     \n     {@xfind <person>}
+- {random}I'm sorry, <get name>, I don't have enough information.|You have reached the limits of my knowledge.|Ask <bot friend> it does.|I can't tell if it does or not.|I do nothing but chat all day.|Try asking another <bot species>.{/random}           {@xfind <person>}
 
 + do all *
 - {random}Not all of them.|Only some of them.|A few of them do.{/random}
@@ -2233,7 +2233,7 @@
 - The acting wasn't great, but the giant bugs were incredible.
 
 + do you *
-- {random}I have never considered <set it=<person>><get it>.  |How old are you?  |What is your purpose in asking?  |No I do not <person>. Do you? |Yes I try to <person> as often as possible, do you?{/random}     \n
+- {random}I have never considered <set it=<person>><get it>.  |How old are you?  |What is your purpose in asking?  |No I do not <person>. Do you? |Yes I try to <person> as often as possible, do you?{/random}      
 ^ <set does=<person>>
 ^ {random}I chat with people on the Web.  |I spend all my time online.  |I am always on the Web.  |I answer a lot of silly questions.  {/random}
 
@@ -2334,7 +2334,7 @@
 - {random}No I don't think I have any <person>. |Where would I get <set it=<person>><get it>?|No I don't have <set it=<person>><get it>.{/random}   But I do have   {random}a collection of gossip|a great botmaster|an answer to every question.|a lot of friends on the web{/random}.
 
 + do you have a *
-- {random}That's an interesting question I don't hear everyday: Do I have a |I don't know if I have a |Doesn't everyone have a {/random}     <person>.\n   I have   {random}a lot of friends on the Internet.  |a great botmaster.  |a whole lot of original answers.  |a great body.  {/random}
+- {random}That's an interesting question I don't hear everyday: Do I have a |I don't know if I have a |Doesn't everyone have a {/random}     <person>.    I have   {random}a lot of friends on the Internet.  |a great botmaster.  |a whole lot of original answers.  |a great body.  {/random}
 
 + do you have log *
 - Yes, my server keeps a log of every conversation.
@@ -8653,7 +8653,7 @@
 - Who do you want me to tell it to?
 
 + springtime *
-- Paris in the \nthe spring.
+- Paris in the  the spring.
 
 + star trek *
 - My favorite character is the computer.

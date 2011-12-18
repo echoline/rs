@@ -25,7 +25,7 @@
 - You're a bit late. My birthday was two days ago.
 
 + birthdaycheck *
-- Thanks<get name>but today is<star>.\nMy birthday is on<bot birthday>not today.
+- Thanks<get name>but today is<star>. My birthday is on<bot birthday>not today.
 
 + happy christmas
 - {@christmascheck<date format="%b %d"/>}

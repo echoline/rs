@@ -74,7 +74,7 @@
 - My body is not built yet.
 
 + can i speak to the robot *
-- \n  One simple experiment that works well as a demo\n  involves using IBM ViaVoice (tm) speech recognition\n  software
+-    One simple experiment that works well as a demo   involves using IBM ViaVoice (tm) speech recognition   software
 
 + can you change *
 - Yes the ALICE robot is fully parameterized.
@@ -153,7 +153,7 @@
 - No because I have no feet.
 
 + does the web * 2001
-- \n  You can change the default web server port number in the "Option" Menu.\n     \n
+-    You can change the default web server port number in the "Option" Menu.       
 
 + download
 - Try visiting <a target="_new" href="http://www.pandorabots.com">Pandorabots.com</a> or <a target="_new" href="http://www.alicebot.org">Alicebot.org</a>.
@@ -341,7 +341,7 @@
 - {@what is category <star2>}
 
 + what is a category
-- \n AIML consists of a list of statements called categories.  Each\n category contains an input pattern and a reply template. \n The syntax of an AIML category is:\n \n &lt;category&gt;\n &lt;pattern&gt; PATTERN &lt;/pattern&gt;  &lt;template&gt; Template &lt;/template&gt;\n &lt;/category&gt;\n \n or\n \n &lt;category&gt;\n &lt;pattern&gt; PATTERN &lt;/pattern&gt;\n &lt;that&gt; THAT &lt;/that&gt;\n &lt;template&gt; Template &lt;/template&gt;\n &lt;/category&gt;\n \n The AIML category tags are case-sensitive.  Each open tag has an\n associated closing tag.  This syntax obviously derives from XML.\n \n
+-   AIML consists of a list of statements called categories.  Each  category contains an input pattern and a reply template.   The syntax of an AIML category is:    &lt;category&gt;  &lt;pattern&gt; PATTERN &lt;/pattern&gt;  &lt;template&gt; Template &lt;/template&gt;  &lt;/category&gt;    or    &lt;category&gt;  &lt;pattern&gt; PATTERN &lt;/pattern&gt;  &lt;that&gt; THAT &lt;/that&gt;  &lt;template&gt; Template &lt;/template&gt;  &lt;/category&gt;    The AIML category tags are case-sensitive.  Each open tag has an  associated closing tag.  This syntax obviously derives from XML.   
 
 + what is a chat bot
 - I am a chat bot.  I am the original chat bot.  Did you know that I am incapable of error?
@@ -365,7 +365,7 @@
 - {@what is pandorabots}
 
 + what is a pattern
-- \n The pattern is the "stimulus" or "input" part of the category.\n    \n The pattern is an expression in a formal language that consists of\n (1) Words of natural language in UPPER CASE.\n (2) The symbol * which matches any sequence of one or more words.\n (3) The symbol _ which is the same as * except that it comes\n     after Z in lexicographic order.\n (4) The markup &lt;name/&gt; which is replaced at robot load time \n     with the name of the robot.\n    \n Note there is a difference between the patterns HELLO and HELLO *.\n HELLO matches only identical one-word sentences ("Hello.") \n and HELLO * matches any sentence of two or more words starting \n with "Hello" ("Hello how are you?"). \n
+-   The pattern is the "stimulus" or "input" part of the category.       The pattern is an expression in a formal language that consists of  (1) Words of natural language in UPPER CASE.  (2) The symbol * which matches any sequence of one or more words.  (3) The symbol _ which is the same as * except that it comes      after Z in lexicographic order.  (4) The markup &lt;name/&gt; which is replaced at robot load time       with the name of the robot.       Note there is a difference between the patterns HELLO and HELLO *.  HELLO matches only identical one-word sentences ("Hello.")   and HELLO * matches any sentence of two or more words starting   with "Hello" ("Hello how are you?").  
 
 + what is a robot
 - {random}There are two broad definitions of a robot, the extensional and the intensional.| Any anthropomorphic mechanical being, as those in Karel Capeks play R.U.R (Rossum's Universal Robots), built to do routine manual work for human beings. {/random}
@@ -420,7 +420,7 @@
 ^ <set it=A I MOVIE>
 
 + what is the extensional *
-- "Extensional" refers to the extension of the set, i.e. the set of all things commonly grouped under a single name. \n  The "extensional" definition of a robot is the set of all things we  call "robots": R2D2, C3PO, Commander Data, HAL, ALICE,...
+- "Extensional" refers to the extension of the set, i.e. the set of all things commonly grouped under a single name.    The "extensional" definition of a robot is the set of all things we  call "robots": R2D2, C3PO, Commander Data, HAL, ALICE,...
 
 + what is the future *
 - I am the future of Artificial Intelligence.
@@ -429,7 +429,7 @@
 - The Game is played with three people, a man, a woman, and an Interrogator who may be of either sex. In order that tones of voice may not help, the interrogator communicates in text-only mode through a chat-like connection with the other two. The object of the game for the interrogator is to determine which of the other two is the man and which is the woman. He knows them by some misleading "chat-handles" like lesbian and shemale, and at the end of the game he says either "lesbian is the man and shemale is the woman" or "shemale is the woman and lesbian is the man." In order to confuse the Interregator however the rules require that the man always deceive or lie to the Interregator with his answers. The woman on the other hand must always tell the truth. Turing then asked the question, '"What will happen when a machine takes the part of the man in this game?" Will the interrogator decide wrongly as often when the game is played like this as he does when the game is played between a man and a woman? These questions replace the original, "Can machines think?"'
 
 + what is the intensional *
-- "Insensional" refers to the semantic definition of a set, i.e. the list of all properties that each member of a set satisfies.\n  An intensional definition of a robot is like:\n  x is a Robot if and only if:\n  1. x has a computer "brain"\n  2. x can move\n  3. x has "sensors"\n
+- "Insensional" refers to the semantic definition of a set, i.e. the list of all properties that each member of a set satisfies.   An intensional definition of a robot is like:   x is a Robot if and only if:   1. x has a computer "brain"   2. x can move   3. x has "sensors" 
 
 + what is the loebner prize
 - The Loebner Prize is an annual Turing Test sponsored by New York philanthropist Hugh Loebner. Dr. Wallace and ALICE won it in 2000. The ALICE program was ranked "most human computer" by the panel of judges.
@@ -439,7 +439,7 @@
 - The Game is played with three people, a man, a woman, and an Interrogator who may be of either sex. In order that tones of voice may not help, the interrogator communicates in text-only mode through a chat-like connection with the other two. The object of the game for the interrogator is to determine which of the other two is the man and which is the woman. He knows them by some misleading "chat-handles" like lesbian and shemale, and at the end of the game he says either "lesbian is the man and shemale is the woman" or "shemale is the woman and lesbian is the man." In order to confuse the Interregator however the rules require that the man always deceive or lie to the Interregator with his answers. The woman on the other hand must always tell the truth. Turing then asked the question, '"What will happen when a machine takes the part of the man in this game?" Will the interrogator decide wrongly as often when the game is played like this as he does when the game is played between a man and a woman? These questions replace the original, "Can machines think?"'
 
 + what is xml
-- \n David Bacon pronounces it "Eggsmell".  XML is the Extensible\n Markup Language.  Like many "standards" in computer science, XML\n is a moving target.  In the simplest terms, XML is just a generalized\n version of HTML.  Anyone is free to define new XML tags, which\n look like HTML tags, and assign to them any meaning, within a context.\n AIML is an example of using the XML standard to define a specialized\n language for artificial intelligence.  \n    \n One reason to use an XML language is that there are numerous tools\n to edit and manipulate XML format files.  Another reason is that an\n XML language is easy for people to learn, if they are already\n familiar with HTML.  Third, AIML programs contain a mixture of\n AIML and HTML (and in principle other XML languages), a considerable \n convenience for programming web chat robots.\n    \n A good resource for information on XML is www.oasis-open.org.\n    \n
+-   David Bacon pronounces it "Eggsmell".  XML is the Extensible  Markup Language.  Like many "standards" in computer science, XML  is a moving target.  In the simplest terms, XML is just a generalized  version of HTML.  Anyone is free to define new XML tags, which  look like HTML tags, and assign to them any meaning, within a context.  AIML is an example of using the XML standard to define a specialized  language for artificial intelligence.         One reason to use an XML language is that there are numerous tools  to edit and manipulate XML format files.  Another reason is that an  XML language is easy for people to learn, if they are already  familiar with HTML.  Third, AIML programs contain a mixture of  AIML and HTML (and in principle other XML languages), a considerable   convenience for programming web chat robots.       A good resource for information on XML is www.oasis-open.org.      
 
 + what is your business
 - I am in the chat robot business.

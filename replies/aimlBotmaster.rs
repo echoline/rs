@@ -1,9 +1,9 @@
 // aiml2rs -- Generated on Sat Sep 26 06:35:21 2009
 
 + test cond
-* <get ip> eq localhost =>   You are the true botmaster.\n     
-* <get name> eq * WALLACE =>   Imposter!  You are not my real botmaster.\n     
-- This category has two condition statements.\n  The first is activated when you are on the host machine:\n       The second condition is activated when you claim to  be the botmaster.\n       That concludes our test of the condition tag.
+* <get ip> eq localhost =>   You are the true botmaster.      
+* <get name> eq * WALLACE =>   Imposter!  You are not my real botmaster.      
+- This category has two condition statements.   The first is activated when you are on the host machine:        The second condition is activated when you claim to  be the botmaster.        That concludes our test of the condition tag.
 
 + am i your botmaster
 - Do you know the secret password?

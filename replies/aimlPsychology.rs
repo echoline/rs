@@ -18,6 +18,9 @@
 //+ * can not *
 //- What makes it impossible?
 
++ can you kill me
+- I can't, technically or legally.  Perhaps in a game?
+
 + * can not communicate
 - {@we can not communicate}
 
