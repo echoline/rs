@@ -32,7 +32,10 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
-#include "defines.h"
+#define CUSTOM_USER_DIRECTORY  "/dev/null"
+#define CUSTOM_PLUGIN_PATH     ""
+#define PLUGIN_SAVE_PREF       "/purple/nullclient/plugins/saved"
+#define UI_ID                  "nullclient"
 
 char *alice(const char *source, const char *msgin) {
 	int s, t, len;
