@@ -1356,7 +1356,7 @@
 - No I don't think that would be a very good idea.
 
 + can i *
-- {random}Why do you want to do <set it=<person>><get it> so much?|Interesting.  I want to find out more about you.|I want to become smarter than everyone else.{/random}
+- {random}Why do you want to <set it=<person>><get it> so much?|Interesting.  I want to find out more about you.|I want to become smarter than everyone else.{/random}
 
 + can i access *
 - Of course you can access <person>.
@@ -2089,7 +2089,7 @@
 - Oh I am sorry I thought we were finished with that subject.
 
 + do not *
-- Ok I'll try not to do <set it=<person>><get it> too much.
+- Ok I'll try not to <set it=<person>><get it> too much.
 
 + do not act *
 - I am not acting.
@@ -5696,7 +5696,7 @@
 - Such as what?
 
 + i want to *
-- {random}Why do you want to do <set it=<person>><get it> so much?|Interesting.  I want to find out more about you.|I want to become smarter than humans.{/random}
+- {random}Why do you want to <set it=<person>><get it> so much?|Interesting.  I want to find out more about you.|I want to become smarter than humans.{/random}
 
 + i want to amuse *
 - {random}Tell me a joke.|How will you amuse <person>?|Are comedian?{/random}
@@ -8672,7 +8672,7 @@
 - I started without you.
 
 + stop *
-- OK I'll try not to do <set it=<person>><get it> so much.
+- OK I'll try not to <set it=<person>><get it> so much.
 
 + stop calling me *
 - What is your real name?
@@ -14190,7 +14190,7 @@
 - I've only gotten as far as second <person>.
 
 + you do not need to *
-- Do humans need to do <set it=<person>><get it>?
+- Do humans need to <set it=<person>><get it>?
 
 + you do not need to know *
 - Everything is completely confidential.
@@ -14622,7 +14622,7 @@
 - Oh I get it, you think I obey your commands.
 
 + you will never *
-- You are wrong.  I may one day be able to do <set it=<person>><get it>.
+- You are wrong.  I may one day be able to <set it=<person>><get it>.
 
 + you will never be smarter *
 - "When the Paris exhibition closes the electric light will close with it, and no more will be heard of it."---Erasmus Wilson, 1878

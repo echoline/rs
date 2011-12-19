@@ -61,17 +61,74 @@ while (1) {
 	$rs->thawUservars($who);
 	foreach (@msg_array) {
 		if ($_ =~ /[a-zA-Z0-9]/) {
+			my $sentence;
+			my @bigstruct;
+			my @links;
+			my $case;
+			my $r;
+			my $solution;
+
+			if (defined($rs->{client}->{$who}->{__history__}) && defined($rs->{client}->{$who}->{__history__}->{reply}->[1])) {
+				my $initiation = $rs->{client}->{$who}->{__history__}->{reply}->[1];
+				my $response = $rs->{client}->{$who}->{__history__}->{input}->[0];
+			
+				$sentence = $parser->create_sentence($initiation);
+				if ($sentence) {
+					@bigstruct = $sentence->get_bigstruct;
+					@links = [];
+
+					foreach(@bigstruct) {
+						my $k;
+						my $v;
+						while (($k,$v) = each %{$_->{links}} ) {
+							push (@links, $k . $bigstruct[$v]->{word});
+						}
+					}
+
+					$case = AI::CBR::Case->new(
+						said	=> {
+							sim	=> \&sim_eq
+						},
+						words	=> {
+							sim	=> \&sim_set
+						},
+						links	=> {
+							sim	=> \&sim_set
+						},
+					);
+					$case->set_values(
+						said	=> $initiation,
+						words	=> [ split(/\s+/, $initiation) ],
+						links	=> @links,
+					);
+
+					$r = AI::CBR::Retrieval->new($case, \@cases);
+					$r->compute_sims();
+					$solution = $r->most_similar_candidate();
+					if ($solution->{_sim} ne 1) {
+						my $new_case = {
+							isaid	=> $response,
+							said	=> $initiation,
+							words	=> [ split(/\s+/, $initiation) ],
+							links	=> @links,
+						};
+						push @cases, $new_case;
+					}
+				}
+			}
+
+
 			my $treply = $rs->reply($who, $_);
 			if (length($treply) eq 0) {
 				$treply = 'random pickup line';
 			}
 			my $said = $rs->{client}->{$who}->{__history__}->{input}->[0];
-			my $sentence = $parser->create_sentence($said);
+			$sentence = $parser->create_sentence($said);
 			if (!$sentence) {
 				next;
 			}
-			my @bigstruct = $sentence->get_bigstruct;
-			my @links = [];
+			@bigstruct = $sentence->get_bigstruct;
+			@links = [];
 
 			foreach(@bigstruct) {
 				my $k;
@@ -81,7 +138,7 @@ while (1) {
 				}
 			}
 
-			my $case = AI::CBR::Case->new(
+			$case = AI::CBR::Case->new(
 				said	=> {
 					sim	=> \&sim_eq
 				},
@@ -98,9 +155,9 @@ while (1) {
 				links	=> @links,
 			);
 
-			my $r = AI::CBR::Retrieval->new($case, \@cases);
+			$r = AI::CBR::Retrieval->new($case, \@cases);
 			$r->compute_sims();
-			my $solution = $r->most_similar_candidate();
+			$solution = $r->most_similar_candidate();
 			print $solution->{_sim} * 100 . "% similarity\n";
 
 			if ($treply !~ /random\ pickup\ line/) {

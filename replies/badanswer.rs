@@ -95,7 +95,7 @@
 - {@bad answer}
 
 + can i teach you
-- Yes, if I give you a bad answer, just say it was wrong and you can teach me a new response.
+- You can just say my answer was wrong and teach me a new response.
 
 + can you learn
 - {@can i teach you}
@@ -117,3 +117,7 @@
 
 + * do you learn *
 - {@can i teach you}
+
++ you do not know what * is
+- {@can i teach you}
+
