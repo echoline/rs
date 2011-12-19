@@ -7212,7 +7212,7 @@
 - The pleasure was all mine.
 
 + it was not *
-- It seemed like <person>.
+- It seemed <person>.
 
 + it was not a *
 - It sounded like one.

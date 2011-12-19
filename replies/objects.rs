@@ -10,7 +10,7 @@ $locenc =~ s/(.)/sprintf("%%%x",ord($1))/eg;
 my $sock = IO::Socket::INET->new('www.google.com:80');
 $sock->autoflush(1);
 
-print $sock "GET /ig/api?weather=" . $locenc . " HTTP/1.0  ";
+print $sock "GET /ig/api?weather=" . $locenc . " HTTP/1.0\r\n\r\n";
 
 my $r = '';
 while (<$sock>) {
@@ -23,7 +23,7 @@ if ($r =~ /problem/i) {
 	return "Problem fetching weather data for " . $loc . ".  ";
 }
 
-$r =~ s/^.*\r \r (.*)$/$1/smg;
+$r =~ s/^.*\r\n\r\n(.*)$/$1/smg;
 $r =~ s/^.*\<current_conditions\>(.*)\<\/current_conditions\>.*$/$1/;
 
 $r =~ s/\<condition data=\"([^\"]*)\"\/?\>/Conditions are $1.  /;
@@ -48,7 +48,7 @@ $locenc =~ s/(.)/sprintf("%%%x",ord($1))/eg;
 my $sock = IO::Socket::INET->new('www.google.com:80');
 $sock->autoflush(1);
 
-print $sock "GET /ig/api?stock=" . $locenc . " HTTP/1.0  ";
+print $sock "GET /ig/api?stock=" . $locenc . " HTTP/1.0\r\n\r\n";
 
 my $r = '';
 while (<$sock>) {
@@ -65,7 +65,7 @@ if ($r !~ /company/) {
         return "Probable error between keyboard and chair.  ";
 }
 
-$r =~ s/^.*\r \r (.*)$/$1/smg;
+$r =~ s/^.*\r\n\r\n(.*)$/$1/smg;
 
 my $inf;
 
@@ -99,7 +99,7 @@ $locenc =~ s/(.)/sprintf("%%%x",ord($1))/eg;
 my $sock = IO::Socket::INET->new('www.google.com:80');
 $sock->autoflush(1);
 
-print $sock "GET /ig/api?movies=" . $locenc . " HTTP/1.0  ";
+print $sock "GET /ig/api?movies=" . $locenc . " HTTP/1.0\r\n\r\n";
 
 my $r = '';
 while (<$sock>) {
@@ -108,7 +108,7 @@ while (<$sock>) {
 
 close $sock;
 
-$r =~ s/^.*\r \r (.*)$/$1/smg;
+$r =~ s/^.*\r\n\r\n(.*)$/$1/smg;
 
 if ($r =~ /problem_cause/) {
 	my $prob = $r;

@@ -190,8 +190,11 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 
 	if (purple_conversation_get_type(conv) == PURPLE_CONV_TYPE_IM)
 		purple_conv_im_send(PURPLE_CONV_IM(conv), alice(name, msg));
-	else if (purple_conversation_get_type(conv) == PURPLE_CONV_TYPE_CHAT)
-		purple_conv_chat_send(PURPLE_CONV_CHAT(conv), alice(name, msg));
+	else if ((purple_conversation_get_type(conv) == PURPLE_CONV_TYPE_CHAT)
+	      && (strcasestr(msg, "alice") 
+	      || strcasestr(msg, purple_account_get_name_for_display(
+				purple_conversation_get_account(conv)))))
+		purple_conv_chat_send(PURPLE_CONV_CHAT(conv),alice(name, msg));
 
 	free(msg);
 }

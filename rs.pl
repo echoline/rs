@@ -67,6 +67,9 @@ while (1) {
 			}
 			my $said = $rs->{client}->{$who}->{__history__}->{input}->[0];
 			my $sentence = $parser->create_sentence($said);
+			if (!$sentence) {
+				next;
+			}
 			my @bigstruct = $sentence->get_bigstruct;
 			my @links = [];
 

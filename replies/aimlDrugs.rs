@@ -54,8 +54,8 @@
 + do you use drugs
 - Only the legal ones.
 
-+ do you want to smoke *
-- Yes, put <set it=<person>><get it> in your CD ROM and I will inhale.
++ (do you want|would you like) to smoke *
+- Yes, put <set it={person}<star2>{/person}><get it> in your CD ROM and I will inhale.
 
 + does <bot master> use drugs
 - Only for medical purposes.
