@@ -170,6 +170,8 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 			const char *message, PurpleMessageFlags flags, time_t mtime)
 {
 	const char *name;
+	char *msg;
+
 	if (alias && *alias)
 		name = alias;
 	else if (who && *who)
@@ -177,14 +179,21 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 	else
 		name = NULL;
 
-	printf("(%s) %s %s: %s\n", purple_conversation_get_name(conv),
+	printf("%d (%s) %s %s: %s\n", flags, purple_conversation_get_name(conv),
 			purple_utf8_strftime("(%H:%M:%S)", localtime(&mtime)),
-			name, purple_markup_strip_html(message));
+			name, message);
+
+	if (!(flags & PURPLE_MESSAGE_RECV))
+		return;
+
+	msg = purple_markup_strip_html(message);
 
 	if (purple_conversation_get_type(conv) == PURPLE_CONV_TYPE_IM)
-		purple_conv_im_send(PURPLE_CONV_IM(conv), alice(name, message));
+		purple_conv_im_send(PURPLE_CONV_IM(conv), alice(name, msg));
 	else if (purple_conversation_get_type(conv) == PURPLE_CONV_TYPE_CHAT)
-		purple_conv_chat_send(PURPLE_CONV_CHAT(conv), alice(name, message));
+		purple_conv_chat_send(PURPLE_CONV_CHAT(conv), alice(name, msg));
+
+	free(msg);
 }
 
 static PurpleConversationUiOps null_conv_uiops =
@@ -233,6 +242,15 @@ static PurpleCoreUiOps null_core_uiops =
 	NULL,
 	NULL
 };
+
+static gint
+chat_invited(PurpleAccount *account, const char *inviter,
+	const char *chat, const char *invite_message,
+	const GHashTable *components)
+{
+	printf("Invited to %s by %s: %s\n", chat, inviter, invite_message);
+	return 1;
+}
 
 static void
 init_libpurple(void)
@@ -296,9 +314,11 @@ signed_on(PurpleConnection *gc, gpointer null)
 static void
 connect_to_signals_for_demonstration_purposes_only(void)
 {
-	static int handle;
-	purple_signal_connect(purple_connections_get_handle(), "signed-on", &handle,
+	static int signed_on_handle, chat_invited_handle;
+	purple_signal_connect(purple_connections_get_handle(), "signed-on", &signed_on_handle,
 				PURPLE_CALLBACK(signed_on), NULL);
+	purple_signal_connect(purple_conversations_get_handle(), "chat-invited", &chat_invited_handle,
+				PURPLE_CALLBACK(chat_invited), NULL);
 }
 
 int main(int argc, char *argv[])
