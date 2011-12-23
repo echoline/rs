@@ -24,7 +24,7 @@
 #include "purple.h"
 
 #include <glib.h>
-
+#include <ctype.h>
 #include <signal.h>
 #include <string.h>
 #include <unistd.h>
@@ -40,6 +40,7 @@
 #define NAME			"alice"
 #define CHAT			"room"
 
+char screenname[128];
 PurpleConversation *chat_g = NULL;
 
 char *alice(const char *source, const char *msgin, PurpleConversation *conv) {
@@ -248,6 +249,7 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 {
 	const char *name;
 	char *msg;
+	char *ptr;
 
 	//if (alias && *alias)
 	//	name = alias;
@@ -265,7 +267,24 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 
 	msg = purple_markup_strip_html(message);
 
-	push(queue, conv, name, msg);
+	if (purple_conversation_get_type(conv) == PURPLE_CONV_TYPE_CHAT) {
+		if ((!strncasecmp(msg, NAME, strlen(NAME)))
+		 || (!strncasecmp(msg, screenname, strlen(screenname)))) {
+			ptr = msg;
+			while (*ptr && isalnum(*ptr))
+				ptr++;
+			while (*ptr && !isalnum(*ptr))
+				ptr++;
+			if (*ptr)
+				push(queue, conv, name, ptr);
+
+		} else if (strcasestr(msg, NAME) || strcasestr(msg, name)) {
+			push(queue, conv, name, msg);
+
+		}
+	} else {
+		push(queue, conv, name, msg);
+	}
 
 	free(msg);
 }
@@ -446,7 +465,6 @@ int main(int argc, char *argv[])
 	int i, num;
 	GList *names = NULL;
 	const char *prpl;
-	char name[128];
 	char *password;
 	GMainLoop *loop = g_main_loop_new(NULL, FALSE);
 	PurpleAccount *account;
@@ -476,24 +494,24 @@ int main(int argc, char *argv[])
 		}
 	}
 	printf("Select the protocol [0-%d]: ", i-1);
-	res = fgets(name, sizeof(name), stdin);
+	res = fgets(screenname, sizeof(screenname), stdin);
 	if (!res) {
 		fprintf(stderr, "Failed to gets protocol selection.");
 		abort();
 	}
-	sscanf(name, "%d", &num);
+	sscanf(screenname, "%d", &num);
 	prpl = g_list_nth_data(names, num);
 
 	printf("Username: ");
-	res = fgets(name, sizeof(name), stdin);
+	res = fgets(screenname, sizeof(screenname), stdin);
 	if (!res) {
 		fprintf(stderr, "Failed to read user name.");
 		abort();
 	}
-	name[strlen(name) - 1] = 0;  /* strip the \n at the end */
+	screenname[strlen(screenname) - 1] = 0;  /* strip the \n at the end */
 
 	/* Create the account */
-	account = purple_account_new(name, prpl);
+	account = purple_account_new(screenname, prpl);
 
 	/* Get the password for the account */
 	password = getpass("Password: ");
