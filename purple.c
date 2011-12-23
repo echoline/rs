@@ -37,15 +37,24 @@
 #define PLUGIN_SAVE_PREF       "/purple/nullclient/plugins/saved"
 #define UI_ID                  "nullclient"
 
-char *alice(const char *source, const char *msgin) {
-	int s, t, len;
+#define NAME			"alice"
+#define CHAT			"room"
+
+PurpleConversation *chat_g = NULL;
+
+char *alice(const char *source, const char *msgin, PurpleConversation *conv) {
+	int s, t, len, chk = 0;
 	char *ptr;
 	struct sockaddr_un remote;
 	char str[1024];
 	static char msg[1024];
-	strncpy(msg, msgin, 1024);
-	msg[strcspn(msg, "\r\n")] = '\0';
-	sprintf(str,"%s\007%s",source,msg);
+	gchar *error = NULL;
+
+TOP:
+	if (!chk)
+		snprintf(str,sizeof(str)-1,"%s\007%s",source,msgin);
+	else
+		snprintf(str,sizeof(str)-1,"%s",source);
 
 	if ((s = socket(AF_UNIX, SOCK_STREAM, 0)) == -1) {
 		return "error in socket()";
@@ -64,24 +73,92 @@ char *alice(const char *source, const char *msgin) {
 
 	if ((t=recv(s, str, 1024, 0)) > 0) {
 		str[t] = '\0';
+	} else {
+		return "error in recv()";
 	}
 
 	close(s);
 
-	if (t < 1)
-		return "error in recv()";
-	
-	strncpy(msg, str, 1024);
+	if (chk) {
+		if (!strcasecmp(str, "abusive")) {
+			snprintf(str,sizeof(str)-1,"kick %s",source);
+			purple_cmd_do_command(conv, str, str, &error);
+
+			if (error) {
+				snprintf(msg,sizeof(msg)-1,"%s",error);
+				free(error);
+			} else
+				snprintf(msg,sizeof(msg)-1,"<s>%s</s>",source);
+		}
+	} else {
+		strncpy(msg, str, 1024);
+		if (conv == chat_g) {
+			chk = 1;
+			goto TOP;
+		}
+	}
 
 	// pause for typing reality-ness
-	len = strlen(msg);
+/*	len = strlen(msg);
 	if (len > 20)
 		len = 20;
 	for (t = 0; t < len; t++)
-		usleep(99000);
+		usleep(99000);*/
 
 	return msg;
 }
+
+typedef struct {
+	PurpleConversation *conv;
+	char *name;
+	char *msg;
+} queue_item_t;
+
+typedef struct {
+	queue_item_t **q;
+	size_t len;
+} queue_t;
+
+static gboolean
+pop(gpointer p) {
+	queue_t *q = (queue_t*)p;
+	queue_item_t *item;
+
+	if (q->len > 0) {
+		item = q->q[0];
+
+		q->len--;
+		if (q->len > 0) {
+			memmove(q->q, &(q->q[1]), q->len * sizeof(queue_item_t*));
+	//		q->q = realloc(q->q, q->len * sizeof(queue_item_t*));
+		}
+
+		if (purple_conversation_get_type(item->conv) == PURPLE_CONV_TYPE_IM)
+			purple_conv_im_send(PURPLE_CONV_IM(item->conv), alice(item->name, item->msg, item->conv));
+		else if (purple_conversation_get_type(item->conv) == PURPLE_CONV_TYPE_CHAT)
+			purple_conv_chat_send(PURPLE_CONV_CHAT(item->conv),alice(item->name, item->msg, item->conv));
+
+		free(item->name);
+		free(item->msg);
+		free(item);
+	}
+
+	return 1;
+}
+
+static void
+push(queue_t *q, PurpleConversation *conv, const char *name, const char *msg) {
+	queue_item_t *new = g_new0(queue_item_t, 1);
+	new->conv = conv;
+	new->name = strdup(name);
+	new->msg = strdup(msg);
+
+	q->q = realloc(q->q, (q->len+1) * sizeof(queue_item_t*));
+	q->q[q->len] = new;
+	q->len++;
+}
+
+queue_t *queue;
 
 /**
  * The following eventloop functions are used in both pidgin and purple-text. If your
@@ -172,29 +249,23 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 	const char *name;
 	char *msg;
 
-	if (alias && *alias)
-		name = alias;
-	else if (who && *who)
+	//if (alias && *alias)
+	//	name = alias;
+	if (who && *who)
 		name = who;
 	else
 		name = NULL;
 
-	printf("%d (%s) %s %s: %s\n", flags, purple_conversation_get_name(conv),
+/*	printf("(%s) %s %s: %s\n", purple_conversation_get_name(conv),
 			purple_utf8_strftime("(%H:%M:%S)", localtime(&mtime)),
-			name, message);
+			name, message);*/
 
 	if (!(flags & PURPLE_MESSAGE_RECV))
 		return;
 
 	msg = purple_markup_strip_html(message);
 
-	if (purple_conversation_get_type(conv) == PURPLE_CONV_TYPE_IM)
-		purple_conv_im_send(PURPLE_CONV_IM(conv), alice(name, msg));
-	else if ((purple_conversation_get_type(conv) == PURPLE_CONV_TYPE_CHAT)
-	      && (strcasestr(msg, "alice") 
-	      || strcasestr(msg, purple_account_get_name_for_display(
-				purple_conversation_get_account(conv)))))
-		purple_conv_chat_send(PURPLE_CONV_CHAT(conv),alice(name, msg));
+	push(queue, conv, name, msg);
 
 	free(msg);
 }
@@ -251,7 +322,14 @@ chat_invited(PurpleAccount *account, const char *inviter,
 	const char *chat, const char *invite_message,
 	const GHashTable *components)
 {
-	printf("Invited to %s by %s: %s\n", chat, inviter, invite_message);
+	if (chat_g != NULL) {
+		printf("Inviting %s\n", inviter);
+	
+		serv_chat_invite(purple_account_get_connection(account), 
+			purple_conv_chat_get_id(PURPLE_CONV_CHAT(chat_g)),
+			":)", inviter);
+	}
+
 	return 1;
 }
 
@@ -307,21 +385,59 @@ init_libpurple(void)
 	purple_pounces_load();
 }
 
+static gboolean
+join_chat(gpointer gc)
+{
+	GHashTable *params;
+
+	if (chat_g != NULL)
+		return 0;
+
+	params = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+	printf("Joining %s...\n", CHAT);
+
+	g_hash_table_insert(params, g_strdup("exchange"), g_strdup("4"));
+	g_hash_table_insert(params, g_strdup("room"), g_strdup(CHAT));
+
+	serv_join_chat(gc, params);
+	g_hash_table_destroy(params);
+
+	return 1;
+}
+
 static void
 signed_on(PurpleConnection *gc, gpointer null)
 {
-	PurpleAccount *account = purple_connection_get_account(gc);
+	PurpleAccount *account = purple_connection_get_account((PurpleConnection*)gc);
 	printf("Account connected: %s %s\n", account->username, account->protocol_id);
+
+	join_chat((gpointer)gc);
+	purple_timeout_add_seconds(60, join_chat, (gpointer)gc);
+
+	queue = g_new0(queue_t, 1);
+	purple_timeout_add_seconds(3, pop, queue);
+}
+
+static void
+chat_joined(PurpleConversation *conv)
+{
+	const char *room = purple_conversation_get_name(conv);
+	printf("Joined chat: %s\n", room);
+	if (!strcasecmp(CHAT, room))
+		chat_g = conv;
 }
 
 static void
 connect_to_signals_for_demonstration_purposes_only(void)
 {
-	static int signed_on_handle, chat_invited_handle;
+	static int signed_on_handle, chat_invited_handle, chat_joined_handle;
+
 	purple_signal_connect(purple_connections_get_handle(), "signed-on", &signed_on_handle,
 				PURPLE_CALLBACK(signed_on), NULL);
 	purple_signal_connect(purple_conversations_get_handle(), "chat-invited", &chat_invited_handle,
 				PURPLE_CALLBACK(chat_invited), NULL);
+	purple_signal_connect(purple_conversations_get_handle(), "chat-joined", &chat_joined_handle,
+				PURPLE_CALLBACK(chat_joined), NULL);
 }
 
 int main(int argc, char *argv[])

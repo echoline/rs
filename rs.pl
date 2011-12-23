@@ -44,10 +44,8 @@ while (1) {
 	my $client = $server->accept();
 	my $buf;
 	$client->recv($buf, 1024);
-	my ($who, $msg) = split(/\007/, $buf);
-	print $who . ': ' . $msg . "\n";
-	my $reply = '';
-	my @msg_array = split(/[\.\?\!]/, $msg);
+	my @inputstuff = split(/\007/, $buf);
+	my $who = $inputstuff[0];
 
 	if (open(my $fh, '<', 'sessions/' . $who)) {
 		my $stuff = '';
@@ -58,7 +56,32 @@ while (1) {
 		close($fh);
 	}
 
-	$rs->thawUservars($who);
+	if (defined($rs->{frozen}->{$who})) {
+		$rs->thawUservars($who);
+	}
+
+	if (scalar(@inputstuff) eq 1) {
+		if (exists($rs->{client}->{$who}) && exists($rs->{client}->{$who}->{personality})) {
+			$client->send($rs->{client}->{$who}->{personality});
+		} else {
+			$client->send('undefined');
+		}
+		
+		$client->close;
+		next;
+	}
+
+	if (scalar(@inputstuff) ne 2) {
+		$client->send('arity of ' . scalar(@inputstuff) . '?');
+		$client->close;
+		next;
+	}
+
+	print $who . ': ' . $inputstuff[1] . "\n";
+	my $reply = '';
+	chomp($inputstuff[1]);
+	my @msg_array = split(/[\.\!\?]/, $inputstuff[1]);
+
 	foreach (@msg_array) {
 		if ($_ =~ /[a-zA-Z0-9]/) {
 			my $sentence;
@@ -68,7 +91,7 @@ while (1) {
 			my $r;
 			my $solution;
 
-			if (defined($rs->{client}->{$who}->{__history__}) && defined($rs->{client}->{$who}->{__history__}->{reply}->[1])) {
+			if (exists($rs->{client}->{$who}->{__history__}) && exists($rs->{client}->{$who}->{__history__}->{reply}->[1])) {
 				my $initiation = $rs->{client}->{$who}->{__history__}->{reply}->[1];
 				my $response = $rs->{client}->{$who}->{__history__}->{input}->[0];
 			
@@ -184,7 +207,8 @@ while (1) {
 		$reply = ":)";
 	}
 	$rs->freezeUservars($who);
-	if (open(my $fh, '>', 'sessions/' . $who)) {
+	if (exists($rs->{frozen}->{$who})
+	    && open(my $fh, '>', 'sessions/' . $who)) {
 		print $fh Storable::freeze( $rs->{frozen}->{$who} );
 		close($fh);
 	}
