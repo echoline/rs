@@ -52,7 +52,9 @@ while (1) {
 		while (<$fh>) {
 			$stuff .= $_;
 		}
-		$rs->{frozen}->{$who} = Storable::thaw($stuff);
+		eval {
+			$rs->{frozen}->{$who} = Storable::thaw($stuff);
+		};
 		close($fh);
 	}
 
@@ -80,7 +82,7 @@ while (1) {
 	print $who . ': ' . $inputstuff[1] . "\n";
 	my $reply = '';
 	chomp($inputstuff[1]);
-	my @msg_array = split(/[\.\!\?]/, $inputstuff[1]);
+	my @msg_array = split(/[\.\!\?](\s+|$)/, $inputstuff[1]);
 
 	foreach (@msg_array) {
 		if ($_ =~ /[a-zA-Z0-9]/) {
@@ -91,55 +93,54 @@ while (1) {
 			my $r;
 			my $solution;
 
-			if (exists($rs->{client}->{$who}->{__history__}) && exists($rs->{client}->{$who}->{__history__}->{reply}->[1])) {
-				my $initiation = $rs->{client}->{$who}->{__history__}->{reply}->[1];
-				my $response = $rs->{client}->{$who}->{__history__}->{input}->[0];
-			
-				$sentence = $parser->create_sentence($initiation);
-				if ($sentence) {
-					@bigstruct = $sentence->get_bigstruct;
-					@links = [];
-
-					foreach(@bigstruct) {
-						my $k;
-						my $v;
-						while (($k,$v) = each %{$_->{links}} ) {
-							push (@links, $k . $bigstruct[$v]->{word});
-						}
-					}
-
-					$case = AI::CBR::Case->new(
-						said	=> {
-							sim	=> \&sim_eq
-						},
-						words	=> {
-							sim	=> \&sim_set
-						},
-						links	=> {
-							sim	=> \&sim_set
-						},
-					);
-					$case->set_values(
-						said	=> $initiation,
-						words	=> [ split(/\s+/, $initiation) ],
-						links	=> @links,
-					);
-
-					$r = AI::CBR::Retrieval->new($case, \@cases);
-					$r->compute_sims();
-					$solution = $r->most_similar_candidate();
-					if ($solution->{_sim} ne 1) {
-						my $new_case = {
-							isaid	=> $response,
-							said	=> $initiation,
-							words	=> [ split(/\s+/, $initiation) ],
-							links	=> @links,
-						};
-						push @cases, $new_case;
-					}
-				}
-			}
-
+#			if (exists($rs->{client}->{$who}->{__history__}) && exists($rs->{client}->{$who}->{__history__}->{reply}->[1])) {
+#				my $initiation = $rs->{client}->{$who}->{__history__}->{reply}->[1];
+#				my $response = $rs->{client}->{$who}->{__history__}->{input}->[0];
+#			
+#				$sentence = $parser->create_sentence($initiation);
+#				if ($sentence) {
+#					@bigstruct = $sentence->get_bigstruct;
+#					@links = [];
+#
+#					foreach(@bigstruct) {
+#						my $k;
+#						my $v;
+#						while (($k,$v) = each %{$_->{links}} ) {
+#							push (@links, $k . $bigstruct[$v]->{word});
+#						}
+#					}
+#
+#					$case = AI::CBR::Case->new(
+#						said	=> {
+#							sim	=> \&sim_eq
+#						},
+#						words	=> {
+#							sim	=> \&sim_set
+#						},
+#						links	=> {
+#							sim	=> \&sim_set
+#						},
+#					);
+#					$case->set_values(
+#						said	=> $initiation,
+#						words	=> [ split(/\s+/, $initiation) ],
+#						links	=> @links,
+#					);
+#
+#					$r = AI::CBR::Retrieval->new($case, \@cases);
+#					$r->compute_sims();
+#					$solution = $r->most_similar_candidate();
+#					if ($solution->{_sim} ne 1) {
+#						my $new_case = {
+#							isaid	=> $response,
+#							said	=> $initiation,
+#							words	=> [ split(/\s+/, $initiation) ],
+#							links	=> @links,
+#						};
+#						push @cases, $new_case;
+#					}
+#				}
+#			}
 
 			my $treply = $rs->reply($who, $_);
 			if (length($treply) eq 0) {
