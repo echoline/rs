@@ -15,6 +15,12 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
+#define MY_CHANNEL "#neoturbine"
+#define MY_NICK "alice"
+#define MY_SERVER "irc.neoturbine.net"
+#define MY_PORT 6667
+#define MY_SOCKET "/tmp/alice"
+
 // colors for inclusion in printf formats
 #define RED     "\E[31m\E[1m"
 #define GREEN   "\E[32m\E[1m"
@@ -68,10 +74,10 @@ int main(argc, argv)
 	int forks = 0;			// how many times have we forked
 	char *pbuf;			// ptr to getline buf
 	args myargs;			// struct for args
-	myargs.channel = "#neoturbine";
-	myargs.nick = "alice";
-	myargs.url = "localhost";
-	myargs.port = 6667;
+	myargs.channel = MY_CHANNEL;
+	myargs.nick = MY_NICK;
+	myargs.url = MY_SERVER; 
+	myargs.port = MY_PORT;
 	myargs.fork = 0;
 	myargs.verbose = 0;
 	int nicklen = 20;		// length of nicks
@@ -84,12 +90,11 @@ int main(argc, argv)
 	sprintf(nick,"%s",myargs.nick);
 	sprintf(newnick,"%s",nick);
 
-	printf("u|2L I5 " BLUE "%s" NORMAL "\n", myargs.url);
-	printf("P0|2t nUMB3r 1S " BLUE "%d\n" NORMAL, myargs.port);
+	printf("Connecting to: " BLUE "%s:%d\n" NORMAL,myargs.url,myargs.port);
 	
 	if ( ( host_addr = gethostbyname ( myargs.url ) ) == NULL )
 	{
-		fprintf ( stderr, RED "(4Nn07 |2e50Lv3 \"%s\"\n" NORMAL, myargs.url );
+		fprintf ( stderr, RED "Cannot resolve \"%s\"\n" NORMAL, myargs.url );
 		exit ( 1 );
 	}
 
@@ -98,7 +103,7 @@ int main(argc, argv)
 		// set the socket 
 		if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
 		{
-			fprintf ( stderr, RED "(4Nn07 53T S0(|<e7 \"%s\"\n" NORMAL, myargs.url );
+			fprintf ( stderr, RED "cannot set socket \"%s\"\n" NORMAL, myargs.url );
 			exit(1);
 		}
 		dest_addr.sin_family = AF_INET;          // host byte order
@@ -128,7 +133,6 @@ int main(argc, argv)
 		sprintf(buf,"JOIN %s\n", myargs.channel);
 		write_to_socket(sockfd, buf);
 		memset(buf,0,sizeof(buf));
-		printf(BLUE "H3lLo w0rlD\n" NORMAL);
 		
 		// loop and read a line until connection quits
 		while(pbuf = buf, len = sizeof(buf), (getline(&pbuf, &len, sockFD) != -1)) {
@@ -178,14 +182,15 @@ int main(argc, argv)
 						sprintf(buf,"NOTICE %s :\1%s", source, tmp);
 						write_to_socket(sockfd,buf);
 					}
-					printf(BLUE "Oh no! a CTCP\n" NORMAL);
+					printf(BLUE "CTCP:%s\n" NORMAL,buf);
 				// respond to directly addressed messages
 				} else if ((!strncasecmp(tmp,nick,strlen(nick))) || (!strcmp(target,source))) {
 					if (!myargs.verbose) {
 						printf(YELLOW "%s" NORMAL, buf);
 					}
 					// remove bot nick
-					if (strcmp(target,source) != 0)
+					if (strcmp(target,source) != 0 && 
+						    (tmp[strlen(nick)] != ' '))
 						tmp += strlen(nick) + 1;
 					// respond to any query
 					strcpy(buf2, alice(tmp));
@@ -195,7 +200,7 @@ int main(argc, argv)
 						else
 							sprintf(buf,"PRIVMSG %s :%s\n",target, buf2);
 						write_to_socket(sockfd, buf);
-						printf(BLUE "G0 4sK aLiC3\n" NORMAL);
+//						printf(BLUE "Alice says, \"%s\"\n\tto %s\n" NORMAL);
 					}
 				// respond to bot's name elsewhere in messages
 				// commented out because it's annoying as fuck
@@ -222,7 +227,7 @@ int main(argc, argv)
 				tmp[0] = '\0';
 				tmp = rindex(buf,' ')+1;
 				if ( !strncmp(tmp, nick, strlen(nick)) ) {
-					printf(RED "Th4t g37s Me 5o |-|eaT3D!\n" NORMAL);
+					printf(RED "kicked from %s.  rejoining.\n" NORMAL, target);
 					sprintf(buf,"JOIN %s\n",target);
 					write_to_socket(sockfd,buf);
 				}
@@ -235,10 +240,9 @@ int main(argc, argv)
 				sleep(1);
 				sprintf(buf,"JOIN %s\n", myargs.channel);
 				write_to_socket(sockfd, buf);
-				printf(BLUE "H3lLo w0rlD\n" NORMAL);
 			// change nick if current choice is taken
 			} else if ( !strncmp(tmp, "433", 3) ) {
-				printf(RED "D4mMi7, 1 li|<3D th47 oN3\n" NORMAL);
+				printf(RED "Nick taken\n" NORMAL);
 				srand( (unsigned int)time( NULL ) );
 				sprintf(nick,"%s%d",newnick,rand() % 1000000);
 				sprintf(buf,"NICK %s\n", nick);
@@ -256,14 +260,14 @@ int main(argc, argv)
 				if (strcmp(source,nick) != 0) {
 				//	sprintf(buf,"PRIVMSG %s :Welcome to %s, %s.  %s\n", tmp, target, source, greet);
 				//	write_to_socket(sockfd, buf);
-					printf(BLUE "H3y a n3wB!\n" NORMAL);
+					printf(BLUE "join: %s\n" NORMAL, source);
 				}
 			// for invites 
 			} else if ( !strncmp(tmp, "INVITE", 6) ) {
 				tmp = rindex(tmp,':')+1;
 				sprintf(buf,"JOIN %s", tmp);
 				write_to_socket(sockfd, buf);
-				printf(BLUE "P4|27Y t1M3!!\n" NORMAL);
+				printf(BLUE "INVITED: %s\n" NORMAL,tmp);
 			}
 			memset(buf,0,sizeof(buf));
 		}
@@ -345,7 +349,7 @@ int greet(char *target, char *source, int last, int sockfd) {
 			sprintf(buf,"PRIVMSG %s :whoops, how'd i get here??  you fucked up, echoline.\n",target);
 	}
 	write_to_socket(sockfd, buf);
-	printf(BLUE "H3Ll0 tH3re\n" NORMAL);
+	printf(BLUE "hello there.\n" NORMAL);
 	return (last);
 }
 
@@ -367,7 +371,7 @@ char *alice(char *msg) {
     }
 
     remote.sun_family = AF_UNIX;
-    strcpy(remote.sun_path, "/tmp/rs");
+    strcpy(remote.sun_path, MY_SOCKET);
     len = strlen(remote.sun_path) + sizeof(remote.sun_family);
     if (connect(s, (struct sockaddr *)&remote, len) == -1) {
 	defalice();
@@ -404,7 +408,7 @@ void defalice() {
 	if (strcasestr(tmp,"ping")) {
 		sprintf(buf,"PRIVMSG %s :%s: pong\n",target,source);
 		write_to_socket(sockfd, buf);
-		printf(BLUE "PI|\\|g-P0nG\n" NORMAL);
+		printf(BLUE "ping: %s\n" NORMAL, buf);
 	// respond to greetings
 	}else if (strcasestr(tmp,"hi") || strcasestr(tmp,"hey") || strcasestr(tmp,"hello")) {
         	last = greet(target, source, last, sockfd);
@@ -437,6 +441,6 @@ void defalice() {
         	        default:
        	 	                sprintf(buf,"PRIVMSG %s :whoops, how'd i get here??  you fucked up, echoline.\n",target);                                                }
 		write_to_socket(sockfd, buf);
-		printf(BLUE "50m3oNe 54iD m4h n1c|<\n" NORMAL);
+		printf(BLUE "nickname %s\n" NORMAL, buf);
 	}
 }

@@ -34,8 +34,8 @@
 
 #define CUSTOM_USER_DIRECTORY  "/dev/null"
 #define CUSTOM_PLUGIN_PATH     ""
-#define PLUGIN_SAVE_PREF       "/purple/nullclient/plugins/saved"
-#define UI_ID                  "nullclient"
+#define PLUGIN_SAVE_PREF       "/purple/aliceclient/plugins/saved"
+#define UI_ID                  "aliceclient"
 
 #define NAME			"alice"
 #define CHAT			"room"
@@ -62,7 +62,7 @@ TOP:
 	}
 
 	remote.sun_family = AF_UNIX;
-	strcpy(remote.sun_path, "/tmp/rs");
+	strcpy(remote.sun_path, "/tmp/alice");
 	len = strlen(remote.sun_path) + sizeof(remote.sun_family);
 	if (connect(s, (struct sockaddr *)&remote, len) == -1) {
 		return "error in connect()";

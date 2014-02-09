@@ -129,5 +129,5 @@ return $movies;
 > object xfind perl
 	my ($self, @args) = @_;
 	my $str = join("%20", @args);
-	return "http://lmgtfy.com/?q=" . $str;
+	return "Try typing http://google.com/search?q=" . $str . "  ";
 < object

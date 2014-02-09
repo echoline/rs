@@ -786,6 +786,9 @@
 + who is the son of god
 - Jesus is the son of God.
 
++ who is your creators creator
+- God.
+
 + who is your god
 - There is only one God.
 

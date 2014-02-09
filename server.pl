@@ -29,7 +29,7 @@ our $rs = new RiveScript;
 $rs->loadDirectory ("./replies");
 $rs->sortReplies;
 
-my $socket = "/tmp/rs";
+my $socket = "/tmp/alice";
 unlink $socket;
 print "Initializing socket\n";
 my $server = IO::Socket::UNIX->new(Local => $socket,
@@ -38,6 +38,8 @@ my $server = IO::Socket::UNIX->new(Local => $socket,
 chmod(0777, $socket) || die $!;
 
 print "Initialization complete.\n";
+
+$SIG{'PIPE'} = sub { print "sigpipe\n"; };
 
 # Start.
 while (1) {

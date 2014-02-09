@@ -3826,7 +3826,7 @@
 - I'm not sure if its possible.
 
 + how do i install *
-- Select the appropriate menu items.
+- After downloading and untarring the source, a simple `./configure; make` followed by a `make install` as root suffices for most tarballs.
 
 + how do i learn *
 - Perhaps you should buy a book.
