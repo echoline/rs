@@ -38,7 +38,7 @@
 #define UI_ID                  "aliceclient"
 
 #define NAME			"alice"
-#define CHAT			"room"
+#define CHAT			"darkside"
 
 char screenname[128];
 PurpleConversation *chat_g = NULL;
@@ -89,7 +89,7 @@ TOP:
 				snprintf(msg,sizeof(msg)-1,"%s",error);
 				free(error);
 			} else
-				snprintf(msg,sizeof(msg)-1,"<s>%s</s>",source);
+				snprintf(msg,sizeof(msg)-1,"!kick %s",source);
 		}
 	} else {
 		strncpy(msg, str, 1024);
@@ -120,7 +120,7 @@ typedef struct {
 	size_t len;
 } queue_t;
 
-static gboolean
+gboolean
 pop(gpointer p) {
 	queue_t *q = (queue_t*)p;
 	queue_item_t *item;
@@ -147,7 +147,7 @@ pop(gpointer p) {
 	return 1;
 }
 
-static void
+void
 push(queue_t *q, PurpleConversation *conv, const char *name, const char *msg) {
 	queue_item_t *new = g_new0(queue_item_t, 1);
 	new->conv = conv;
@@ -174,12 +174,12 @@ typedef struct _PurpleGLibIOClosure {
 	gpointer data;
 } PurpleGLibIOClosure;
 
-static void purple_glib_io_destroy(gpointer data)
+void purple_glib_io_destroy(gpointer data)
 {
 	g_free(data);
 }
 
-static gboolean purple_glib_io_invoke(GIOChannel *source, GIOCondition condition, gpointer data)
+gboolean purple_glib_io_invoke(GIOChannel *source, GIOCondition condition, gpointer data)
 {
 	PurpleGLibIOClosure *closure = data;
 	PurpleInputCondition purple_cond = 0;
@@ -195,7 +195,7 @@ static gboolean purple_glib_io_invoke(GIOChannel *source, GIOCondition condition
 	return TRUE;
 }
 
-static guint glib_input_add(gint fd, PurpleInputCondition condition, PurpleInputFunction function,
+guint glib_input_add(gint fd, PurpleInputCondition condition, PurpleInputFunction function,
 							   gpointer data)
 {
 	PurpleGLibIOClosure *closure = g_new0(PurpleGLibIOClosure, 1);
@@ -222,7 +222,7 @@ static guint glib_input_add(gint fd, PurpleInputCondition condition, PurpleInput
 	return closure->result;
 }
 
-static PurpleEventLoopUiOps glib_eventloops =
+PurpleEventLoopUiOps glib_eventloops =
 {
 	g_timeout_add,
 	g_source_remove,
@@ -243,7 +243,7 @@ static PurpleEventLoopUiOps glib_eventloops =
 /*** End of the eventloop functions. ***/
 
 /*** Conversation uiops ***/
-static void
+void
 null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 			const char *message, PurpleMessageFlags flags, time_t mtime)
 {
@@ -289,7 +289,7 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 	free(msg);
 }
 
-static PurpleConversationUiOps null_conv_uiops =
+PurpleConversationUiOps null_conv_uiops =
 {
 	NULL,                      /* create_conversation  */
 	NULL,                      /* destroy_conversation */
@@ -312,7 +312,7 @@ static PurpleConversationUiOps null_conv_uiops =
 	NULL
 };
 
-static void
+void
 null_ui_init(void)
 {
 	/**
@@ -322,7 +322,7 @@ null_ui_init(void)
 	purple_conversations_set_ui_ops(&null_conv_uiops);
 }
 
-static PurpleCoreUiOps null_core_uiops =
+PurpleCoreUiOps null_core_uiops =
 {
 	NULL,
 	NULL,
@@ -336,7 +336,7 @@ static PurpleCoreUiOps null_core_uiops =
 	NULL
 };
 
-static gint
+gint
 chat_invited(PurpleAccount *account, const char *inviter,
 	const char *chat, const char *invite_message,
 	const GHashTable *components)
@@ -352,7 +352,7 @@ chat_invited(PurpleAccount *account, const char *inviter,
 	return 1;
 }
 
-static void
+void
 init_libpurple(void)
 {
 	/* Set a custom user directory (optional) */
@@ -404,7 +404,7 @@ init_libpurple(void)
 	purple_pounces_load();
 }
 
-static gboolean
+gboolean
 join_chat(gpointer gc)
 {
 	GHashTable *params;
@@ -424,7 +424,7 @@ join_chat(gpointer gc)
 	return 1;
 }
 
-static void
+void
 signed_on(PurpleConnection *gc, gpointer null)
 {
 	PurpleAccount *account = purple_connection_get_account((PurpleConnection*)gc);
@@ -437,7 +437,7 @@ signed_on(PurpleConnection *gc, gpointer null)
 	purple_timeout_add_seconds(3, pop, queue);
 }
 
-static void
+void
 chat_joined(PurpleConversation *conv)
 {
 	const char *room = purple_conversation_get_name(conv);
@@ -446,7 +446,7 @@ chat_joined(PurpleConversation *conv)
 		chat_g = conv;
 }
 
-static void
+void
 connect_to_signals_for_demonstration_purposes_only(void)
 {
 	static int signed_on_handle, chat_invited_handle, chat_joined_handle;
@@ -530,4 +530,3 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
-
