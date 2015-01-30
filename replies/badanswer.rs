@@ -28,10 +28,28 @@
 	my ($rs, $xrs, @args) = @_;
 	@args = split(':', join(' ', @args));
 	if (scalar(@args) == 2) {
-		open(APPEND, '>>' . $xrs);
-		print APPEND '+ ' . $rs->_formatMessage($args[1]) . "\n";
-		print APPEND '- ' . $args[0] . "\n\n";
-		close(APPEND);
+		open(READ, '<' . $xrs);
+		my $query = $rs->_formatMessage($args[1]);
+		my $found = 0;
+		my $contents = '';
+		while (<READ>) {
+			$contents .= $_;
+			if (/^\+\ $query/) {
+				$contents .= '- ' . $args[0] . "\n";
+				$found = 1;
+			}
+		}
+		close (READ);
+		if ($found == 0) {
+			open(APPEND, '>>' . $xrs);
+			print APPEND '+ ' . $rs->_formatMessage($args[1]) . "\n";
+			print APPEND '- ' . $args[0] . "\n\n";
+			close(APPEND);
+		} else {
+			open (WRITE, ">" . $xrs);
+			print WRITE $contents;
+			close(WRITE);
+		}
 		$rs->loadFile($xrs);
 		$rs->sortReplies;
 		return "Okay, I'll try to remember to respond, \"" . $args[0] . "\" when you say, \"" . $args[1] . "\"";
