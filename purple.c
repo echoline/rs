@@ -508,7 +508,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Failed to read user name.");
 		abort();
 	}
-	screenname[strlen(screenname) - 1] = 0;  /* strip the \n at the end */
+	screenname[strcspn(screenname, "\n")] = 0;  /* strip the \n at the end */
 
 	/* Create the account */
 	account = purple_account_new(screenname, prpl);
