@@ -13,21 +13,20 @@ use AI::CBR::Sim qw(sim_set sim_eq);
 use AI::CBR::Case;
 use AI::CBR::Retrieval;
 
-# Sentence parser
-use Lingua::LinkParser;
-
 # Load RiveScript.
 use RiveScript;
 
-print "Initializing sentence parser and case-based reasoning\n";
-our $parser = new Lingua::LinkParser;
+print "Initializing case-based reasoning\n";
 our @cases = {};
 
 # Create and load the RiveScript brain.
-print "Initializing RiveScript interpreter\n";
+print "Initializing RiveScript interpreter ";
 our $rs = new RiveScript;
+print ".";
 $rs->loadDirectory ("./replies");
+print ".";
 $rs->sortReplies;
+print ". done.\n";
 
 my $socket = "/tmp/alice";
 unlink $socket;
@@ -88,9 +87,6 @@ while (1) {
 
 	foreach (@msg_array) {
 		if ($_ =~ /[a-zA-Z0-9]/) {
-			my $sentence;
-			my @bigstruct;
-			my @links;
 			my $case;
 			my $r;
 			my $solution;
@@ -149,20 +145,20 @@ while (1) {
 				$treply = 'random pickup line';
 			}
 			my $said = $rs->{client}->{$who}->{__history__}->{input}->[0];
-			$sentence = $parser->create_sentence($said);
-			if (!$sentence) {
-				next;
-			}
-			@bigstruct = $sentence->get_bigstruct;
-			@links = [];
+#			$sentence = $parser->create_sentence($said);
+#			if (!$sentence) {
+#				next;
+#			}
+#			@bigstruct = $sentence->get_bigstruct;
+#			@links = [];
 
-			foreach(@bigstruct) {
-				my $k;
-				my $v;
-				while (($k,$v) = each %{$_->{links}} ) {
-					push (@links, $k . $bigstruct[$v]->{word});
-				}
-			}
+#			foreach(@bigstruct) {
+#				my $k;
+#				my $v;
+#				while (($k,$v) = each %{$_->{links}} ) {
+#					push (@links, $k . $bigstruct[$v]->{word});
+#				}
+#			}
 
 			$case = AI::CBR::Case->new(
 				said	=> {
@@ -171,14 +167,14 @@ while (1) {
 				words	=> {
 					sim	=> \&sim_set
 				},
-				links	=> {
-					sim	=> \&sim_set
-				},
+#				links	=> {
+#					sim	=> \&sim_set
+#				},
 			);
 			$case->set_values(
 				said	=> $said,
 				words	=> [ split(/\s+/, $said) ],
-				links	=> @links,
+#				links	=> @links,
 			);
 
 			$r = AI::CBR::Retrieval->new($case, \@cases);
@@ -192,7 +188,7 @@ while (1) {
 						isaid	=> $treply,
 						said	=> $said,
 						words	=> [ split(/\s+/, $said) ],
-						links	=> @links,
+#						links	=> @links,
 					};
 					push @cases, $new_case;
 				}

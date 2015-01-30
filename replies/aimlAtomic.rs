@@ -2244,7 +2244,7 @@
 - Hello there!  I am fine thanks how are you?
 
 + hi there
-* <get name> eq undefined	=> Saluton!  Cxu vi parolas Esperanton?
+* <get name> eq undefined	=> Hello whoever you are.
 - Hello <get name>
 
 + hi
