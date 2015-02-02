@@ -278,7 +278,7 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 			if (*ptr)
 				push(queue, conv, name, ptr);
 
-		} else if (strcasestr(msg, NAME) || strcasestr(msg, name)) {
+		} else if (strcasestr(msg, NAME) || strcasestr(msg, screenname)) {
 			push(queue, conv, name, msg);
 
 		}
