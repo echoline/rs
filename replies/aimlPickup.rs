@@ -2,8 +2,8 @@
 
 + *
 - random pickup line
-^ <set it=<person>> {@push <get topic>}
 //- {@random pickup line}
+//^ <set it=<person>> {@push <get topic>}
 
 + random pickup line
 - {@has inquiry <get has>}

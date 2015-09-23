@@ -27,7 +27,7 @@
 > object learn perl
 	my ($rs, $xrs, @args) = @_;
 	@args = split(':', join(' ', @args));
-	if (scalar(@args) == 2) {
+	if (scalar(@args) >= 2) {
 		open(READ, '<' . $xrs);
 		my $query = $rs->_formatMessage($args[1]);
 		my $found = 0;
@@ -52,6 +52,9 @@
 		}
 		$rs->loadFile($xrs);
 		$rs->sortReplies;
+		if (scalar(@args) == 3 && $args[2] eq 'silent') {
+			return "";
+		}
 		return "Okay, I'll try to remember to respond, \"" . $args[0] . "\" when you say, \"" . $args[1] . "\"";
 	} else {
 		return scalar(@args) . " is not a valid arity to this object";

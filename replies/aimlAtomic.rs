@@ -6935,6 +6935,7 @@
 - I hope I can make the deadline.
 
 + sorry
+* <get personality> eq abusive => It's OK.<set personality=undefined>
 - There's no need to apologize.
 
 + sort of

@@ -22,6 +22,7 @@
  */
 
 #include "purple.h"
+#include <libsoup/soup.h>
 
 #include <glib.h>
 #include <ctype.h>
@@ -38,7 +39,9 @@
 #define UI_ID                  "aliceclient"
 
 #define NAME			"alice"
-#define CHAT			"darkside"
+
+char CHAT[128];
+char EXCHANGE[16];
 
 char screenname[128];
 PurpleConversation *chat_g = NULL;
@@ -47,8 +50,8 @@ char *alice(const char *source, const char *msgin, PurpleConversation *conv) {
 	int s, t, len, chk = 0;
 	char *ptr;
 	struct sockaddr_un remote;
-	char str[1024];
-	static char msg[1024];
+	char str[0x10000];
+	static char msg[0x10000];
 	gchar *error = NULL;
 
 TOP:
@@ -92,7 +95,7 @@ TOP:
 				snprintf(msg,sizeof(msg)-1,"!kick %s",source);
 		}
 	} else {
-		strncpy(msg, str, 1024);
+		strncpy(msg, str, 0xFFFF);
 		if (conv == chat_g) {
 			chk = 1;
 			goto TOP;
@@ -122,6 +125,7 @@ typedef struct {
 
 gboolean
 pop(gpointer p) {
+	char *reply = "";
 	queue_t *q = (queue_t*)p;
 	queue_item_t *item;
 
@@ -134,10 +138,17 @@ pop(gpointer p) {
 	//		q->q = realloc(q->q, q->len * sizeof(queue_item_t*));
 		}
 
-		if (purple_conversation_get_type(item->conv) == PURPLE_CONV_TYPE_IM)
-			purple_conv_im_send(PURPLE_CONV_IM(item->conv), alice(item->name, item->msg, item->conv));
-		else if (purple_conversation_get_type(item->conv) == PURPLE_CONV_TYPE_CHAT)
-			purple_conv_chat_send(PURPLE_CONV_CHAT(item->conv),alice(item->name, item->msg, item->conv));
+		if (purple_conversation_get_type(item->conv) == PURPLE_CONV_TYPE_IM) {
+			reply = alice(item->name, item->msg, item->conv);
+			purple_conv_im_send(PURPLE_CONV_IM(item->conv), reply);
+
+		} else if (purple_conversation_get_type(item->conv) == PURPLE_CONV_TYPE_CHAT) {
+			reply = alice(item->name, item->msg, item->conv);
+			purple_conv_chat_send(PURPLE_CONV_CHAT(item->conv), reply);
+
+		}
+
+		printf (NAME ": %s\n", reply);
 
 		free(item->name);
 		free(item->msg);
@@ -266,6 +277,7 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 		return;
 
 	msg = purple_markup_strip_html(message);
+	printf ("%s: %s\n", who, msg);
 
 	if (purple_conversation_get_type(conv) == PURPLE_CONV_TYPE_CHAT) {
 		if ((!strncasecmp(msg, NAME, strlen(NAME)))
@@ -281,6 +293,26 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 		} else if (strcasestr(msg, NAME) || strcasestr(msg, screenname)) {
 			push(queue, conv, name, msg);
 
+		}
+
+		if ((ptr = (char*)strcasestr(msg, "http://")) != NULL ||
+		    (ptr = (char*)strcasestr(msg, "https://")) != NULL) {
+			ptr[strcspn(ptr, "\r\n \t")] = '\0';
+			SoupMessage *msg = soup_message_new ("GET", ptr);
+			SoupSession *session = soup_session_sync_new();
+			guint status = soup_session_send_message (session, msg);
+			if (status == SOUP_STATUS_OK) {
+				ptr = (char*)strcasestr(msg->response_body->data, "<title>");
+				if (ptr != NULL) {
+					ptr += 7;
+					ptr[strcspn(ptr, "<")] = '\0';
+					purple_conv_chat_send(PURPLE_CONV_CHAT(conv), ptr);
+				} else {
+					purple_conv_chat_send(PURPLE_CONV_CHAT(conv), "no title?  wtf");
+				}
+			} else {
+				purple_conv_chat_send(PURPLE_CONV_CHAT(conv), soup_status_get_phrase(status));
+			}
 		}
 	} else {
 		push(queue, conv, name, msg);
@@ -359,7 +391,7 @@ init_libpurple(void)
 	purple_util_set_user_dir(CUSTOM_USER_DIRECTORY);
 
 	/* We do not want any debugging for now to keep the noise to a minimum. */
-	purple_debug_set_enabled(FALSE);
+//	purple_debug_set_enabled(TRUE);
 
 	/* Set the core-uiops, which is used to
 	 * 	- initialize the ui specific preferences.
@@ -415,8 +447,8 @@ join_chat(gpointer gc)
 	params = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 	printf("Joining %s...\n", CHAT);
 
-	g_hash_table_insert(params, g_strdup("exchange"), g_strdup("4"));
 	g_hash_table_insert(params, g_strdup("room"), g_strdup(CHAT));
+	g_hash_table_insert(params, g_strdup("exchange"), g_strdup(EXCHANGE));
 
 	serv_join_chat(gc, params);
 	g_hash_table_destroy(params);
@@ -489,18 +521,18 @@ int main(int argc, char *argv[])
 		PurplePlugin *plugin = iter->data;
 		PurplePluginInfo *info = plugin->info;
 		if (info && info->name) {
-			printf("\t%d: %s\n", i++, info->name);
+	//		printf("\t%d: %s\n", i++, info->name);
 			names = g_list_append(names, info->id);
 		}
 	}
-	printf("Select the protocol [0-%d]: ", i-1);
+/*	printf("Select the protocol [0-%d]: ", i-1);
 	res = fgets(screenname, sizeof(screenname), stdin);
 	if (!res) {
 		fprintf(stderr, "Failed to gets protocol selection.");
 		abort();
 	}
-	sscanf(screenname, "%d", &num);
-	prpl = g_list_nth_data(names, num);
+	sscanf(screenname, "%d", &num);*/
+	prpl = g_list_nth_data(names, 0);
 
 	printf("Username: ");
 	res = fgets(screenname, sizeof(screenname), stdin);
@@ -516,6 +548,22 @@ int main(int argc, char *argv[])
 	/* Get the password for the account */
 	password = getpass("Password: ");
 	purple_account_set_password(account, password);
+
+	printf("chat name: ");
+	res = fgets(CHAT, sizeof(CHAT), stdin);
+	if (!res) {
+		fprintf(stderr, "Failed to read chat URL\n");
+		abort();
+	}
+	CHAT[strcspn(CHAT, "\n")] = 0;
+
+	printf("chat exchange: ");
+	res = fgets(EXCHANGE, sizeof(EXCHANGE), stdin);
+	if (!res) {
+		fprintf(stderr, "Failed to read chat URL\n");
+		abort();
+	}
+	EXCHANGE[strcspn(EXCHANGE, "\n")] = 0;
 
 	/* It's necessary to enable the account first. */
 	purple_account_set_enabled(account, UI_ID, TRUE);

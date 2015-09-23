@@ -231,7 +231,7 @@
 - Are you asking about my <person> ?
 
 + * or *
-- {random}If I have to choose one, I pick<star>.|If I have to choose, I pick <star2>.|<star>|<star2>.|No preference.{/random}
+- {random}If I have to choose one, I pick <star>.|If I have to choose, I pick <star2>.|<star>|<star2>.|No preference.{/random}
 ^ <set it=<person>>
 
 + * pants

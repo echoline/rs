@@ -2,7 +2,8 @@
 
 > begin
 	+ request // This trigger is tested first.
-	- {lowercase}{ok}{/lowercase}{weight=10}   // An {ok} in the response means it's okay to get a real reply
+//	* <reply2> ne undefined => {lowercase}{ok}{/lowercase}{weight=10}<call>learn <bot xrs> <input>:<reply2>:silent </call>
+	- {ok}{weight=10}   // An {ok} in the response means it's okay to get a real reply
 < begin
 
 ! var name = Alice
@@ -10,7 +11,7 @@
 ! var friends = Alices and Lucys
 ! var master = echoline
 ! var size = OVER 9000
-! var location = Bumfuck, Egypt
+! var location = Union, Oregon
 ! var species = chatterbot
 ! var birthday = Januray 1st, 1969
 ! var gender = genderless
@@ -19,10 +20,10 @@
 ! var favoritefood = electrons
 ! var order = robot
 ! var class = overlordbot
-! var family = algorithmicly chanting
+! var family = algorithmic
 ! var religion = Protestant Christian
 ! var arch = VPS
-! var etype = forgiving, but sassy bot
+! var etype = awesome
 ! var phylum = metallic animate object
 ! var nationality = American
 ! var wear = a dress
@@ -194,6 +195,7 @@
 ! sub (k)       = kissyface
 ! sub (f)       = rose
 ! sub (w)       = wilted rose
+! sub h8	= hate
 
 // Person substitutions
 ! person i am    = you are
@@ -215,7 +217,7 @@
 ! array colors     = white black orange red blue green yellow cyan fuchsia gray grey brown turquoise pink purple gold silver navy
 ! array height     = tall long wide thick
 ! array measure    = inch in centimeter cm millimeter mm meter m inches centimeters millimeters meters
-! array yes        = yes yeah yep yup ya yea
+! array yes        = yes yeah yep yup ya yea si
 ! array no         = no nah nope nay
 ! array rudename   = bitch fucker cocksucker fool asshole shithead
 ! array a	   = a an
