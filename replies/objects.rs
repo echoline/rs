@@ -31,9 +31,8 @@
 			my $ret = uri_decode($_->{url});
 			return $ret;
 		}
-	} else {
-		return "http response code " . $response->{responseStatus};
 	}
+	return "http response code " . $response->{responseStatus};
 < object
 
 > object today perl

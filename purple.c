@@ -27,6 +27,7 @@
 #include <glib.h>
 #include <ctype.h>
 #include <signal.h>
+#define _GNU_SOURCE
 #include <string.h>
 #include <unistd.h>
 #include <sys/un.h>
