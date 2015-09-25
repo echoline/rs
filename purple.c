@@ -253,6 +253,17 @@ PurpleEventLoopUiOps glib_eventloops =
 };
 /*** End of the eventloop functions. ***/
 
+void
+got_headers(SoupMessage *msg, gpointer arg) {
+	SoupSession *session = (SoupSession*)arg;
+	goffset len = soup_message_headers_get_content_length (msg->response_headers);
+
+	printf ("Content-length: %d\n", (int)len);
+	if (len > 0x10000) {
+		soup_session_cancel_message (arg, msg, SOUP_STATUS_CANCELLED);
+	}
+}
+
 /*** Conversation uiops ***/
 void
 null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
@@ -261,6 +272,7 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 	const char *name;
 	char *msg;
 	char *ptr;
+	GValue val = G_VALUE_INIT;
 
 	//if (alias && *alias)
 	//	name = alias;
@@ -298,8 +310,12 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 		if ((ptr = (char*)strcasestr(msg, "http://")) != NULL ||
 		    (ptr = (char*)strcasestr(msg, "https://")) != NULL) {
 			ptr[strcspn(ptr, "\r\n \t")] = '\0';
-			SoupMessage *msg = soup_message_new ("GET", ptr);
 			SoupSession *session = soup_session_sync_new();
+			SoupMessage *msg = soup_message_new ("GET", ptr);
+			soup_message_add_header_handler (msg, "got-headers", "content-length", G_CALLBACK(got_headers), session);
+			g_value_init (&val, G_TYPE_UINT);
+			g_value_set_uint(&val, 1);
+			g_object_set_property(G_OBJECT(session), "timeout", &val);
 			guint status = soup_session_send_message (session, msg);
 			if (status == SOUP_STATUS_OK) {
 				ptr = (char*)strcasestr(msg->response_body->data, "<title>");

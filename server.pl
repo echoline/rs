@@ -18,8 +18,15 @@ use RiveScript;
 
 print "Initializing case-based reasoning\n";
 our @cases = {};
-if (-f "cases") {
-	@cases = @{retrieve("cases")};
+if (open(my $fh, '<', 'cases')) {
+	my $stuff = '';
+	while (<$fh>) {
+		$stuff .= $_;
+	}
+	eval {
+		@cases = @{Storable::thaw($stuff)};
+	};
+	close($fh);
 }
 
 # Create and load the RiveScript brain.
@@ -143,9 +150,6 @@ while (1) {
 #				}
 #			}
 
-			$reply .= $rs->reply($who, $_) . '  ';
-			next;
-
 			my $treply = $rs->reply($who, $_);
 			if (length($treply) eq 0) {
 				$treply = 'random pickup line';
@@ -197,11 +201,14 @@ while (1) {
 #						links	=> @links,
 					};
 					push @cases, $new_case;
-					store (\@cases, "cases");
+	    				if (open(my $fh, '>', 'cases')) {
+						print $fh Storable::freeze(\@cases);
+						close($fh);
+					}
 				}
 				$reply .= $treply . '  ';
 			} else {
-				if ($solution->{_sim} ne 0.5) {
+				if ($solution->{_sim} gt 0.3) {
 					$reply .= $solution->{isaid} . '  ';
 				} else {
 					$reply .= $rs->reply($who, 'random pickup line') . '  ';
