@@ -10,10 +10,16 @@
 
 	my ($self, @args) = @_;
 	my $str = join("%20", @args);
-	my $requrl = "https://ajax.googleapis.com/ajax/services/search/web?v=1.0&userip=50.45.164.9&q=" . $str;
+	my $requrl = "https://ajax.googleapis.com/ajax/services/search/web?v=1.0&userip=50.7.6.178&q=" . $str;
 
 	my $content = get $requrl;
+	if (!$content) {
+		return "broken fetch";
+	}
 	my $response = decode_json encode("ascii", $content);
+	if (!$response) {
+		return "malformed json";
+	}
 
 	my $hs = HTML::Strip->new();
 

@@ -3,7 +3,7 @@
 ! var xrs = replies/learned.rs
 
 + bad answer
-* <reply2> ne undefined => <set badanswer-input=<input>><set badanswer-that=<reply2>>{topic=badanswer-prelim}Would you like to teach me a new answer to "<get badanswer-input>"?
+* <reply2> ne undefined => <set badanswer-input=<input>>{topic=badanswer-prelim}Would you like to teach me a new answer to "<get badanswer-input>"?
 - I haven't said anything yet.
 
 > topic badanswer-prelim
