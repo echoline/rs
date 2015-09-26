@@ -323,11 +323,11 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 					ptr += 7;
 					ptr[strcspn(ptr, "<")] = '\0';
 					purple_conv_chat_send(PURPLE_CONV_CHAT(conv), ptr);
-				} else {
-					purple_conv_chat_send(PURPLE_CONV_CHAT(conv), "no title?  wtf");
+//				} else {
+//					purple_conv_chat_send(PURPLE_CONV_CHAT(conv), "no title?  wtf");
 				}
-			} else {
-				purple_conv_chat_send(PURPLE_CONV_CHAT(conv), soup_status_get_phrase(status));
+//			} else {
+//				purple_conv_chat_send(PURPLE_CONV_CHAT(conv), soup_status_get_phrase(status)); 
 			}
 		}
 	} else {
