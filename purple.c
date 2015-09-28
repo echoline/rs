@@ -21,14 +21,15 @@
  *
  */
 
+#define _GNU_SOURCE
+#include <string.h>
+
 #include "purple.h"
 #include <libsoup/soup.h>
 
 #include <glib.h>
 #include <ctype.h>
 #include <signal.h>
-#define _GNU_SOURCE
-#include <string.h>
 #include <unistd.h>
 #include <sys/un.h>
 #include <arpa/inet.h>
@@ -260,7 +261,7 @@ got_headers(SoupMessage *msg, gpointer arg) {
 	goffset len = soup_message_headers_get_content_length (msg->response_headers);
 
 	printf ("Content-length: %d\n", (int)len);
-	if (len > 0x10000) {
+	if (len < 1 || len > 0x10000) {
 		soup_session_cancel_message (arg, msg, SOUP_STATUS_CANCELLED);
 	}
 }
@@ -308,18 +309,18 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 
 		}
 
-		if ((ptr = (char*)strcasestr(msg, "http://")) != NULL ||
-		    (ptr = (char*)strcasestr(msg, "https://")) != NULL) {
+		if ((ptr = strcasestr(msg, "http://")) != NULL ||
+		    (ptr = strcasestr(msg, "https://")) != NULL) {
 			ptr[strcspn(ptr, "\r\n \t")] = '\0';
 			SoupSession *session = soup_session_sync_new();
-			SoupMessage *msg = soup_message_new ("GET", ptr);
-			soup_message_add_header_handler (msg, "got-headers", "content-length", G_CALLBACK(got_headers), session);
+			SoupMessage *smsg = soup_message_new ("GET", ptr);
+			soup_message_add_header_handler (smsg, "got-headers", "content-length", G_CALLBACK(got_headers), session);
 			g_value_init (&val, G_TYPE_UINT);
 			g_value_set_uint(&val, 1);
 			g_object_set_property(G_OBJECT(session), "timeout", &val);
-			guint status = soup_session_send_message (session, msg);
+			guint status = soup_session_send_message (session, smsg);
 			if (status == SOUP_STATUS_OK) {
-				ptr = (char*)strcasestr(msg->response_body->data, "<title>");
+				ptr = strcasestr(smsg->response_body->data, "<title>");
 				if (ptr != NULL) {
 					ptr += 7;
 					ptr[strcspn(ptr, "<")] = '\0';
@@ -538,8 +539,9 @@ int main(int argc, char *argv[])
 		PurplePlugin *plugin = iter->data;
 		PurplePluginInfo *info = plugin->info;
 		if (info && info->name) {
-	//		printf("\t%d: %s\n", i++, info->name);
+		//	printf("\t%d: %s\n", i, info->name);
 			names = g_list_append(names, info->id);
+			i++;
 		}
 	}
 /*	printf("Select the protocol [0-%d]: ", i-1);
@@ -549,6 +551,7 @@ int main(int argc, char *argv[])
 		abort();
 	}
 	sscanf(screenname, "%d", &num);*/
+	printf("%d protocols found.\n", i);
 	prpl = g_list_nth_data(names, 0);
 
 	printf("Username: ");
