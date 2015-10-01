@@ -5,9 +5,6 @@ use warnings;
 use IO::Socket;
 use Storable;
 
-# Use our local library.
-# use lib ".";
-
 # Case-based reasoning
 use AI::CBR::Sim qw(sim_set sim_eq);
 use AI::CBR::Case;
@@ -16,8 +13,64 @@ use AI::CBR::Retrieval;
 # Load RiveScript.
 use RiveScript;
 
+print "Initializing markov chain\n";
+my %statetab;
+if (open(my $fh, '<', 'markov')) {
+	my $stuff = '';
+	while (<$fh>) {
+		$stuff .= $_;
+	}
+	eval {
+		%statetab = %{Storable::thaw($stuff)};
+	};
+	close($fh);
+}
+
+# Copyright (C) 1999 Lucent Technologies
+# Excerpted from 'The Practice of Programming'
+# by Brian W. Kernighan and Rob Pike
+
+# markov.pl: markov chain algorithm for 2-word prefixes
+
+my $NONWORD = "\n";
+my $w1 = $NONWORD;           # initial state
+my $w2 = $NONWORD;           # initial state
+
+sub addstates {
+	foreach (split) {
+		my $t = $_;
+		$t =~ s/\"//g;
+		push(@{$statetab{$w1}{$w2}}, $t);
+		($w1, $w2) = ($w2, $t);	# multiple assignment
+		if ($t =~ /[\.\?\!]$/) {
+			push(@{$statetab{$w1}{$w2}}, $NONWORD); 	# add tail
+			$w1 = $w2 = $NONWORD;
+		}
+	}
+	push(@{$statetab{$w1}{$w2}}, $NONWORD); 	# add tail
+	if (open(my $fh, '>', 'markov')) {
+		print $fh Storable::freeze( %statetab );
+		close($fh);
+	}
+}
+
+sub generate {
+	my $ret = "";
+	$w1 = $w2 = $NONWORD;
+	for (my $i = 0; $i < 10000; $i++) {
+		my $suf = $statetab{$w1}{$w2};	# array reference
+		my $r = int(rand @$suf);		# @$suf is number of elems
+		last if ((my $t = $suf->[$r]) eq $NONWORD);
+		$ret = $ret . "$t ";
+		($w1, $w2) = ($w2, $t);		# advance chain
+	}
+
+	$ret = $ret . " ";
+	return $ret;
+}
+
 print "Initializing case-based reasoning\n";
-our @cases = {};
+my @cases = {};
 if (open(my $fh, '<', 'cases')) {
 	my $stuff = '';
 	while (<$fh>) {
@@ -57,6 +110,10 @@ while (1) {
 	$client->recv($buf, 0x10000);
 	my @inputstuff = split(/\007/, $buf);
 	my $who = $inputstuff[0];
+
+	if ($who =~ /^$/) {
+		addstates($inputstuff[1]);
+	}
 
 	if (open(my $fh, '<', 'sessions/' . $who)) {
 		my $stuff = '';
@@ -208,10 +265,10 @@ while (1) {
 				}
 				$reply .= $treply . '  ';
 			} else {
-				if ($solution->{_sim} gt 0.3) {
+				if ($solution->{_sim} gt 0.5) {
 					$reply .= $solution->{isaid} . '  ';
 				} else {
-					$reply .= $rs->reply($who, 'random pickup line') . '  ';
+					$reply .= generate();
 				}
 			}
 		}
