@@ -13,30 +13,19 @@ use AI::CBR::Retrieval;
 # Load RiveScript.
 use RiveScript;
 
-print "Initializing markov chain\n";
-my %statetab;
-if (open(my $fh, '<', 'markov')) {
-	my $stuff = '';
-	while (<$fh>) {
-		$stuff .= $_;
-	}
-	eval {
-		%statetab = %{Storable::thaw($stuff)};
-	};
-	close($fh);
-}
-
 # Copyright (C) 1999 Lucent Technologies
 # Excerpted from 'The Practice of Programming'
 # by Brian W. Kernighan and Rob Pike
 
 # markov.pl: markov chain algorithm for 2-word prefixes
-
 my $NONWORD = "\n";
-my $w1 = $NONWORD;           # initial state
-my $w2 = $NONWORD;           # initial state
+my %statetab;
 
 sub addstates {
+	my $w1 = $NONWORD;           # initial state
+	my $w2 = $NONWORD;           # initial state
+	$_ = join(' ', @_);
+	print "markov chain: " . $_ . "\n";
 	foreach (split) {
 		my $t = $_;
 		$t =~ s/\"//g;
@@ -47,18 +36,44 @@ sub addstates {
 			$w1 = $w2 = $NONWORD;
 		}
 	}
-	push(@{$statetab{$w1}{$w2}}, $NONWORD); 	# add tail
+	if ($w2 ne $NONWORD) {
+		push(@{$statetab{$w1}{$w2}}, $NONWORD); 	# add tail
+	}
 	if (open(my $fh, '>', 'markov')) {
-		print $fh Storable::freeze( %statetab );
+		print $fh Storable::freeze(\%statetab);
 		close($fh);
 	}
 }
 
 sub generate {
-	my $ret = "";
-	$w1 = $w2 = $NONWORD;
+	my $w1;
+	my $w2;
+	my $suf = 0;
+	my $ret;
+	while (!$suf) {
+		if (@_ > 1) {
+			$w1 = $_[0];
+			$w2 = $_[1];
+		} elsif (@_ == 1) {
+			$w1 = $NONWORD;
+			$w2 = $_[0];
+		} else {
+			$w1 = $w2 = $NONWORD;
+		}
+		$suf = $statetab{$w1}{$w2};
+		shift;
+	}
+	if ($w1 eq $NONWORD) {
+		if ($w2 eq $NONWORD) {
+			$ret = "";
+		} else {
+			$ret = $w2 . " ";
+		}
+	} else {
+		$ret = $w1 . " " . $w2 . " ";
+	}
 	for (my $i = 0; $i < 10000; $i++) {
-		my $suf = $statetab{$w1}{$w2};	# array reference
+		$suf = $statetab{$w1}{$w2};	# array reference
 		my $r = int(rand @$suf);		# @$suf is number of elems
 		last if ((my $t = $suf->[$r]) eq $NONWORD);
 		$ret = $ret . "$t ";
@@ -67,6 +82,20 @@ sub generate {
 
 	$ret = $ret . " ";
 	return $ret;
+}
+
+print "Initializing markov chain\n";
+if (open(my $fh, '<', 'markov')) {
+	my $stuff = '';
+	while (<$fh>) {
+		$stuff .= $_;
+	}
+	eval {
+		%statetab = %{Storable::thaw($stuff)};
+	};
+	close($fh);
+} else {
+	addstates("hello.");
 }
 
 print "Initializing case-based reasoning\n";
@@ -111,8 +140,9 @@ while (1) {
 	my @inputstuff = split(/\007/, $buf);
 	my $who = $inputstuff[0];
 
-	if ($who =~ /^$/) {
+	if (!$who) {
 		addstates($inputstuff[1]);
+		next;
 	}
 
 	if (open(my $fh, '<', 'sessions/' . $who)) {
@@ -212,6 +242,7 @@ while (1) {
 				$treply = 'random pickup line';
 			}
 			my $said = $rs->{client}->{$who}->{__history__}->{input}->[0];
+			my @words = [ split(/\s+/, $said) ];
 #			$sentence = $parser->create_sentence($said);
 #			if (!$sentence) {
 #				next;
@@ -240,7 +271,7 @@ while (1) {
 			);
 			$case->set_values(
 				said	=> $said,
-				words	=> [ split(/\s+/, $said) ],
+				words	=> @words,
 #				links	=> @links,
 			);
 
@@ -254,7 +285,7 @@ while (1) {
 					my $new_case = {
 						isaid	=> $treply,
 						said	=> $said,
-						words	=> [ split(/\s+/, $said) ],
+						words	=> @words,
 #						links	=> @links,
 					};
 					push @cases, $new_case;
@@ -265,16 +296,16 @@ while (1) {
 				}
 				$reply .= $treply . '  ';
 			} else {
-				if ($solution->{_sim} gt 0.5) {
+				if ($solution->{_sim} > 0.5 && $solution->{_sim} <= 1.0) {
 					$reply .= $solution->{isaid} . '  ';
 				} else {
-					$reply .= generate();
+					$reply = generate(@words);
 				}
 			}
 		}
 	}
 	if ($reply =~ /^$/) {
-		$reply = ":)";
+		$reply = generate([]);
 	}
 	$rs->freezeUservars($who);
 	if (exists($rs->{frozen}->{$who})
@@ -283,6 +314,8 @@ while (1) {
 		close($fh);
 	}
 	
+	addstates($reply);
+
 	$client->send($reply);
 	print 'me: ' . $reply . "\n---" . time . "\n";
 	$client->close;

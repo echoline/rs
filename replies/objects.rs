@@ -26,7 +26,7 @@
 	if ($response->{responseStatus} eq 200) {
 		my $results = $response->{responseData}->{results};
 		foreach (@$results) {
-			if ($_->{url} =~ /^https?:\/\/(www.merriam-webster.com\/dictionary\/|en.wikipedia.org\/wiki\/).*/) {
+			if ($_->{url} =~ /^https?:\/\/(www.merriam-webster.com\/dictionary\/|en.wikipedia.org\/wiki\/|www.urbandictionary.com\/define.php).*/) {
 				my $ret = $_->{content};
 				$ret =~ s/\n//g;
 				$ret = $hs->parse($ret);
