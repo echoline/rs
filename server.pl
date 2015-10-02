@@ -50,11 +50,12 @@ sub generate {
 	my $w2;
 	my $suf = 0;
 	my $ret;
+
 	while (!$suf) {
-		if (@_ > 1) {
+		if (scalar(@_) > 1) {
 			$w1 = $_[0];
 			$w2 = $_[1];
-		} elsif (@_ == 1) {
+		} elsif (scalar(@_) == 1) {
 			$w1 = $NONWORD;
 			$w2 = $_[0];
 		} else {
@@ -242,7 +243,7 @@ while (1) {
 				$treply = 'random pickup line';
 			}
 			my $said = $rs->{client}->{$who}->{__history__}->{input}->[0];
-			my @words = [ split(/\s+/, $said) ];
+			my @words = split(/\s+/, $said);
 #			$sentence = $parser->create_sentence($said);
 #			if (!$sentence) {
 #				next;
@@ -271,7 +272,7 @@ while (1) {
 			);
 			$case->set_values(
 				said	=> $said,
-				words	=> @words,
+				words	=> [ @words ],
 #				links	=> @links,
 			);
 
@@ -285,7 +286,7 @@ while (1) {
 					my $new_case = {
 						isaid	=> $treply,
 						said	=> $said,
-						words	=> @words,
+						words	=> [ @words ],
 #						links	=> @links,
 					};
 					push @cases, $new_case;
