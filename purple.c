@@ -293,8 +293,6 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 	msg = purple_markup_strip_html(message);
 	printf ("%s: %s\n", who, msg);
 
-	alice ("", msg, conv);
-
 	if (purple_conversation_get_type(conv) == PURPLE_CONV_TYPE_CHAT) {
 		if ((!strncasecmp(msg, NAME, strlen(NAME)))
 		 || (!strncasecmp(msg, screenname, strlen(screenname)))) {
@@ -303,12 +301,14 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 				ptr++;
 			while (*ptr && !isalnum(*ptr))
 				ptr++;
-			if (*ptr)
+			if (*ptr) {
 				push(queue, conv, name, ptr);
-
-		} else if (strcasestr(msg, NAME) || strcasestr(msg, screenname)) {
-			push(queue, conv, name, msg);
-
+				alice("", ptr, conv);
+			}
+		} else {
+			if (strcasestr(msg, NAME) || strcasestr(msg, screenname))
+				push(queue, conv, name, msg);
+			alice("", msg, conv);
 		}
 
 		if ((ptr = strcasestr(msg, "http://")) != NULL ||
