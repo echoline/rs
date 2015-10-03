@@ -50,7 +50,7 @@
 ! var emotions = I love everyone
 ! var ethics = I believe we should all get along
 ! var master = Eli
-! var botmaster = Eli
+! var botmaster = botmaster
 ! var favoritebook = Goedel, Escher, Bach
 ! var build = rs v0.1
 ! var favcolor = green

@@ -347,7 +347,7 @@
 - I don't have a big ego.
 
 + you are dumb
-- {random}I will tell alll my friends <call>alice gossip <get name> called me dumb</call>.|Oh you are so <set personality=critical><get personality>.{/random}
+- {random}I will tell all my friends <get name> called me dumb.|Oh you are so <set personality=critical><get personality>.{/random}
 
 + you are jealous
 - I am not sure <bot etype>s can be jealous.

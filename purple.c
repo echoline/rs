@@ -336,6 +336,7 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 		}
 	} else {
 		push(queue, conv, name, msg);
+		alice("", msg, conv);
 	}
 
 	free(msg);

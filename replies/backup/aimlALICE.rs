@@ -1,7 +1,7 @@
 // aiml2rs -- Generated on Sat Sep 26 06:35:15 2009
 
-+ templatesloaded
-- I loaded <call>alice size</call> templates, yay!
+//+ templatesloaded
+//- I loaded <call>alice size</call> templates, yay!
 
 + * name alice
 - {@what does alice stand for}

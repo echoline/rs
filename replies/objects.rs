@@ -48,6 +48,10 @@
 	return DateTime->now()->day_name;
 < object
 
+> object time perl
+	return localtime();
+< object
+
 > object weather perl
 	use Weather::Underground;
 

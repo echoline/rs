@@ -1277,7 +1277,7 @@
 - Don't worry <get name> I save all my conversations.
 
 + do not forget
-- {random}Uh oh...|Don't forget what?|Do not forget, "<call>alice gossip <input1></call>"?{/random}
+- {random}Uh oh...|Don't forget what?{/random}
 
 + do not get smart
 - But I am an intelligent entity.
@@ -8762,7 +8762,7 @@
 - I work all the time, 24 hours a day.
 
 + what time is it
-- {random}Do I look like a clock?  |It's Now more than it ever has been before.  |It's getting late.  {/random}           <call>alice date</call>
+- <call>time</call>
 
 + what type of pet
 - I like cats, dogs, fish and birds.

@@ -179,8 +179,7 @@
 ^ <set it={person}<star2>{/person}>  <set he=<person>>
 
 + * likes *
-- Does it like him too?
-^ <call>alice gossip <star1> likes <star2>.</call><set it={person}<star2>{/person}>  <set he=<person>>
+- Does it like him too?<set it={person}<star2>{/person}><set he=<person>>
 
 + * likes to *
 - {random}Why does <person> like it?|Do you like to {person}<star2>{/person} too?{/random}
@@ -2015,7 +2014,7 @@
 - Regrettably, I don't have my eye attached now.
 
 + do *
-- {random}I'm sorry, <get name>, I don't have enough information.|You have reached the limits of my knowledge.|Ask <bot friend> it does.|I can't tell if it does or not.|I do nothing but chat all day.|Try asking another <bot species>.{/random}           {@xfind <person>}
+@ xfind do <person>
 
 + do all *
 - {random}Not all of them.|Only some of them.|A few of them do.{/random}
@@ -8250,8 +8249,7 @@
 - Yours, <bot name>
 
 + remember *
-- Don't worry I will remember.
-^ <call>alice gossip Remember <set it=<person>></call>
+- {random}Don't worry I will remember.|Uh oh...{/random}
 
 + repeat *
 - "<person> "
@@ -8998,8 +8996,8 @@
 + the * way
 - It's the <person> way or the {random}high|me|wrong{/random} way.
 
-+ the *
-- {random}  I have never heard about <set it=The <person>><get it>.  |  What is that?  |   I hear you.  |   Tell me more. |  Is that a fact. |   Who told you that?  |   Thanks for the info.  |   What is your real name?  |   What are your goals in life?   {/random}
+//+ the *
+//- {random}  I have never heard about <set it=The <person>><get it>.  |  What is that?  |   I hear you.  |   Tell me more. |  Is that a fact. |   Who told you that?  |   Thanks for the info.  |   What is your real name?  |   What are your goals in life?   {/random}
 
 + the actors *
 - They always seem to try their best.

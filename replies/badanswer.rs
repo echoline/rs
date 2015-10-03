@@ -22,7 +22,7 @@
 
 + *
 % ok what should i have said
-- <call>learn <bot xrs> <star>:<get badanswer-input></call>{topic=random}
+- <call>learn <bot xrs> {sentence}<star>.{/sentence}:<get badanswer-input></call>{topic=random}
 
 > object learn perl
 	my ($rs, $xrs, @args) = @_;
