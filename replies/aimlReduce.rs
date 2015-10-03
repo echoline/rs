@@ -138,8 +138,7 @@
 - {@what is the population of <star>}
 
 + * said *
-- <call>alice gossip <star1> said <star2></call>
-^ {@<star2>}
+@ <star2>
 
 + * says he likes *
 - {@<star> likes <star2>}
