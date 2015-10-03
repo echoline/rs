@@ -29,7 +29,7 @@
 + (what is|subtract) # (minus|from|subtracted from) #
 - <set acc=<star2>><sub acc=<star4>><get acc>
 
-+ (what is|divide) # (divided by|by) #
++ (what is|divide) # (divided|divided by|by) #
 - <set acc=<star2>><div acc=<star4>><get acc>
 
 + (divide|how many times does) # [go] into #
