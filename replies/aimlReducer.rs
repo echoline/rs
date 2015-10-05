@@ -1222,8 +1222,8 @@
 + i am saying that *
 - {@<star>}
 
-+ i am sorry *
-- There is no need to apologize. {@<star>}
++ i am sorry [about|for] *
+- {@sorry}  {@<star>}
 
 + i am sure *
 - What makes you so certain? {@<star>}

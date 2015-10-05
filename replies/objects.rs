@@ -1,4 +1,7 @@
 + xfind *
+- <star>
+
++ search *
 - <call>xfind <star></call>
 
 > object xfind perl

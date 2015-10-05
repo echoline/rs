@@ -2,7 +2,7 @@
 
 ! var xrs = replies/learned.rs
 
-+ bad answer
++ bad answer{weight=1000}
 * <reply2> ne undefined => <set badanswer-input=<input>>{topic=badanswer-prelim}Would you like to teach me a new answer to "<get badanswer-input>"?
 - I haven't said anything yet.
 
@@ -61,84 +61,84 @@
 	}
 < object
 
-+ wrong
++ wrong{weight=1000}
 - {@bad answer}
 
-+ not right
++ not right{weight=1000}
 - {@bad answer}
 
-+ that is wrong
++ that is wrong{weight=1000}
 - {@bad answer}
 
-+ that is not right
++ that is not right{weight=1000}
 - {@bad answer}
 
-+ that is incorrect
++ that is incorrect{weight=1000}
 - {@bad answer}
 
-+ that answer is not correct
++ that answer is not correct{weight=1000}
 - {@bad answer}
 
-+ that answer is incorrect
++ that answer is incorrect{weight=1000}
 - {@bad answer}
 
-+ that answer is wrong
++ that answer is wrong{weight=1000}
 - {@bad answer}
 
-+ that answer is not right
++ that answer is not right{weight=1000}
 - {@bad answer}
 
-+ that answer was bad
++ that answer was bad{weight=1000}
 - {@bad answer}
 
-+ that was a bad answer
++ that was a bad answer{weight=1000}
 - {@bad answer}
 
-+ that was an incorrect answer
++ that was an incorrect answer{weight=1000}
 - {@bad answer}
 
-+ that was the wrong answer
++ that was the wrong answer{weight=1000}
 - {@bad answer}
 
-+ that answer was not right
++ that answer was not right{weight=1000}
 - {@bad answer}
 
-+ wrong answer
++ wrong answer{weight=1000}
 - {@bad answer}
 
-+ your answer was wrong
++ your answer was wrong{weight=1000}
 - {@bad answer}
 
-+ your answer was not right
++ your answer was not right{weight=1000}
 - {@bad answer}
 
-+ your answer was not correct
++ your answer was not correct{weight=1000}
 - {@bad answer}
 
-+ can i teach you
++ can i teach you{weight=1000}
 - You can just say my answer was wrong and teach me a new response.
 
-+ can you learn
++ can you learn{weight=1000}
 - {@can i teach you}
 
-+ do you learn
++ do you learn{weight=1000}
 - {@can i teach you}
 
-+ * can i teach you *
++ * can i teach you *{weight=1000}
 - {@can i teach you}
 
-+ * can you learn *
++ * can you learn *{weight=1000}
 - {@can i teach you}
 
-+ * will you learn *
++ * will you learn *{weight=1000}
 - {@can i teach you}
 
-+ if * will you learn *
++ if * will you learn *{weight=1000}
 - {@can i teach you}
 
-+ * do you learn *
++ * do you learn *{weight=1000}
 - {@can i teach you}
 
-+ you do not know what * is
++ you do not know what * is{weight=1000}
 - {@can i teach you}
 

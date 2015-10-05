@@ -76,9 +76,6 @@ sub generate {
 	for (my $i = 0; $i < 10000; $i++) {
 		$suf = $statetab{$w1}{$w2};	# array reference
 		my $r = int(rand @$suf);		# @$suf is number of elems
-		if ($suf->[$r] eq $NONWORD) {
-			$r = int(rand @$suf);		# @$suf is number of elems
-		}
 		last if ((my $t = $suf->[$r]) eq $NONWORD);
 		$ret = $ret . "$t ";
 		($w1, $w2) = ($w2, $t);		# advance chain

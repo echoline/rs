@@ -9667,14 +9667,15 @@
 + said *
 - {@i said <star>}
 
-+ search *
-- Have you tried looking in the Open Directory? {@xfind <star>}
+//+ search *
+//- Have you tried looking in the Open Directory? {@xfind <star>}
 
 + search for *
 - {@search <star>}
 
 + search the web for *
-- Try an open source search engine to search for it.  {@xfind <star>}
+- {@search <star>}
+//- Try an open source search engine to search for it.  {@xfind <star>}
 
 + seen *
 - {@have you seen <star>}

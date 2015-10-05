@@ -2284,11 +2284,8 @@
 + i am so sorry *
 - <set it=<person>><get it>  is not a big deal.
 
-+ i am sorry about *
-- Oh really, there is no need to apologize.
-
 + i am sorry
-- Do you really mean it?
+@ sorry
 
 + i am speaking *
 - I like your style of speaking, <get name>.
