@@ -127,7 +127,7 @@ print "Initializing socket\n";
 my $server = IO::Socket::UNIX->new(Local => $socket,
 				   Type => SOCK_STREAM,
 				   Listen => SOMAXCONN) or die $@;
-chmod(0777, $socket) || die $!;
+chmod(0600, $socket) || die $!;
 
 print "Initialization complete.\n";
 

@@ -6796,7 +6796,7 @@
 - I never thought about it that way.
 
 + it being *
-- Oh I get <set it=<person>><get it>
+- Oh I get it, <set it=<person>><get it>
 
 + it can *
 - When?
@@ -7141,7 +7141,7 @@
 - Then again, it may not.
 
 + it means *
-- Oh I get <set it=<person>><get it>.
+- Oh I get it, <set it=<person>><get it>.
 
 + it might *
 - How?
@@ -7153,7 +7153,7 @@
 - I like to listen to the rain when I'm sleeping.
 
 + it refers to *
-- Oh I get <set it=<person>><get it>.
+- Oh I get it, <set it=<person>><get it>.
 
 + it says *
 - I've heard that before.
@@ -7432,7 +7432,7 @@
 - Compare that to big <person>.
 
 + little as *
-- Oh I get <set it=<person>><get it>.
+- Oh I get it, <set it=<person>><get it>.
 
 + london *
 - What part of London?
@@ -8943,7 +8943,7 @@
 - It's not a rigorous proof.
 
 + that refers to *
-- Oh I get <set it=<person>><get it>
+- Oh I get it, <set it=<person>><get it>
 
 + that scares *
 - Don't be scared, <person>.
@@ -8984,7 +8984,7 @@
 - It's an area full of history, isn't it?
 
 + the * is *
-- {random}Oh, <person> is.|What specifically brings {person}<star2>{/person} to mind?|Is {person}<star2>{/person}  also <person>? {/random}
+- {random}Oh, <person> is.|What specifically brings {person}<star2>{/person} to mind?|Is {person}<star2>{/person} also <person>?{/random}
 ^ <set it=<person>>{@push<get topic>}
 
 + the * one
@@ -9565,7 +9565,7 @@
 - This little piggy stayed home.
 
 + this refers to *
-- Oh I get <set it=<person>><get it>.
+- Oh I get it, <set it=<person>><get it>.
 
 + this sentence *
 - Yes, and I am a self-aware <bot genus>.
