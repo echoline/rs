@@ -46,6 +46,7 @@ char CHAT[128];
 char EXCHANGE[16];
 
 char screenname[128];
+char host[4096] = "";
 PurpleConversation *chat_g = NULL;
 
 char *alice(const char *source, const char *msgin, PurpleConversation *conv) {
@@ -308,6 +309,7 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 		} else {
 			if (strcasestr(msg, NAME) || strcasestr(msg, screenname))
 				push(queue, conv, name, msg);
+	
 			alice("", msg, conv);
 		}
 
@@ -469,7 +471,7 @@ join_chat(gpointer gc)
 	printf("Joining %s...\n", CHAT);
 
 	g_hash_table_insert(params, g_strdup("room"), g_strdup(CHAT));
-	g_hash_table_insert(params, g_strdup("exchange"), g_strdup(EXCHANGE));
+//	g_hash_table_insert(params, g_strdup("exchange"), g_strdup(EXCHANGE));
 
 	serv_join_chat(gc, params);
 	g_hash_table_destroy(params);
@@ -542,20 +544,28 @@ int main(int argc, char *argv[])
 		PurplePlugin *plugin = iter->data;
 		PurplePluginInfo *info = plugin->info;
 		if (info && info->name) {
-		//	printf("\t%d: %s\n", i, info->name);
+			printf("\t%d: %s\n", i, info->name);
 			names = g_list_append(names, info->id);
 			i++;
 		}
 	}
-/*	printf("Select the protocol [0-%d]: ", i-1);
+	printf("Select the protocol [0-%d]: ", i-1);
 	res = fgets(screenname, sizeof(screenname), stdin);
 	if (!res) {
 		fprintf(stderr, "Failed to gets protocol selection.");
 		abort();
 	}
-	sscanf(screenname, "%d", &num);*/
 	printf("%d protocols found.\n", i);
-	prpl = g_list_nth_data(names, 0);
+	sscanf(screenname, "%d", &i);
+	prpl = g_list_nth_data(names, atoi(screenname));
+
+	printf("chat host: ");
+	res = fgets(host, sizeof(host), stdin);
+	if (!res) {
+		fprintf(stderr, "Failed to read chat host\n");
+		abort();
+	}
+	host[strcspn(host, "\n")] = 0;
 
 	printf("Username: ");
 	res = fgets(screenname, sizeof(screenname), stdin);
@@ -567,6 +577,8 @@ int main(int argc, char *argv[])
 
 	/* Create the account */
 	account = purple_account_new(screenname, prpl);
+	if (strlen(host))
+		purple_account_set_string(account, "host", host);
 
 	/* Get the password for the account */
 	password = getpass("Password: ");
@@ -580,7 +592,7 @@ int main(int argc, char *argv[])
 	}
 	CHAT[strcspn(CHAT, "\n")] = 0;
 
-	printf("chat exchange: ");
+/*	printf("chat exchange: ");
 	res = fgets(EXCHANGE, sizeof(EXCHANGE), stdin);
 	if (!res) {
 		fprintf(stderr, "Failed to read chat URL\n");

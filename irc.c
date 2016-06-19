@@ -232,12 +232,10 @@ int main(argc, argv)
 					write_to_socket(sockfd,buf);
 				}
 			// reregister if we haven't already
-			} else if ( !strncmp(tmp, "451", 3) ) {
-				sprintf(buf,"USER %s echobot %s :%s\n", nick, myargs.url, nick);
-				write_to_socket(sockfd, buf);
-				sprintf(buf,"NICK %s\n", nick);
-				write_to_socket(sockfd, buf);
-				sleep(1);
+			//} else if (!strncmp(tmp, "451", 3) ) {
+				//sprintf(buf,"NICK %s\n", nick);
+				//write_to_socket(sockfd, buf);
+			} else if (!strncmp(tmp, "376", 3) ) {
 				sprintf(buf,"JOIN %s\n", myargs.channel);
 				write_to_socket(sockfd, buf);
 			// change nick if current choice is taken
@@ -247,6 +245,11 @@ int main(argc, argv)
 				sprintf(nick,"%s%d",newnick,rand() % 1000000);
 				sprintf(buf,"NICK %s\n", nick);
 				write_to_socket(sockfd, buf);
+			} else if ( !strncmp(tmp, "INVITE", 6) ) {
+				tmp = rindex(tmp,':')+1;
+				sprintf(buf,"JOIN %s", tmp);
+				write_to_socket(sockfd, buf);
+				printf(BLUE "INVITED: %s\n" NORMAL,tmp);
 			// welcoming
 			} else if ( !strncmp(tmp, "JOIN", 4) ) {
 				tmp2 = buf+1;
@@ -263,16 +266,10 @@ int main(argc, argv)
 					printf(BLUE "join: %s\n" NORMAL, source);
 				}
 			// for invites 
-			} else if ( !strncmp(tmp, "INVITE", 6) ) {
-				tmp = rindex(tmp,':')+1;
-				sprintf(buf,"JOIN %s", tmp);
-				write_to_socket(sockfd, buf);
-				printf(BLUE "INVITED: %s\n" NORMAL,tmp);
 			}
 			memset(buf,0,sizeof(buf));
 		}
 		fclose(sockFD);
-		sleep(5);
 	}
 }
 

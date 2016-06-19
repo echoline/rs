@@ -1,3 +1,5 @@
+CFLAGS=-g
+
 all: irc purple one
 
 irc: irc.c

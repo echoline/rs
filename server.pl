@@ -182,7 +182,7 @@ while (1) {
 	my $reply = '';
 	chomp($inputstuff[1]);
 	my @msg_array = split(/[\.\!\?](\s+|$)/, $inputstuff[1]);
-	my $words;
+	my @words;
 
 	foreach (@msg_array) {
 		if ($_ =~ /[a-zA-Z0-9]/) {
