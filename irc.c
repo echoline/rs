@@ -254,9 +254,12 @@ int main(argc, argv)
 				tmp2 = source;
 				tmp2 = index(tmp2,'!');
 				tmp2[0] = '\0';
-				tmp = rindex(tmp,':')+1;
-				tmp[strlen(tmp)-2] = '\0';
-				strncpy(target,tmp,32);
+				tmp = rindex(tmp,' ');
+				if (tmp != NULL) {
+					tmp++;
+					tmp[strlen(tmp)-2] = '\0';
+					strncpy(target,tmp,32);
+				}
 				if (strcmp(source,nick) != 0) {
 				//	sprintf(buf,"PRIVMSG %s :Welcome to %s, %s.  %s\n", tmp, target, source, greet);
 				//	write_to_socket(sockfd, buf);

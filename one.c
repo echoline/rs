@@ -16,7 +16,7 @@ char *alice(char *msg, char *source) {
 	int s, t, len;
 	char *ptr;
 	struct sockaddr_un remote;
-	char str[1024];
+	static char str[1024];
 	ptr = strchr(msg,'\n');
 	if (ptr)
 		ptr[0] = '\0';
@@ -45,14 +45,18 @@ char *alice(char *msg, char *source) {
 
 	if (t < 1)
 		return "error in recv()";
-	msg = str;
 
-	return msg;
+	return str;
 }
 
 int main(int argc, char **argv)
 {
-	if (argc > 1)
-		printf ("%s\n", alice (argv[1], getenv("USER")));
+	char *ptr;
+
+	if (argc > 1) {
+		alice (argv[1], "");
+		ptr = alice(argv[1], getenv("USER"));
+		printf ("%s\n", ptr);
+	}
 }
 

@@ -13,6 +13,10 @@ use AI::CBR::Retrieval;
 # Load RiveScript.
 use RiveScript;
 
+# Load sentence parser
+use Lingua::LinkParser;
+my $parser = new Lingua::LinkParser();
+
 # Copyright (C) 1999 Lucent Technologies
 # Excerpted from 'The Practice of Programming'
 # by Brian W. Kernighan and Rob Pike
@@ -99,7 +103,7 @@ if (open(my $fh, '<', 'markov')) {
 	addstates("hello.");
 }
 
-print "Initializing case-based reasoning\n";
+#print "Initializing case-based reasoning\n";
 my @cases = {};
 if (open(my $fh, '<', 'cases')) {
 	my $stuff = '';
@@ -189,75 +193,24 @@ while (1) {
 			my $r;
 			my $solution;
 
-#			if (exists($rs->{client}->{$who}->{__history__}) && exists($rs->{client}->{$who}->{__history__}->{reply}->[1])) {
-#				my $initiation = $rs->{client}->{$who}->{__history__}->{reply}->[1];
-#				my $response = $rs->{client}->{$who}->{__history__}->{input}->[0];
-#			
-#				$sentence = $parser->create_sentence($initiation);
-#				if ($sentence) {
-#					@bigstruct = $sentence->get_bigstruct;
-#					@links = [];
-#
-#					foreach(@bigstruct) {
-#						my $k;
-#						my $v;
-#						while (($k,$v) = each %{$_->{links}} ) {
-#							push (@links, $k . $bigstruct[$v]->{word});
-#						}
-#					}
-#
-#					$case = AI::CBR::Case->new(
-#						said	=> {
-#							sim	=> \&sim_eq
-#						},
-#						words	=> {
-#							sim	=> \&sim_set
-#						},
-#						links	=> {
-#							sim	=> \&sim_set
-#						},
-#					);
-#					$case->set_values(
-#						said	=> $initiation,
-#						words	=> [ split(/\s+/, $initiation) ],
-#						links	=> @links,
-#					);
-#
-#					$r = AI::CBR::Retrieval->new($case, \@cases);
-#					$r->compute_sims();
-#					$solution = $r->most_similar_candidate();
-#					if ($solution->{_sim} ne 1) {
-#						my $new_case = {
-#							isaid	=> $response,
-#							said	=> $initiation,
-#							words	=> [ split(/\s+/, $initiation) ],
-#							links	=> @links,
-#						};
-#						push @cases, $new_case;
-#					}
-#				}
-#			}
-
 			my $treply = $rs->reply($who, $_);
 			if (length($treply) eq 0) {
 				$treply = 'random pickup line';
 			}
 			my $said = $rs->{client}->{$who}->{__history__}->{input}->[0];
 			my @words = split(/\s+/, $said);
-#			$sentence = $parser->create_sentence($said);
-#			if (!$sentence) {
-#				next;
-#			}
-#			@bigstruct = $sentence->get_bigstruct;
-#			@links = [];
+			my $sentence = $parser->create_sentence($said);
+			my @bigstruct = $sentence->get_bigstruct;
+			my @links = [];
 
-#			foreach(@bigstruct) {
-#				my $k;
-#				my $v;
-#				while (($k,$v) = each %{$_->{links}} ) {
-#					push (@links, $k . $bigstruct[$v]->{word});
-#				}
-#			}
+			foreach(@bigstruct) {
+				my $k;
+				my $v;
+				while (($k,$v) = each %{$_->{links}} ) {
+					print " $k => " . $bigstruct[$v]->{word} . "\n";
+					push (@links, $bigstruct[$v]->{word});
+				}
+			}
 
 			$case = AI::CBR::Case->new(
 				said	=> {
@@ -266,14 +219,14 @@ while (1) {
 				words	=> {
 					sim	=> \&sim_set
 				},
-#				links	=> {
-#					sim	=> \&sim_set
-#				},
+				links	=> {
+					sim	=> \&sim_set
+				},
 			);
 			$case->set_values(
 				said	=> $said,
 				words	=> [ @words ],
-#				links	=> @links,
+				links	=> [ @links ],
 			);
 
 			$r = AI::CBR::Retrieval->new($case, \@cases);
@@ -287,7 +240,7 @@ while (1) {
 						isaid	=> $treply,
 						said	=> $said,
 						words	=> [ @words ],
-#						links	=> @links,
+#						links	=> [ @links ],
 					};
 					push @cases, $new_case;
 	    				if (open(my $fh, '>', 'cases')) {

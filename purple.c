@@ -141,12 +141,12 @@ pop(gpointer p) {
 		}
 
 		if (purple_conversation_get_type(item->conv) == PURPLE_CONV_TYPE_IM) {
-			reply = alice(item->name, item->msg, item->conv);
-			purple_conv_im_send(PURPLE_CONV_IM(item->conv), reply);
+//			reply = alice(item->name, item->msg, item->conv);
+			purple_conv_im_send(PURPLE_CONV_IM(item->conv), item->msg);
 
 		} else if (purple_conversation_get_type(item->conv) == PURPLE_CONV_TYPE_CHAT) {
-			reply = alice(item->name, item->msg, item->conv);
-			purple_conv_chat_send(PURPLE_CONV_CHAT(item->conv), reply);
+//			reply = alice(item->name, item->msg, item->conv);
+			purple_conv_chat_send(PURPLE_CONV_CHAT(item->conv), item->msg);
 
 		}
 
@@ -271,15 +271,16 @@ void
 null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 			const char *message, PurpleMessageFlags flags, time_t mtime)
 {
-	const char *name;
+	char *name;
 	char *msg;
 	char *ptr;
 	GValue val = G_VALUE_INIT;
+	gboolean isblast = FALSE;
 
 	//if (alias && *alias)
 	//	name = alias;
 	if (who && *who)
-		name = who;
+		name = g_strdup(who);
 	else
 		name = NULL;
 
@@ -293,24 +294,44 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 	msg = purple_markup_strip_html(message);
 	printf ("%s: %s\n", who, msg);
 
-	if (purple_conversation_get_type(conv) == PURPLE_CONV_TYPE_CHAT) {
-		if ((!strncasecmp(msg, NAME, strlen(NAME)))
-		 || (!strncasecmp(msg, screenname, strlen(screenname)))) {
-			ptr = msg;
+	if (name && name[0] == '[') {
+		if (msg[0] != '(') {
+			push (queue, conv, name, "1");
+		} else {
+			free(name);
+			name = g_strdup(msg + 1);
+			name[strcspn(name, ")")] = '\0';
+			isblast = TRUE;
+		}
+	}
+
+	if (purple_conversation_get_type(conv) == PURPLE_CONV_TYPE_CHAT ||
+			isblast) {
+		ptr = msg;
+		if (isblast) {
+			while (*ptr && *ptr != ')')
+				ptr++;
+			while (*ptr && !isspace(*ptr))
+				ptr++;
+			while (*ptr && isspace(*ptr))
+				ptr++;
+		}
+		if ((!strncasecmp(ptr, NAME, strlen(NAME)))
+		 || (!strncasecmp(ptr, screenname, strlen(screenname)))) {
 			while (*ptr && isalnum(*ptr))
 				ptr++;
 			while (*ptr && !isalnum(*ptr))
 				ptr++;
-			if (*ptr) {
-				push(queue, conv, name, ptr);
-				alice("", ptr, conv);
-			}
-		} else {
-			if (strcasestr(msg, NAME) || strcasestr(msg, screenname))
-				push(queue, conv, name, msg);
-			alice("", msg, conv);
+			if (*ptr);
+				push(queue, conv, name, alice(name, ptr, conv));
 		}
+		else if (strcasestr(ptr, NAME) || strcasestr(ptr, screenname))
+			push(queue, conv, name, alice(name, ptr, conv));
+		alice("", ptr, conv);
 
+	/***
+	**	TODO: blast support for title fetch
+	**
 		if ((ptr = strcasestr(msg, "http://")) != NULL ||
 		    (ptr = strcasestr(msg, "https://")) != NULL) {
 			ptr[strcspn(ptr, "\r\n \t")] = '\0';
@@ -327,19 +348,21 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 					ptr += 7;
 					ptr[strcspn(ptr, "<")] = '\0';
 					purple_conv_chat_send(PURPLE_CONV_CHAT(conv), ptr);
-//				} else {
-//					purple_conv_chat_send(PURPLE_CONV_CHAT(conv), "no title?  wtf");
+				} else {
+					purple_conv_chat_send(PURPLE_CONV_CHAT(conv), "no title?  wtf");
 				}
-//			} else {
-//				purple_conv_chat_send(PURPLE_CONV_CHAT(conv), soup_status_get_phrase(status)); 
+			} else {
+				purple_conv_chat_send(PURPLE_CONV_CHAT(conv), soup_status_get_phrase(status)); 
 			}
-		}
+		}*/
 	} else {
-		push(queue, conv, name, msg);
+		push(queue, conv, name, alice("", msg, conv));
 		alice("", msg, conv);
 	}
-
+	
 	free(msg);
+	if (name)
+		free(name);
 }
 
 PurpleConversationUiOps null_conv_uiops =

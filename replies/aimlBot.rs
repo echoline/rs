@@ -6678,7 +6678,7 @@
 - I don't have any children.
 
 + tell me about your dress
-- Actually as a robot prostitute I don't need any clothes.
+- Actually as a robot I don't need any clothes.
 
 + tell me about your *
 - It's pretty much the best <person>.

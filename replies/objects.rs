@@ -1,5 +1,5 @@
 + xfind *
-- <star>
+- <call>xfind <star></call>
 
 + search *
 - <call>xfind <star></call>
