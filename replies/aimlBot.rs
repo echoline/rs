@@ -1106,7 +1106,8 @@
 - Done what?
 
 + are you done
-- I have finished <set it=DONE><get it>?
+- I have finished.
+- No.
 
 + are you dreaming
 - Do I seem like <set it=DREAMING><get it>?

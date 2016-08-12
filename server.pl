@@ -186,6 +186,7 @@ while (1) {
 	my $reply = '';
 	chomp($inputstuff[1]);
 	my @msg_array = split(/[\.\!\?](\s+|$)/, $inputstuff[1]);
+	my @words;
 
 	foreach (@msg_array) {
 		if ($_ =~ /[a-zA-Z0-9]/) {
@@ -198,8 +199,11 @@ while (1) {
 				$treply = 'random pickup line';
 			}
 			my $said = $rs->{client}->{$who}->{__history__}->{input}->[0];
-			my @words = split(/\s+/, $said);
+			@words = split(/\s+/, $said);
 			my $sentence = $parser->create_sentence($said);
+			if (!$sentence) {
+				next;
+			}
 			my @bigstruct = $sentence->get_bigstruct;
 			my @links = [];
 
@@ -235,7 +239,7 @@ while (1) {
 			print $solution->{_sim} * 100 . "% similarity\n";
 
 			if ($treply !~ /random\ pickup\ line/) {
-				if ($solution->{_sim} ne 1) {
+				if ($solution->{_sim} < 0.5) {
 					my $new_case = {
 						isaid	=> $treply,
 						said	=> $said,
@@ -250,7 +254,7 @@ while (1) {
 				}
 				$reply .= $treply . '  ';
 			} else {
-				if ($solution->{_sim} > 0.5 && $solution->{_sim} <= 1.0) {
+				if ($solution->{_sim} > 0.5) {
 					$reply .= $solution->{isaid} . '  ';
 				} else {
 					$reply = generate(@words);
@@ -259,7 +263,7 @@ while (1) {
 		}
 	}
 	if ($reply =~ /^$/) {
-		$reply = generate([]);
+		$reply = generate(@words);
 	}
 	$rs->freezeUservars($who);
 	if (exists($rs->{frozen}->{$who})
