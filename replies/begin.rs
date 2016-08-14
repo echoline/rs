@@ -3,7 +3,7 @@
 > begin
 	+ request // This trigger is tested first.
 //	* <reply2> ne undefined => {lowercase}{ok}{/lowercase}{weight=10}<call>learn <bot xrs> <input>:<reply2>:silent </call>
-	- {ok}{weight=10}   // An {ok} in the response means it's okay to get a real reply
+	- {lowercase}{ok}{/lowercase}{weight=10}   // An {ok} in the response means it's okay to get a real reply
 < begin
 
 ! var name = Alice

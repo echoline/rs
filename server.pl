@@ -244,7 +244,7 @@ while (1) {
 						isaid	=> $treply,
 						said	=> $said,
 						words	=> [ @words ],
-#						links	=> [ @links ],
+						links	=> [ @links ],
 					};
 					push @cases, $new_case;
 	    				if (open(my $fh, '>', 'cases')) {

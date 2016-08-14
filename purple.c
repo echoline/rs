@@ -293,7 +293,7 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 		return;
 
 	msg = purple_markup_strip_html(message);
-	printf ("%s: %s\n", who, msg);
+//	printf ("%s: %s\n", who, msg);
 
 	if (name && name[0] == '[') {
 		if (msg[0] != '(') {
@@ -334,10 +334,8 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 			alice("", ptr, conv);
 		}
 
-	/***
-	**	TODO: blast support for title fetch
-	**
-		if ((ptr = strcasestr(msg, "http://")) != NULL ||
+		if (who && *who &&
+		    (ptr = strcasestr(msg, "http://")) != NULL ||
 		    (ptr = strcasestr(msg, "https://")) != NULL) {
 			ptr[strcspn(ptr, "\r\n \t")] = '\0';
 			SoupSession *session = soup_session_sync_new();
@@ -352,16 +350,17 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 				if (ptr != NULL) {
 					ptr += 7;
 					ptr[strcspn(ptr, "<")] = '\0';
-					purple_conv_chat_send(PURPLE_CONV_CHAT(conv), ptr);
+					push(queue, conv, who, ptr);
 				} else {
-					purple_conv_chat_send(PURPLE_CONV_CHAT(conv), "no title?  wtf");
+					push(queue, conv, who, "no title");
 				}
 			} else {
-				purple_conv_chat_send(PURPLE_CONV_CHAT(conv), soup_status_get_phrase(status)); 
+				push(queue, conv, who, 
+					soup_status_get_phrase(status)); 
 			}
-		}*/
+		}
 	} else {
-		push(queue, conv, name, alice("", msg, conv));
+		push(queue, conv, name, alice(name, msg, conv));
 		alice("", msg, conv);
 	}
 	
@@ -497,7 +496,7 @@ join_chat(gpointer gc)
 	printf("Joining %s...\n", CHAT);
 
 	g_hash_table_insert(params, g_strdup("room"), g_strdup(CHAT));
-//	g_hash_table_insert(params, g_strdup("exchange"), g_strdup(EXCHANGE));
+	g_hash_table_insert(params, g_strdup("exchange"), g_strdup(EXCHANGE));
 
 	serv_join_chat(gc, params);
 	g_hash_table_destroy(params);
@@ -618,7 +617,7 @@ int main(int argc, char *argv[])
 	}
 	CHAT[strcspn(CHAT, "\n")] = 0;
 
-/*	printf("chat exchange: ");
+	printf("chat exchange: ");
 	res = fgets(EXCHANGE, sizeof(EXCHANGE), stdin);
 	if (!res) {
 		fprintf(stderr, "Failed to read chat URL\n");
