@@ -14,6 +14,7 @@
 #include <sys/un.h>
 #include <arpa/inet.h>
 #include <netdb.h>
+#include <time.h>
 
 #define MY_CHANNEL "#neoturbine"
 #define MY_NICK "alice"

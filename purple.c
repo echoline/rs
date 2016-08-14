@@ -334,9 +334,9 @@ null_write_conv(PurpleConversation *conv, const char *who, const char *alias,
 			alice("", ptr, conv);
 		}
 
-		if (who && *who &&
-		    (ptr = strcasestr(msg, "http://")) != NULL ||
-		    (ptr = strcasestr(msg, "https://")) != NULL) {
+		if(0 && who && *who &&
+		    ((ptr = strcasestr(msg, "http://")) != NULL ||
+		    (ptr = strcasestr(msg, "https://")) != NULL)) {
 			ptr[strcspn(ptr, "\r\n \t")] = '\0';
 			SoupSession *session = soup_session_sync_new();
 			SoupMessage *smsg = soup_message_new ("GET", ptr);
