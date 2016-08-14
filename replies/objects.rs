@@ -13,6 +13,18 @@
 
 	my ($self, @args) = @_;
 	my $str = join("%20", @args);
+
+	return "http://google.com/search?q=" . $str . "  ";
+
+
+
+
+
+
+
+
+
+
 	my $requrl = "https://ajax.googleapis.com/ajax/services/search/web?v=1.0&userip=50.7.6.178&q=" . $str;
 
 	my $content = get $requrl;
