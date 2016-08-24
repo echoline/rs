@@ -14,8 +14,8 @@ use AI::CBR::Retrieval;
 use RiveScript;
 
 # Load sentence parser
-use Lingua::LinkParser;
-my $parser = new Lingua::LinkParser();
+#use Lingua::LinkParser;
+#my $parser = new Lingua::LinkParser();
 
 # Copyright (C) 1999 Lucent Technologies
 # Excerpted from 'The Practice of Programming'
@@ -200,21 +200,22 @@ while (1) {
 			}
 			my $said = $rs->{client}->{$who}->{__history__}->{input}->[0];
 			@words = split(/\s+/, $said);
-			my $sentence = $parser->create_sentence($said);
-			if (!$sentence) {
-				next;
-			}
-			my @bigstruct = $sentence->get_bigstruct;
-			my @links = [];
 
-			foreach(@bigstruct) {
-				my $k;
-				my $v;
-				while (($k,$v) = each %{$_->{links}} ) {
-					print " $k => " . $bigstruct[$v]->{word} . "\n";
-					push (@links, $bigstruct[$v]->{word});
-				}
-			}
+			#my $sentence = $parser->create_sentence($said);
+			#if (!$sentence) {
+			#	next;
+			#}
+			#my @bigstruct = $sentence->get_bigstruct;
+			#my @links = [];
+
+			#foreach(@bigstruct) {
+			#	my $k;
+			#	my $v;
+			#	while (($k,$v) = each %{$_->{links}} ) {
+			#		print " $k => " . $bigstruct[$v]->{word} . "\n";
+			#		push (@links, $bigstruct[$v]->{word});
+			#	}
+			#}
 
 			$case = AI::CBR::Case->new(
 				said	=> {
@@ -223,14 +224,14 @@ while (1) {
 				words	=> {
 					sim	=> \&sim_set
 				},
-				links	=> {
-					sim	=> \&sim_set
-				},
+			#	links	=> {
+			#		sim	=> \&sim_set
+			#	},
 			);
 			$case->set_values(
 				said	=> $said,
 				words	=> [ @words ],
-				links	=> [ @links ],
+			#	links	=> [ @links ],
 			);
 
 			$r = AI::CBR::Retrieval->new($case, \@cases);
@@ -244,7 +245,7 @@ while (1) {
 						isaid	=> $treply,
 						said	=> $said,
 						words	=> [ @words ],
-						links	=> [ @links ],
+			#			links	=> [ @links ],
 					};
 					push @cases, $new_case;
 	    				if (open(my $fh, '>', 'cases')) {
