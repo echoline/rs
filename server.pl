@@ -57,11 +57,12 @@ sub generate {
 
 	while (!$suf) {
 		if (scalar(@_) > 1) {
-			$w1 = $_[0];
-			$w2 = $_[1];
+			$w2 = pop;
+			$w1 = pop;
+			push @_,$w1;
 		} elsif (scalar(@_) == 1) {
 			$w1 = $NONWORD;
-			$w2 = $_[0];
+			$w2 = pop;
 		} else {
 			$w1 = $w2 = $NONWORD;
 		}

@@ -1,6 +1,6 @@
 // aiml2rs -- Generated on Mon Jan 18 21:14:58 2010
 
-! var xrs = replies/learned.rs
+! var xrs = replies/learned.rive
 
 + bad answer{weight=1000}
 * <reply2> ne undefined => <set badanswer-input=<input>>{topic=badanswer-prelim}Would you like to teach me a new answer to "<get badanswer-input>"?
