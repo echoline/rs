@@ -1,5 +1,8 @@
 ! version = 2.0
 
++ *
+- random pickup line
+
 > begin
 	+ request // This trigger is tested first.
 //	* <reply2> ne undefined => {lowercase}{ok}{/lowercase}{weight=10}<call>learn <bot xrs> <input>:<reply2>:silent </call>
