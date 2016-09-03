@@ -241,19 +241,19 @@ while (1) {
 			print $solution->{_sim} * 100 . "% similarity\n";
 
 			if ($treply !~ /random\ pickup\ line/) {
-				if ($solution->{_sim} < 0.5) {
-					my $new_case = {
-						isaid	=> $treply,
-						said	=> $said,
-						words	=> [ @words ],
-			#			links	=> [ @links ],
-					};
-					push @cases, $new_case;
-	    				if (open(my $fh, '>', 'cases')) {
-						print $fh Storable::freeze(\@cases);
-						close($fh);
-					}
+#				if ($solution->{_sim} < 0.5) {
+				my $new_case = {
+					isaid	=> $treply,
+					said	=> $said,
+					words	=> [ @words ],
+		#			links	=> [ @links ],
+				};
+				push @cases, $new_case;
+    				if (open(my $fh, '>', 'cases')) {
+					print $fh Storable::freeze(\@cases);
+					close($fh);
 				}
+#				}
 				$reply .= $treply . ' ';
 			} else {
 				if ($solution->{_sim} > 0.2) {

@@ -41,15 +41,14 @@ typedef struct _args {
 int sockfd;             // socket descriptor
 int last = 4;		// last result so randomness won't repeat
 char target[32];	//also a small buffer so we won't lose this
-char source[50];	//where a message came from
 char *tmp;		// temporary string pointer
 int i;			// temporary int
 
 void write_to_socket(int target, char *buff_to_send);
 void parse_arguments ( int argc, char* argv[], args* argp );
 int greet(char* target, char* source, int last, int sockfd);
-char *alice(char* msg);
-void defalice();
+char *alice(char*, char*);
+void defalice(char*);
 void usage( char* name ) {
 	printf(BLUE "usage" NORMAL ":\n");
 	printf("	%s " RED "-c \"#channel\"\n" NORMAL, name);
@@ -84,6 +83,7 @@ int main(argc, argv)
 	int nicklen = 20;		// length of nicks
 	char nick[nicklen];		// string of nick
 	char newnick[nicklen];		// string of nick
+	char source[50];	//where a message came from
 
 	// error checking and arg parsing
 	parse_arguments ( argc, argv, &myargs );
@@ -169,6 +169,9 @@ int main(argc, argv)
 					strncpy(target,source,32);
 				}
 				tmp = index(tmp,':')+1;
+
+				alice(tmp, "");
+
 				// ctcp stuff
 				if (tmp[0] == '\1') {
 					tmp++;
@@ -194,7 +197,7 @@ int main(argc, argv)
 						    (tmp[strlen(nick)] != ' '))
 						tmp += strlen(nick) + 1;
 					// respond to any query
-					strcpy(buf2, alice(tmp));
+					strcpy(buf2, alice(tmp, source));
 					if (strncasecmp(buf2,"error",5)) {
 						if (strcmp(target,source) != 0)
 							sprintf(buf,"PRIVMSG %s :%s: %s\n",target, source, buf2);
@@ -354,7 +357,7 @@ int greet(char *target, char *source, int last, int sockfd) {
 	return (last);
 }
 
-char *alice(char *msg) {
+char *alice(char *msg, char *source) {
 	// this function relies on alicesocket.py
 	// as a backend.  alice is a pyaiml program
 	// echobot can also default to a backup response system
@@ -362,12 +365,11 @@ char *alice(char *msg) {
     char *ptr;
     struct sockaddr_un remote;
     char str[1024];
-    ptr = strchr(msg,'\n');
-    ptr[0] = '\0';
+    msg[strcspn(msg, "\r\n")] = '\0';
     sprintf(str,"%s\007%s",source,msg);
 
     if ((s = socket(AF_UNIX, SOCK_STREAM, 0)) == -1) {
-	defalice();
+	defalice(source);
 	return "error in socket()";
     }
 
@@ -375,12 +377,12 @@ char *alice(char *msg) {
     strcpy(remote.sun_path, MY_SOCKET);
     len = strlen(remote.sun_path) + sizeof(remote.sun_family);
     if (connect(s, (struct sockaddr *)&remote, len) == -1) {
-	defalice();
+	defalice(source);
 	return "error in connect()";
     }	
 
     if (send(s, str, strlen(str), 0) == -1) {
-	defalice();
+	defalice(source);
 	return "error in send()";
     }
 
@@ -403,7 +405,7 @@ char *alice(char *msg) {
     return msg;
 }
 
-void defalice() {
+void defalice(char *source) {
 	char buf[100];
 	// respond to informal pings
 	if (strcasestr(tmp,"ping")) {
