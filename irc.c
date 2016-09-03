@@ -406,6 +406,7 @@ char *alice(char *msg, char *source) {
 }
 
 void defalice(char *source) {
+#if 0
 	char buf[100];
 	// respond to informal pings
 	if (strcasestr(tmp,"ping")) {
@@ -446,4 +447,5 @@ void defalice(char *source) {
 		write_to_socket(sockfd, buf);
 		printf(BLUE "nickname %s\n" NORMAL, buf);
 	}
+#endif
 }
