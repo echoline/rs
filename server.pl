@@ -254,18 +254,24 @@ while (1) {
 						close($fh);
 					}
 				}
-				$reply .= $treply . '  ';
+				$reply .= $treply . ' ';
 			} else {
-				if ($solution->{_sim} > 0.5) {
-					$reply .= $solution->{isaid} . '  ';
+				if ($solution->{_sim} > 0.2) {
+					$reply .= $solution->{isaid} . ' ';
+					$treply = $solution->{isaid};
 				} else {
-					$reply = generate(@words);
+					$treply = generate(@words);
+					$reply .= $treply
 				}
 			}
+			$rs->{client}->{$who}->{__history__}->{reply}->[0] = $treply;
 		}
 	}
 	if ($reply =~ /^$/) {
 		$reply = generate(@words);
+		$rs->{client}->{$who}->{__history__}->{reply}->[0] = $reply;
+	} else {
+		addstates($reply);
 	}
 	$rs->freezeUservars($who);
 	if (exists($rs->{frozen}->{$who})
@@ -273,8 +279,6 @@ while (1) {
 		print $fh Storable::freeze( $rs->{frozen}->{$who} );
 		close($fh);
 	}
-	
-	addstates($reply);
 
 	$client->send($reply);
 	print 'me: ' . $reply . "\n---" . time . "\n";

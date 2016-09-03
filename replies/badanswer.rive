@@ -2,8 +2,12 @@
 
 ! var xrs = replies/learned.rive
 
++ good answer{weight=1000}
+* <reply> ne undefined => <call>learn <bot xrs> {sentence}<reply>{/sentence}:<input></call>
+- I haven't said anything yet.
+
 + bad answer{weight=1000}
-* <reply2> ne undefined => <set badanswer-input=<input>>{topic=badanswer-prelim}Would you like to teach me a new answer to "<get badanswer-input>"?
+* <reply> ne undefined => <set badanswer-input=<input>>{topic=badanswer-prelim}Would you like to teach me a new answer to "<get badanswer-input>"?
 - I haven't said anything yet.
 
 > topic badanswer-prelim
@@ -115,28 +119,16 @@
 + your answer was not correct{weight=1000}
 - {@bad answer}
 
-+ can i teach you{weight=1000}
++ [*] can i teach you [*]{weight=1000}
 - You can just say my answer was wrong and teach me a new response.
 
-+ can you learn{weight=1000}
++ [*] can you learn [*]{weight=1000}
 - {@can i teach you}
 
-+ do you learn{weight=1000}
++ [*] do you learn [*]{weight=1000}
 - {@can i teach you}
 
-+ * can i teach you *{weight=1000}
-- {@can i teach you}
-
-+ * can you learn *{weight=1000}
-- {@can i teach you}
-
-+ * will you learn *{weight=1000}
-- {@can i teach you}
-
-+ if * will you learn *{weight=1000}
-- {@can i teach you}
-
-+ * do you learn *{weight=1000}
++ [*] will you learn [*]{weight=1000}
 - {@can i teach you}
 
 + you do not know what * is{weight=1000}
