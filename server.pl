@@ -55,6 +55,11 @@ sub generate {
 	my $suf = 0;
 	my $ret;
 
+	my $choice = int(rand(scalar(@_)));
+	for (my $i = 0; $i < $choice; $i++) {
+		pop;
+	}
+
 	while (!$suf) {
 		if (scalar(@_) > 1) {
 			$w2 = pop;
