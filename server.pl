@@ -53,38 +53,38 @@ sub generate {
 	my $w1;
 	my $w2;
 	my $suf = 0;
-	my $ret;
+	my $ret = '';
 
 	$w1 = $w2 = $NONWORD;
 
-	if (int(rand(5)) > 1) {
-		my $choice = int(rand(scalar(@_)));
-		for (my $i = 0; $i < $choice; $i++) {
-			pop;
-		}
+#	if (int(rand(5)) > 1) {
+#		my $choice = int(rand(scalar(@_) - 1));
+#		for (my $i = 0; $i < $choice; $i++) {
+#			pop;
+#		}
+#
+#		while (!$suf) {
+#			if (scalar(@_) > 1) {
+#				$w2 = pop;
+#				$w1 = pop;
+#				push @_,$w1;
+#			} elsif (scalar(@_) == 1) {
+#				$w2 = pop;
+#			}
+#			$suf = $statetab{$w1}{$w2};
+#			shift;
+#		}
+#	}
 
-		while (!$suf) {
-			if (scalar(@_) > 1) {
-				$w2 = pop;
-				$w1 = pop;
-				push @_,$w1;
-			} elsif (scalar(@_) == 1) {
-				$w2 = pop;
-			}
-			$suf = $statetab{$w1}{$w2};
-			shift;
-		}
-	}
-
-	if ($w1 eq $NONWORD) {
-		if ($w2 eq $NONWORD) {
-			$ret = "";
-		} else {
-			$ret = $w2 . " ";
-		}
-	} else {
-		$ret = $w1 . " " . $w2 . " ";
-	}
+#	if ($w1 eq $NONWORD) {
+#		if ($w2 eq $NONWORD) {
+#			$ret = "";
+#		} else {
+#			$ret = $w2 . " ";
+#		}
+#	} else {
+#		$ret = $w1 . " " . $w2 . " ";
+#	}
 
 	for (my $i = 0; $i < 10000; $i++) {
 		$suf = $statetab{$w1}{$w2};	# array reference
