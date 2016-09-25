@@ -55,25 +55,27 @@ sub generate {
 	my $suf = 0;
 	my $ret;
 
-	my $choice = int(rand(scalar(@_)));
-	for (my $i = 0; $i < $choice; $i++) {
-		pop;
+	$w1 = $w2 = $NONWORD;
+
+	if (int(rand(5)) > 1) {
+		my $choice = int(rand(scalar(@_)));
+		for (my $i = 0; $i < $choice; $i++) {
+			pop;
+		}
+
+		while (!$suf) {
+			if (scalar(@_) > 1) {
+				$w2 = pop;
+				$w1 = pop;
+				push @_,$w1;
+			} elsif (scalar(@_) == 1) {
+				$w2 = pop;
+			}
+			$suf = $statetab{$w1}{$w2};
+			shift;
+		}
 	}
 
-	while (!$suf) {
-		if (scalar(@_) > 1) {
-			$w2 = pop;
-			$w1 = pop;
-			push @_,$w1;
-		} elsif (scalar(@_) == 1) {
-			$w1 = $NONWORD;
-			$w2 = pop;
-		} else {
-			$w1 = $w2 = $NONWORD;
-		}
-		$suf = $statetab{$w1}{$w2};
-		shift;
-	}
 	if ($w1 eq $NONWORD) {
 		if ($w2 eq $NONWORD) {
 			$ret = "";
@@ -83,6 +85,7 @@ sub generate {
 	} else {
 		$ret = $w1 . " " . $w2 . " ";
 	}
+
 	for (my $i = 0; $i < 10000; $i++) {
 		$suf = $statetab{$w1}{$w2};	# array reference
 		my $r = int(rand @$suf);		# @$suf is number of elems

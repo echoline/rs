@@ -5,10 +5,10 @@ LEN=3735
 TAIL=`expr $LEN - 39`
 HEAD=`expr $TAIL - 365`
 
-if test `wc -l $FNAME | cut -f 1 -d ' '` -eq $LEN; then
-  tail -n $TAIL $FNAME | head -n $HEAD | sed 's/$/ /g' | tr -d '\n' | tr -s ' '\
-	| sed "s/[\"_]//g"
-fi
+#if test `wc -l $FNAME | cut -f 1 -d ' '` -eq $LEN; then
+#  tail -n $TAIL $FNAME | head -n $HEAD | sed 's/$/ /g' | tr -d '\n' | tr -s ' '\
+#	| sed "s/[\"_]//g"
+#fi
 
 FNAME="la_aventuroj_de_alicio_en_mirlando.txt"
 LEN=4352
