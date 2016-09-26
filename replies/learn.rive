@@ -60,6 +60,9 @@
 		if (scalar(@args) == 3 && $args[2] eq 'silent') {
 			return "";
 		}
+
+		addcase($args[0], $args[1], split(/\s+/, $args[1]));
+
 		return "Okay, I'll try to remember to respond, \"" . $args[0] . "\" when you say, \"" . $args[1] . "\"";
 	} else {
 		return scalar(@args) . " is not a valid arity to this object";
