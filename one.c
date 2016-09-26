@@ -52,11 +52,23 @@ char *alice(char *msg, char *source) {
 int main(int argc, char **argv)
 {
 	char *ptr;
+	char *user = getenv("USER");
+	int arg = 1;
 
 	if (argc > 1) {
-		alice (argv[1], "");
-		ptr = alice(argv[1], getenv("USER"));
+		if (!strcmp(argv[1], "-h")) {
+			printf ("%s [-h] [-u YOURNAME] \"your message\"\n",
+				argv[0]);
+			return 0;
+		}
+		if ((argc > 3) && !strcmp(argv[1], "-u")) {
+			user = strdup(argv[2]);
+			arg = 3;
+		}
+		alice (argv[arg], "");
+		ptr = alice(argv[arg], user);
 		printf ("%s\n", ptr);
 	}
+	return 0;
 }
 
