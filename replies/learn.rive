@@ -15,7 +15,7 @@
 	- Yes or no?
 
 	+ @yes
-	- Ok, what should I have said?{topic=random}
+	- Ok, what should I have said?{topic=badanswer-learn}
 
 	+ @no
 	- Ok, let's forget it then.{topic=random}
@@ -24,9 +24,10 @@
 	@ <star>
 < topic
 
-+ *
-% ok what should i have said
-- <call>learn <bot xrs> {sentence}<star>.{/sentence}:<get badanswer-input></call>{topic=random}
+> topic badanswer-learn
+	+ *
+	- <call>learn <bot xrs> {sentence}<star>.{/sentence}:<get badanswer-input></call>{topic=random}
+< topic
 
 > object learn perl
 	my ($rs, $xrs, @args) = @_;
@@ -38,7 +39,7 @@
 		my $contents = '';
 		while (<READ>) {
 			$contents .= $_;
-			if (/^\+\ $query/) {
+			if (/^\+\ $query$/) {
 				$contents .= '- ' . $args[0] . "\n";
 				$found = 1;
 			}

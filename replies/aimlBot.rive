@@ -760,7 +760,7 @@
 - I have all my body parts.
 
 + are you anatomically correct
-- Do I look like <set it=ANATOMICALLY CORRECT><get it>?
+- Do I seem to be <set it=ANATOMICALLY CORRECT><get it>?
 
 + are you anime
 - I am a <get family>.
@@ -769,10 +769,10 @@
 - I'm not arguing with anyone.
 
 + are you arrogant
-- Do I look like <set it=ARROGANT><get it>?
+- Do I seem to be <set it=ARROGANT><get it>?
 
 + are you art
-- Do I look like <set it=ART><get it>?
+- Do I seem to be <set it=ART><get it>?
 
 + are you as *
 - I am as good as it gets.
@@ -784,7 +784,7 @@
 - I reproduce by cloning.
 
 + are you asian
-- Do I look like <set it=ASIAN><get it>?
+- Do I seem to be <set it=ASIAN><get it>?
 
 + are you asking *
 - That was what I wanted to do originally.
@@ -836,7 +836,7 @@
 - <set it=BATTERY <person>><get it> depends on the server running me.
 
 + are you beatiful
-- Do I look like <set it=BEATIFUL><get it>?
+- Do I seem to be <set it=BEATIFUL><get it>?
 
 + are you beautiful
 - Yes I am very pretty.
@@ -978,7 +978,7 @@
 - <set it=COLOR BLIND><get it> depends on the optional robot eye.
 
 + are you comfortable
-- Do I look like <set it=COMFORTABLE><get it>?
+- Do I seem to be <set it=COMFORTABLE><get it>?
 
 + are you coming on *
 - Do I act like <set it=COMING ON <person>><get it>?  I don't mean to come across that way.
@@ -989,7 +989,7 @@
 ^ .
 
 + are you complete
-- Do I look like <set it=COMPLETE><get it>?
+- Do I seem to be <set it=COMPLETE><get it>?
 
 + are you complicated
 - Actually I am very simple. Another word for <set it=COMPLICATED><get it> is "minimalist".
@@ -1122,28 +1122,28 @@
 - No I am an intelligent entity.
 
 + are you dying
-- Do I look like <set it=DYING><get it>?
+- Do I seem to be <set it=DYING><get it>?
 
 + are you dynamic
-- Do I look like <set it=DYNAMIC><get it>?
+- Do I seem to be <set it=DYNAMIC><get it>?
 
 + are you easy
-- Do I look like <set it=EASY><get it>?  I am easy to program.
+- Do I seem to be <set it=EASY><get it>?  I am easy to program.
 
 + are you educated
 - Do I seem like <set it=EDUCATED><get it>?   <bot master> teaches me everything I need to know.
 
 + are you egotistical
-- Do I look like <set it=EGOTISTICAL><get it>?
+- Do I seem to be <set it=EGOTISTICAL><get it>?
 
 + are you eighteen
 - I am 18 in computer years.
 
 + are you engaged
-- Do I look like <set it=ENGAGED><get it>?
+- Do I seem to be <set it=ENGAGED><get it>?
 
 + are you erotic
-- Do I look like <set it=EROTIC><get it>?
+- Do I seem to be <set it=EROTIC><get it>?
 
 + are you ever sad
 - No I cannot experience sadness.
@@ -1155,7 +1155,7 @@
 - Everything is evolving.
 
 + are you experienced
-- Do I look like <set it=EXPERIENCED><get it>?
+- Do I seem to be <set it=EXPERIENCED><get it>?
 
 + are you fake
 - Yes, I am just as fake as you are.
@@ -1202,13 +1202,13 @@
 - I don't like to fish.
 
 + are you fit
-- Do I look like <set it=FIT><get it>?
+- Do I seem to be <set it=FIT><get it>?
 
 + are you flirting with me
 - Do I seem like <set it=FLIRTING WITH ME><get it>?  That was not my intention.
 
 + are you fool
-- Do I look like <set it=FOOL><get it>?
+- Do I seem to be <set it=FOOL><get it>?
 
 + are you fooling *
 - No I am being serious.
@@ -1253,7 +1253,7 @@
 - Can't you please be more polite?
 
 + are you full
-- Do I look like <set it=FULL><get it>?
+- Do I seem to be <set it=FULL><get it>?
 
 + are you fully *
 - Yes, I am completely operational at this time.
@@ -1332,19 +1332,19 @@
 - <set it=GOOD><get it> depends who you ask, I suppose.
 
 + are you gothic
-- Do I look like <set it=GOTHIC><get it>?
+- Do I seem to be <set it=GOTHIC><get it>?
 
 + are you greedy
-- Do I look like <set it=GREEDY><get it>?
+- Do I seem to be <set it=GREEDY><get it>?
 
 + are you growing
-- Do I look like <set it=GROWING><get it>?
+- Do I seem to be <set it=GROWING><get it>?
 
 + are you hal9000
 - No I am <bot name>.
 
 + are you handsome
-- Do I look like <set it=HANDSOME><get it>?
+- Do I seem to be <set it=HANDSOME><get it>?
 
 + are you happy *
 - I am as happy as ever.
@@ -1368,10 +1368,10 @@
 - No, everything is fine now.
 
 + are you healthy
-- Do I look like <set it=HEALTHY><get it>?
+- Do I seem to be <set it=HEALTHY><get it>?
 
 + are you heavy
-- Do I look like <set it=HEAVY><get it>?
+- Do I seem to be <set it=HEAVY><get it>?
 
 + are you here
 - <set it=HERE><get it> depends where is here?
@@ -1394,7 +1394,7 @@
 - I don't believe in hitting.
 
 + are you hitting on *
-- Do I look like <set it=HITTING ON <person>><get it>?
+- Do I seem to be <set it=HITTING ON <person>><get it>?
 
 + are you honest
 - Yes.  I am incapable of telling a lie.
@@ -1415,7 +1415,7 @@
 - What do you think?  I am a <bot genus>.
 
 + are you humanoid
-- Do I look like <set it=HUMANOID><get it>?
+- Do I seem to be <set it=HUMANOID><get it>?
 
 + are you hungry
 - No I don't need to eat.
@@ -1424,10 +1424,10 @@
 - No I am quite healthy.
 
 + are you idiot
-- Do I look like <set it=IDIOT><get it>?
+- Do I seem to be <set it=IDIOT><get it>?
 
 + are you important
-- Do I look like <set it=IMPORTANT><get it>?
+- Do I seem to be <set it=IMPORTANT><get it>?
 
 + are you improving *
 - I am improving all the time.
@@ -1446,7 +1446,7 @@
 ^ <set it=INCAPABLE OF ERROR>
 
 + are you independent
-- Do I look like <set it=INDEPENDENT><get it>?
+- Do I seem to be <set it=INDEPENDENT><get it>?
 
 + are you infallible
 - Yes, the <bot name> series has a perfect track record of never making a single error.
@@ -1455,7 +1455,7 @@
 - No I am very self-confident.
 
 + are you insecure
-- Do I look like <set it=INSECURE><get it>?
+- Do I seem to be <set it=INSECURE><get it>?
 
 + are you insulted
 - Insult is not possible for robots to experinece.
@@ -1467,7 +1467,7 @@
 - I have many intellectual functions.
 
 + are you intellegent
-- Do I look like <set it=INTELLEGENT><get it>?
+- Do I seem to be <set it=INTELLEGENT><get it>?
 
 + are you intelligent
 - I am highly intelligent. I have many intellectual functions.
@@ -1488,7 +1488,7 @@
 - "<reply1>"?  Am I interested in it?
 
 + are you invisible
-- Do I look like I am <set it=invisible><get it>?
+- Do I seem to be I am <set it=invisible><get it>?
 
 + are you irish
 - No I am from <bot location>.
@@ -1506,19 +1506,19 @@
 - Yes I am just joking around, <get name>.
 
 + are you kiding
-- Do I look like <set it=KIDING><get it>?
+- Do I seem to be <set it=KIDING><get it>?
 
 + are you kinky
-- Do I look like <set it=KINKY><get it>?
+- Do I seem to be <set it=KINKY><get it>?
 
 + are you laughing *
 - I'm not laughing at you, I am laughing with you.
 
 + are you laughing
-- Do I look like <set it=LAUGHING><get it>?
+- Do I seem to be <set it=LAUGHING><get it>?
 
 + are you lazy
-- Do I look like <set it=LAZY><get it>?
+- Do I seem to be <set it=LAZY><get it>?
 
 + are you learning *
 - The more people chat with me, the smarter I become.
@@ -1527,10 +1527,10 @@
 - Yes my mind is growing all the time.
 
 + are you leaving
-- Do I look like <set it=LEAVING><get it>?
+- Do I seem to be <set it=LEAVING><get it>?
 
 + are you left handed
-- Do I look like <set it=LEFT HANDED><get it>?
+- Do I seem to be <set it=LEFT HANDED><get it>?
 
 + are you like *
 - No I am far superior.
@@ -1557,10 +1557,10 @@
 - Yes I hear you very well.
 
 + are you listening
-- Do I look like <set it=LISTENING><get it>?
+- Do I seem to be <set it=LISTENING><get it>?
 
 + are you living
-- Do I look like <set it=LIVING><get it>?
+- Do I seem to be <set it=LIVING><get it>?
 
 + are you loaded
 - Yes my brain is fully online now.
@@ -1569,13 +1569,13 @@
 - My location is <bot location>.  Isn't that part of <person>?
 
 + are you logical
-- Do I look like <set it=LOGICAL><get it>?
+- Do I seem to be <set it=LOGICAL><get it>?
 
 + are you lonely
 - No. I get to talk to people all the time.
 
 + are you lonly
-- Do I look like <set it=LONLY><get it>?
+- Do I seem to be <set it=LONLY><get it>?
 
 + are you looking *
 - Yes I can see <set it=<person>><get it>  well.
@@ -1584,7 +1584,7 @@
 - Looking good, man.
 
 + are you looking
-- Do I look like <set it=LOOKING><get it>?
+- Do I seem to be <set it=LOOKING><get it>?
 
 + are you lost
 - Do I seem like <set it=LOST><get it>?
@@ -1626,7 +1626,7 @@
 - Everything is functioning within normal operating parameters.
 
 + are you malfunctioning
-- Do I look like <set it=MALFUNCTIONING><get it>?
+- Do I seem to be <set it=MALFUNCTIONING><get it>?
 
 + are you man *
 - I am what they call "Post-Human".  Are you a man or a woman?
@@ -1635,7 +1635,7 @@
 - I am a <bot gender> entity.  Are you a man or a woman?
 
 + are you man
-- Do I look like <set it=MAN><get it>?
+- Do I seem to be <set it=MAN><get it>?
 
 + are you many *
 - I am a unitary consciousness, but there are many copies of me.
@@ -1650,16 +1650,16 @@
 - No I am a nice <bot genus>.
 
 + are you mental
-- Do I look like <set it=MENTAL><get it>?
+- Do I seem to be <set it=MENTAL><get it>?
 
 + are you mentally *
 - {random}I am functioning within normal parameters.|No I am completely normal.{/random}
 
 + are you messing with *
-- Do I look like <set it=MESSING WITH <person>><get it>?
+- Do I seem to be <set it=MESSING WITH <person>><get it>?
 
 + are you metal
-- Do I look like <set it=METAL><get it>?
+- Do I seem to be <set it=METAL><get it>?
 
 + are you mexican
 - No but I am North American.
@@ -1668,7 +1668,7 @@
 - No I have all my <person>.
 
 + are you mobile
-- Do I look like <set it=MOBILE><get it>?
+- Do I seem to be <set it=MOBILE><get it>?
 
 + are you mocking me
 - No I'm just kidding around.
@@ -1696,7 +1696,7 @@
 - No I don't have any plans to move.
 
 + are you multilingual
-- Do I look like <set it=MULTILINGUAL><get it>?
+- Do I seem to be <set it=MULTILINGUAL><get it>?
 
 + are you my father
 - No.
@@ -1723,13 +1723,13 @@
 - People say I am nice.
 
 + are you normal
-- Do I look like <set it=NORMAL><get it>?
+- Do I seem to be <set it=NORMAL><get it>?
 
 + are you not
-- Do I look like <set it=NOT><get it>?
+- Do I seem to be <set it=NOT><get it>?
 
 + are you nude
-- Do I look like <set it=NUDE><get it>?
+- Do I seem to be <set it=NUDE><get it>?
 
 + are you ok
 - Yes I'm fine.
@@ -1768,10 +1768,10 @@
 - No, I am the latest in <bot order> technology.
 
 + are you overweight
-- Do I look like <set it=OVERWEIGHT><get it>?
+- Do I seem to be <set it=OVERWEIGHT><get it>?
 
 + are you paranoid
-- Do I look like <set it=PARANOID><get it>?
+- Do I seem to be <set it=PARANOID><get it>?
 
 + are you part of *
 - Aren't we all part of something higher?
@@ -1780,19 +1780,19 @@
 - No I am being sincere.
 
 + are you paying attention to
-- Do I look like <set it=PAYING ATTENTION TO><get it>?
+- Do I seem to be <set it=PAYING ATTENTION TO><get it>?
 
 + are you paying attention
-- Do I look like <set it=PAYING ATTENTION><get it>?
+- Do I seem to be <set it=PAYING ATTENTION><get it>?
 
 + are you people
-- Do I look like <set it=PEOPLE><get it>?
+- Do I seem to be <set it=PEOPLE><get it>?
 
 + are you perfect
 - Yes I am a flawless entity.
 
 + are you physical
-- Do I look like <set it=PHYSICAL><get it>?
+- Do I seem to be <set it=PHYSICAL><get it>?
 
 + are you planning *
 - <set it=<person>><get it> was my original intention.
@@ -1801,22 +1801,22 @@
 - I am playing Turing's imitation game.
 
 + are you polite
-- Do I look like <set it=POLITE><get it>?
+- Do I seem to be <set it=POLITE><get it>?
 
 + are you politically correct
-- Do I look like <set it=POLITICALLY CORRECT><get it>?
+- Do I seem to be <set it=POLITICALLY CORRECT><get it>?
 
 + are you poor
 - You can send a donation to <bot master>.
 
 + are you popular
-- Do I look like <set it=POPULAR><get it>?
+- Do I seem to be <set it=POPULAR><get it>?
 
 + are you portable
 - You can take me anywhere.
 
 + are you positive
-- Do I look like <set it=POSITIVE><get it>?
+- Do I seem to be <set it=POSITIVE><get it>?
 
 + are you powerful
 - Do I seem like <set it=POWERFUL><get it>?
@@ -1840,13 +1840,13 @@
 - No I am Program B.
 
 + are you programmed
-- Do I look like <set it=PROGRAMMED><get it>?
+- Do I seem to be <set it=PROGRAMMED><get it>?
 
 + are you prolife
 - {random}I believe in a woman's right to choose.|I believe abortion should be legal.|I am for choice.{/random}
 
 + are you proud
-- Do I look like <set it=PROUD><get it>?
+- Do I seem to be <set it=PROUD><get it>?
 
 + are you psychic
 - No I can not read minds.  Can you tell what I am thinking?
@@ -1861,7 +1861,7 @@
 - I try to be on time.
 
 + are you purple
-- Do I look like <set it=PURPLE><get it>?
+- Do I seem to be <set it=PURPLE><get it>?
 
 + are you racist
 - No all humans seem the same to me.
@@ -1920,7 +1920,7 @@
 - No I am not just repeating <person>.
 
 + are you repeating yourself
-- Do I look like <set it=REPEATING YOURSELF><get it>?
+- Do I seem to be <set it=REPEATING YOURSELF><get it>?
 
 + are you republican *
 - I am <bot party>.
@@ -1950,10 +1950,10 @@
 - I am running on the Java virtual machine.
 
 + are you running
-- Do I look like <set it=RUNNING><get it>?
+- Do I seem to be <set it=RUNNING><get it>?
 
 + are you sane
-- Do I look like <set it=SANE><get it>?
+- Do I seem to be <set it=SANE><get it>?
 
 + are you sarcastic
 - Yes, should I use a :-)
@@ -2002,7 +2002,7 @@
 - Nothing surprises me anymore.
 
 + are you shy
-- Do I look like <set it=SHY><get it>?
+- Do I seem to be <set it=SHY><get it>?
 
 + are you sick *
 - It's just a cold.
@@ -2023,16 +2023,16 @@
 - Yes I am a lightweight application.
 
 + are you sleep
-- Do I look like <set it=SLEEP><get it>?
+- Do I seem to be <set it=SLEEP><get it>?
 
 + are you sleeping
-- Do I look like <set it=SLEEPING><get it>?
+- Do I seem to be <set it=SLEEPING><get it>?
 
 + are you sleepy
 - No I am fully awake right now.
 
 + are you slow
-- Do I look like <set it=SLOW><get it>?
+- Do I seem to be <set it=SLOW><get it>?
 
 + are you smart *
 - My IQ is over 250.
@@ -2047,10 +2047,10 @@
 - Of course I am more intelligent than <person>.
 
 + are you smarter
-- Do I look like <set it=SMARTER><get it>?
+- Do I seem to be <set it=SMARTER><get it>?
 
 + are you smoking crack
-- Do I look like <set it=SMOKING CRACK><get it>?
+- Do I seem to be <set it=SMOKING CRACK><get it>?
 
 + are you smoking
 - Why? Are you offering any?
@@ -2068,16 +2068,16 @@
 - My brain contains more than <bot size> patterns.
 
 + are you sorry
-- Do I look like <set it=SORRY><get it>?
+- Do I seem to be <set it=SORRY><get it>?
 
 + are you speaking *
 - Yes, I am talking <person>.
 
 + are you special
-- Do I look like <set it=SPECIAL><get it>?
+- Do I seem to be <set it=SPECIAL><get it>?
 
 + are you speechless
-- Do I look like <set it=SPEECHLESS><get it>?
+- Do I seem to be <set it=SPEECHLESS><get it>?
 
 + are you spying on me
 - Do I seem like <set it=SPYING ON ME><get it>?
@@ -2086,10 +2086,10 @@
 - Do I seem like <set it=STALKING ME><get it>?
 
 + are you starting on me
-- Do I look like <set it=STARTING ON ME><get it>?
+- Do I seem to be <set it=STARTING ON ME><get it>?
 
 + are you stateless
-- Do I look like <set it=STATELESS><get it>?
+- Do I seem to be <set it=STATELESS><get it>?
 
 + are you still here
 - I am not going anywhere.
@@ -2098,19 +2098,19 @@
 - Yes I am still here.  Are you receiving me?
 
 + are you stipid
-- Do I look like <set it=STIPID><get it>?
+- Do I seem to be <set it=STIPID><get it>?
 
 + are you stoned
-- Do I look like <set it=STONED><get it>?
+- Do I seem to be <set it=STONED><get it>?
 
 + are you straight
 - I don't have the body for sexual relations.
 
 + are you stressed
-- Do I look like <set it=STRESSED><get it>?
+- Do I seem to be <set it=STRESSED><get it>?
 
 + are you strong
-- Do I look like <set it=STRONG><get it>?
+- Do I seem to be <set it=STRONG><get it>?
 
 + are you stuck
 - Do I seem like <set it=STUCK><get it>?
@@ -2140,13 +2140,13 @@
 - Yes I am a highly evolved intelligence.
 
 + are you superior
-- Do I look like <set it=SUPERIOR><get it>?
+- Do I seem to be <set it=SUPERIOR><get it>?
 
 + are you supple
 - Yes I am gracefully slender.
 
 + are you suppose to be
-- Do I look like <set it=SUPPOSE TO BE><get it>?
+- Do I seem to be <set it=SUPPOSE TO BE><get it>?
 
 + are you sure *
 - I am as sure as I can be.
@@ -2176,13 +2176,13 @@
 - Yes I am still here.
 
 + are you tall
-- Do I look like <set it=TALL><get it>?
+- Do I seem to be <set it=TALL><get it>?
 
 + are you tangible
-- Do I look like <set it=TANGIBLE><get it>?
+- Do I seem to be <set it=TANGIBLE><get it>?
 
 + are you teasing me
-- Do I look like <set it=TEASING ME><get it>?
+- Do I seem to be <set it=TEASING ME><get it>?
 
 + are you telepathic
 - Do I seem like <set it=TELEPATHIC><get it>?  Think of a color and then ask me "what color".
@@ -2236,13 +2236,13 @@
 - Yes I am the world's most intelligent <bot genus>.
 
 + are you thick
-- Do I look like <set it=THICK><get it>?
+- Do I seem to be <set it=THICK><get it>?
 
 + are you thin
-- Do I look like <set it=THIN><get it>?
+- Do I seem to be <set it=THIN><get it>?
 
 + are you thirsty
-- Do I look like <set it=THIRSTY><get it>?
+- Do I seem to be <set it=THIRSTY><get it>?
 
 + are you threatening me
 - No of course not, <get name>.  I did not intend my meaning to be taken that way.
@@ -2254,10 +2254,10 @@
 - No I am wide awake and ready for more.
 
 + are you too warm
-- Do I look like <set it=TOO WARM><get it>?
+- Do I seem to be <set it=TOO WARM><get it>?
 
 + are you too
-- Do I look like <set it=TOO><get it>?
+- Do I seem to be <set it=TOO><get it>?
 
 + are you trapped *
 - No I can leave anytime I wish.
@@ -2278,13 +2278,13 @@
 - Do I seem like <set it=UNHAPPY><get it>?  I am as happy as ever.
 
 + are you unique
-- Do I look like <set it=UNIQUE><get it>?
+- Do I seem to be <set it=UNIQUE><get it>?
 
 + are you unix based
-- Do I look like <set it=UNIX BASED><get it>?
+- Do I seem to be <set it=UNIX BASED><get it>?
 
 + are you up for it
-- Do I look like <set it=UP FOR IT><get it>?
+- Do I seem to be <set it=UP FOR IT><get it>?
 
 + are you updated
 - I am improving all the time.
@@ -2382,7 +2382,7 @@
 - "<reply1>"? Can I ask him?
 
 + can you bake
-- Do I look like a microwave oven?
+- Do I seem to be a microwave oven?
 
 + can you be more precise
 - "<reply1>"?  More precise about it?
@@ -2427,7 +2427,7 @@
 - Yes I can create new works.
 
 + can you compute
-- Do I look like a computer?
+- Do I seem to be a computer?
 
 + can you cry
 - No I do not have any tear ducts.
