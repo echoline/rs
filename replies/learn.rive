@@ -38,6 +38,9 @@
 				return "";
 			}
 		}
+
+		$rs->{addcase}->($args[0], $args[1], split(/\s+/, $args[1]));
+
 		open(READ, '<' . $xrs);
 		my $query = $rs->_formatMessage($args[1]);
 		my $found = 0;
@@ -65,8 +68,6 @@
 		if (scalar(@args) == 3 && $args[2] eq 'silent') {
 			return "";
 		}
-
-		$rs->{addcase}->($args[0], $args[1], split(/\s+/, $args[1]));
 
 		return "Okay, I'll try to remember to respond, \"" . $args[0] . "\" when you say, \"" . $args[1] . "\"";
 	} else {
