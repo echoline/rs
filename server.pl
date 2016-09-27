@@ -146,7 +146,7 @@ print "Initialization complete.\n";
 
 $SIG{'PIPE'} = sub { print "sigpipe\n"; };
 
-sub addcase {
+$rs->{addcase} = sub {
 	my $new_case = {
 		isaid	=> $_[0],
 		said	=> $_[1],
@@ -158,7 +158,7 @@ sub addcase {
 		print $fh Storable::freeze(\@cases);
 		close($fh);
 	}
-}
+};
 
 # Start.
 while (1) {
@@ -264,7 +264,7 @@ while (1) {
 
 			if ($treply !~ /random\ pickup\ line/) {
 #				if ($solution->{_sim} < 0.5) {
-				addcase($treply, $said, @words);
+				$rs->{addcase}->($treply, $said, @words);
 #				}
 				$reply .= $treply . ' ';
 			} else {

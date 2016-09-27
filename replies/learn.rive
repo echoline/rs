@@ -33,6 +33,11 @@
 	my ($rs, $xrs, @args) = @_;
 	@args = split(':', join(' ', @args));
 	if (scalar(@args) >= 2) {
+		for (my $i = 0; $i < scalar(@args); $i++) {
+			if ($args[$i] =~ /^\s*$/) {
+				return "";
+			}
+		}
 		open(READ, '<' . $xrs);
 		my $query = $rs->_formatMessage($args[1]);
 		my $found = 0;
@@ -61,7 +66,7 @@
 			return "";
 		}
 
-		addcase($args[0], $args[1], split(/\s+/, $args[1]));
+		$rs->{addcase}->($args[0], $args[1], split(/\s+/, $args[1]));
 
 		return "Okay, I'll try to remember to respond, \"" . $args[0] . "\" when you say, \"" . $args[1] . "\"";
 	} else {
