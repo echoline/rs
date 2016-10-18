@@ -1,13 +1,13 @@
 // Gxenerala aro da respondoj per babili.
 
-+ *
-- Mi ne certas, ke mi komprenas vin tute.
-- Bonvolu, kontinui.
-- Estas interesa. Bonvolu kontinui.
-- Diru min pli pri cxi tiu.
-- Cxu vi paroli pri cxi tio ofte?
+//+ *
+//- Mi ne certas, ke mi komprenas vin tute.
+//- Bonvolu, kontinui.
+//- Estas interesa. Bonvolu kontinui.
+//- Diru min pli pri cxi tiu.
+//- Cxu vi paroli pri cxi tio ofte?
 
-+ (pardonpet|ekzkuz|apologi) [*]
++ (pardonpetas|ekskuzu|apologioj) [*]
 - Bonvolu, ne apologigxas.
 - Apologioj ne necesas.
 - Mi diris al vi, ke apologioj ne nepras.
@@ -44,9 +44,9 @@
 + cxu vi (forgesas|forgesis) *
 - Kial vi demandas?
 - Cxu vi certas, ke vi diris al mi?
-- Cxu gxi genus vin, se mi forgesus <star>?
-- Kial mi memoras <star> nun?
-- Diru al min pli pri <star>.
+- Cxu gxi genus vin, se mi forgesus <star2>?
+- Kial mi memoras <star2> nun?
+- Diru al min pli pri <star2>.
 
 + [*] se *
 - Cxu vi kredas, ke versxajne <star>?
@@ -77,9 +77,8 @@
 + (saluton|salutojn|sal|halo|bonan matenon|bonan tagon|bonan vesperon)
 - Saluton.{weight=3}
 - Saluton!
-- Bonan tagon.
 
-+ [*] komput [*]
++ [*] (komputilo|komputiloj|komputila|komputilaj) [*]
 - Cxu vi zorgas pri komputiloj?
 - Kial vi mencias komputilojn?
 - Kiel vi kredas masxinojn rilatas al via problemo?
@@ -115,33 +114,33 @@
 - Cxu vi certas, ke ili estas <star2>?
 
 + [*] (via|vian) *
-- Why are you concerned over my <star>?
-- What about your own <star>?
-- Are you worried about someone else's <star>?
-- Really, my <star>?
-- What makes you think of my <star>?
-- Do you want my <star>?
+- Kial vi koncernas pri <star> <star2>?
+- Kion koncerne via propra <star2>?
+- Cxu vi zorgas pri <star2> de iu alia?
+- Cxu vere, <star> <star2>?
+- Kial vi pensas pri <star> <star2>?
+- Cxu vi volas <star> <star2>?
 
-+ was i *
-- What if you were <star>?
-- Do you think you were <star>?
-- Were you <star>?
-- What would it mean if you were <star>?
-- What does '<star>' suggest to you?
++ cxu mi estis *
+- Kio se vi estis <star>?
+- Cxu vi kredas, ke vi estis <star>?
+- Cxu vi estis <star>?
+- Kion signifus, se vi estis <star>?
+- Kio '<star>' sugestias al vi?
 
-+ i was *
-- Were you really?
-- Why do you tell me you were <star> now?
-- Perhaps I already know you were <star>.
++ mi estis *
+- Cxu vere, vi estis?
+- Kial vi nun diras al mi, ke vi estis <star>?
+- Eble mi jam scias, ke vi estis <star>.
 
-+ [*] was you *
-- Would you like to believe I was <star>?
-- What suggests that I was <star>?
-- What do you think?
-- Perhaps I was <star>.
-- What if I had been <star>?
++ [*] estis vi *
+- Cxu vi sxatus kredi, ke mi estis <star>?
+- Kio sugestias, ke mi estis <star>?
+- Kion vi kredas?
+- Eble mi estis <star>.
+- Kio se mi estis <star>?
 
-+ i (desire|want|need) *
++ mi (deziras|volas|bezonas) *
 - What would it mean to you if you got <star2>?
 - Why do you want <star2>?
 - Suppose you got <star2> soon.
