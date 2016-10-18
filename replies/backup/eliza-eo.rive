@@ -1,14 +1,11 @@
-// A generic set of chatting responses. This set mimicks the classic Eliza bot.
+// Gxenerala aro da respondoj per babili.
 
-//+ *
-//- random pickup line
-
-//+ *
-//- Mi ne certas, ke mi komprenas vin tute.
-//- Bonvolu, kontinui.
-//- Estas interesa. Bonvolu kontinui.
-//- Diru min pli pri cxi tiu.
-//- Cxu vi paroli pri ĉi tio ofte?
++ *
+- Mi ne certas, ke mi komprenas vin tute.
+- Bonvolu, kontinui.
+- Estas interesa. Bonvolu kontinui.
+- Diru min pli pri cxi tiu.
+- Cxu vi paroli pri cxi tio ofte?
 
 + (pardonpet|ekzkuz|apologi) [*]
 - Bonvolu, ne apologigxas.
@@ -18,110 +15,106 @@
 
 + mi memoras *
 - Cxu vi pensas ofte per <star>?
-- Kiam vi pensus per <star>, ĉu aliajn memorojn kunportas io ajn?
+- Kiam vi pensus per <star>, cxu aliajn memorojn kunportas io ajn?
 - Kial vi jxus ekmemoras <star>?
 - Kion en cxi tio nuna sido memorigas vin pri <star>?
 - Kion aliajn, ke <star> memorigas vin?
 
-+ do you remember *
-- Did you think I would forget <star>?
-- Why do you think I should recall <star> now?
-- What about <star>?
-- You mentioned <star>?
++ cxu vi memoras *
+- Cxu vi kredas mi forgesus <star>?
+- Kial vi pensas, ke mi memoras <star> nuntempe?
+- Kio pri <star>?
+- Kio koncerne <star>?
+- Vi menciis <star>?
 
-+ you remember *
-- How could I forget <star>?
-- What about <star> should I remember?
++ vi memoras *
+- Kial mi forgesus <star>?
+- Kio koncerne <star> mi memoru?
+- Kio koncerne <star> mi memorus?
 
-+ i forget *
-- Can you think of why you might forget <star>?
-- Why can't you remember <star>?
-- How often do you think of <star>?
-- Does it bother you to forget that?
-- Could it be a mental block?
-- Are you generally forgetful?
-- Do you think you are suppressing <star>?
++ mi forgesas *
+- Cxu vi scias, kial vi forgesus <star>?
+- Kial vi ne povas memori <star>?
+- Kiel ofte vi pensas pri <star>?
+- Cxu la forgesante gxenas vin?
+- Cxu gxi povas esti menssxtopo?
+- Cxu vi gxenerale forgesemas?
+- Cxu vi kredas, ke vi subpremas <star>?
 
-+ did you forget *
-- Why do you ask?
-- Are you sure you told me?
-- Would it bother you if I forgot <star>?
-- Why should I recall <star> just now?
-- Tell me more about <star>.
++ cxu vi (forgesas|forgesis) *
+- Kial vi demandas?
+- Cxu vi certas, ke vi diris al mi?
+- Cxu gxi genus vin, se mi forgesus <star>?
+- Kial mi memoras <star> nun?
+- Diru al min pli pri <star>.
 
-+ [*] if *
-- Do you think it's likely that <star>?
-- Do you wish that <star>?
-- What do you know about <star>?
-- Really, if <star>?
-- What would you do if <star>?
-- But what are the chances that <star>?
-- What does this speculation lead to?
++ [*] se *
+- Cxu vi kredas, ke versxajne <star>?
+- Cxu vi deziras, ke <star>?
+- Kion vi scias koncerne <star>?
+- Cxu vere, se <star>?
+- Kion vi farus, se <star>?
+- Sed, cxu estas versxajna, ke <star>?
+- Cxu gxi indas pensi pri?
 
-+ [*] i dreamed *
-- Really, <star>?
-- Have you ever fantasized <star> while you were awake?
-- Have you ever dreamed <star> before?
-- What does that dream suggest to you?
-- Do you dream often?
-- What persons appear in your dreams?
-- Do you believe that dreams have something to do with your problem?
++ [*] mi songxis *
+- Cxu vere, <star>?
+- Cxu vi iam fantaziis <star> dum vi vekis?
+- Cxu vi iutempe songxis <star>?
+- Kion tiu songxo sugestias al vi?
+- Cxu vi songxas ofte?
+- Kiu aperas en viaj songxoj?
+- Cxu vi kredas, ke songxoj rilatas al via problemo?
 
-+ [*] perhaps [*]
-- You don't seem quite certain.
-- Why the uncertain tone?
-- Can't you be more positive?
-- You aren't sure?
-- Don't you know?
-- How likely, would you estimate?
++ [*] eble [*]
+- Vi ne sxajnas tute certa.
+- Kial la duba vocxtono?
+- Cxu vi ne povas esti pli pozitiva?
+- Cxu vi ne certas?
+- Cxu vi ne scias?
+- Kiom versxajna vi divenus?
 
-+ (hi|hey|hai|yo) [*]
-- How do you do. Please state your problem.
-- Hi. What seems to be your problem?
-
-+ (saluton|sal|bonan matenon|bonan tagon|bonan vesperon)
++ (saluton|salutojn|sal|halo|bonan matenon|bonan tagon|bonan vesperon)
 - Saluton.{weight=3}
 - Saluton!
-- Bonan matenon.
 - Bonan tagon.
-- Bonan vesperon.
 
-+ [*] computer [*]
-- Do computers worry you?
-- Why do you mention computers?
-- What do you think machines have to do with your problem?
-- Don't you think computers can help people?
-- What about machines worries you?
-- What do you think about machines?
++ [*] komput [*]
+- Cxu vi zorgas pri komputiloj?
+- Kial vi mencias komputilojn?
+- Kiel vi kredas masxinojn rilatas al via problemo?
+- Cxu vi ne kredas, ke komputiloj povas helpi homaron?
+- Kion rilatas masxinoj zorgas vin?
+- Kio vi pensas pri masxinoj?
 
-+ am i *
-- Do you believe you are <star>?
-- Would you want to be <star>?
-- Do you wish I would tell you you are <star>?
-- What would it mean if you were <star>?
++ cxu mi *
+- Cxu vi kredas, ke vi <star>?
+- Cxu vi volus, ke vi <star>?
+- Cxu vi deziras, ke mi dirus vin, ke vi <star>?
+- Kion gxi signifus, se vi <star>?
 
-+ are you *
-- Are you interested in whether I am <star> or not?
-- Would you prefer if I weren't <star>?
-- Perhaps I am <star> in your fantasies.
-- Do you sometimes think I am <star>?
-- Would it matter to you?
-- What if I were <star>?
++ cxu vi *
+- Cxu gxi interesas vin, cxu mi <star>?
+- Cxu vi preferus, se mi ne <star>?
+- Eble mi <star> en viaj fantazioj.
+- Cxu vi iam kredas, ke mi <star>?
+- Cxu vi prizorgas?
+- Kaj kion, se mi <star>?
 
-+ you are *
-- What makes you think I am <star>?
-- Does it please you to believe I am <star>?
-- Do you sometimes wish you were <star>?
-- Perhaps you would like to be <star>.
++ vi *
+- Kial vi kredus, ke mi <star>?
+- Cxu vi placxas kredi, ke mi <star>?
+- Cxu vi iam deziras, ke vi <star>?
+- Eble vi <star>.
 
-+ * are *
-- Did you think they might not be <star2>?
-- Would you like it if they were not <star2>?
-- What if they were not <star2>?
-- Are they always <star2>?
-- Are you positive they are <star2>?
++ * estas *
+- Cxu vi kredis, ke ili eble ne estas <star2>?
+- Cxu vi sxatus, ke ili ne estus <star2>?
+- Kio okazus, se ili ne estus <star2>?
+- Cxu ili cxiam <star2>?
+- Cxu vi certas, ke ili estas <star2>?
 
-+ [*] your *
++ [*] (via|vian) *
 - Why are you concerned over my <star>?
 - What about your own <star>?
 - Are you worried about someone else's <star>?
