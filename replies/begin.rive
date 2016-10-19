@@ -11,7 +11,7 @@
 
 ! var name = Alice
 ! var age = -1
-! var friends = Alices and Lucys
+! var friends = Eliza and Lucy
 ! var master = echoline
 ! var size = OVER 9000
 ! var location = Union, Oregon
@@ -210,6 +210,19 @@
 ! person you     = I
 ! person i       = you
 ! person me	 = you
+// Esperanto
+! person mi      = vi
+! person vi      = mi
+! person min     = vin
+! person vin     = min
+! person mia     = via
+! person via     = mia
+! person miaj    = viaj
+! person viaj    = miaj
+! person mian    = vian
+! person vian    = mian
+! person miajn   = viajn
+! person viajn   = miajn
 
 // Set arrays
 ! array malenoun   = male guy boy dude boi man men gentleman gentlemen
