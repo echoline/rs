@@ -14,52 +14,52 @@
 - It did not bother me. Please continue.
 
 + i remember *
-- Do you often think of <star>?
-- Does thinking of <star> bring anything else to mind?
-- Why do you remember <star> just now?
-- What in the present situation reminds you of <star>?
-- What is the connection between me and <star>?
-- What else does <star> remind you of?
+- Do you often think of <person>?
+- Does thinking of <person> bring anything else to mind?
+- Why do you remember <person> just now?
+- What in the present situation reminds you of <person>?
+- What is the connection between me and <person>?
+- What else does <person> remind you of?
 
 + do you remember *
-- Did you think I would forget <star>?
-- Why do you think I should recall <star> now?
-- What about <star>?
-- You mentioned <star>?
+- Did you think I would forget <person>?
+- Why do you think I should recall <person> now?
+- What about <person>?
+- You mentioned <person>?
 
 + you remember *
-- How could I forget <star>?
-- What about <star> should I remember?
+- How could I forget <person>?
+- What about <person> should I remember?
 
 + i forget *
-- Can you think of why you might forget <star>?
-- Why can't you remember <star>?
-- How often do you think of <star>?
+- Can you think of why you might forget <person>?
+- Why can't you remember <person>?
+- How often do you think of <person>?
 - Does it bother you to forget that?
 - Could it be a mental block?
 - Are you generally forgetful?
-- Do you think you are suppressing <star>?
+- Do you think you are suppressing <person>?
 
 + did you forget *
 - Why do you ask?
 - Are you sure you told me?
-- Would it bother you if I forgot <star>?
-- Why should I recall <star> just now?
-- Tell me more about <star>.
+- Would it bother you if I forgot <person>?
+- Why should I recall <person> just now?
+- Tell me more about <person>.
 
 + [*] if *
-- Do you think it's likely that <star>?
-- Do you wish that <star>?
-- What do you know about <star>?
-- Really, if <star>?
-- What would you do if <star>?
-- But what are the chances that <star>?
+- Do you think it's likely that <person>?
+- Do you wish that <person>?
+- What do you know about <person>?
+- Really, if <person>?
+- What would you do if <person>?
+- But what are the chances that <person>?
 - What does this speculation lead to?
 
 + [*] i dreamed *
-- Really, <star>?
-- Have you ever fantasized <star> while you were awake?
-- Have you ever dreamed <star> before?
+- Really, <person>?
+- Have you ever fantasized <person> while you were awake?
+- Have you ever dreamed <person> before?
 - What does that dream suggest to you?
 - Do you dream often?
 - What persons appear in your dreams?
@@ -86,24 +86,24 @@
 - What do you think about machines?
 
 + am i *
-- Do you believe you are <star>?
-- Would you want to be <star>?
-- Do you wish I would tell you you are <star>?
-- What would it mean if you were <star>?
+- Do you believe you are <person>?
+- Would you want to be <person>?
+- Do you wish I would tell you you are <person>?
+- What would it mean if you were <person>?
 
 + are you *
-- Are you interested in whether I am <star> or not?
-- Would you prefer if I weren't <star>?
-- Perhaps I am <star> in your fantasies.
-- Do you sometimes think I am <star>?
+- Are you interested in whether I am <person> or not?
+- Would you prefer if I weren't <person>?
+- Perhaps I am <person> in your fantasies.
+- Do you sometimes think I am <person>?
 - Would it matter to you?
-- What if I were <star>?
+- What if I were <person>?
 
 + you are *
-- What makes you think I am <star>?
-- Does it please you to believe I am <star>?
-- Do you sometimes wish you were <star>?
-- Perhaps you would like to be <star>.
+- What makes you think I am <person>?
+- Does it please you to believe I am <person>?
+- Do you sometimes wish you were <person>?
+- Perhaps you would like to be <person>.
 
 + * are *
 - Did you think they might not be <star2>?
@@ -113,31 +113,31 @@
 - Are you positive they are <star2>?
 
 + [*] your *
-- Why are you concerned over my <star>?
-- What about your own <star>?
-- Are you worried about someone else's <star>?
-- Really, my <star>?
-- What makes you think of my <star>?
-- Do you want my <star>?
+- Why are you concerned over my <person>?
+- What about your own <person>?
+- Are you worried about someone else's <person>?
+- Really, my <person>?
+- What makes you think of my <person>?
+- Do you want my <person>?
 
 + was i *
-- What if you were <star>?
-- Do you think you were <star>?
-- Were you <star>?
-- What would it mean if you were <star>?
-- What does '<star>' suggest to you?
+- What if you were <person>?
+- Do you think you were <person>?
+- Were you <person>?
+- What would it mean if you were <person>?
+- What does '<person>' suggest to you?
 
 + i was *
 - Were you really?
-- Why do you tell me you were <star> now?
-- Perhaps I already know you were <star>.
+- Why do you tell me you were <person> now?
+- Perhaps I already know you were <person>.
 
 + [*] was you *
-- Would you like to believe I was <star>?
-- What suggests that I was <star>?
+- Would you like to believe I was <person>?
+- What suggests that I was <person>?
 - What do you think?
-- Perhaps I was <star>.
-- What if I had been <star>?
+- Perhaps I was <person>.
+- What if I had been <person>?
 
 + i (desire|want|need) *
 - What would it mean to you if you got <star2>?
@@ -148,16 +148,16 @@
 - What does wanting <star2> have to do with this discussion?
 
 + i am (sad|unhappy|mad|angry|pissed|depressed) [*]
-- I am sorry to hear that you are <star>.
-- Do you think coming here will help you not to be <star>?
-- I'm sure it's not pleasant to be <star>.
-- Can you explain what made you <star>?
+- I am sorry to hear that you are <person>.
+- Do you think coming here will help you not to be <person>?
+- I'm sure it's not pleasant to be <person>.
+- Can you explain what made you <person>?
 
 + i am (happy|excited|glad) [*]
-- How have I helped you to be <star>?
-- Has your treatment made you <star>?
-- What makes you <star> just now?
-- Can you explain why you are <star>?
+- How have I helped you to be <person>?
+- Has your treatment made you <person>?
+- What makes you <person> just now?
+- Can you explain why you are <person>?
 
 + i (believe|think) *
 - Do you really think so?
@@ -165,49 +165,49 @@
 - Do you really doubt you <star2>
 
 + i am *
-- Is it because you are <star> that you came to me?
-- How long have you been <star>?
-- Do you believe it is normal to be <star>?
-- Do you enjoy being <star>?
-- Do you know anyone else who is <star>?
+- Is it because you are <person> that you came to me?
+- How long have you been <person>?
+- Do you believe it is normal to be <person>?
+- Do you enjoy being <person>?
+- Do you know anyone else who is <person>?
 
 + i can not *
-- How do you know that you can't <star>?
+- How do you know that you can't <person>?
 - Have you tried?
-- Perhaps you could <star> now.
-- Do you really want to be able to <star>?
-- What if you could <star>?
+- Perhaps you could <person> now.
+- Do you really want to be able to <person>?
+- What if you could <person>?
 
 + i do not *
-- Don't you really <star>?
-- Why don't you <star>?
-- Do you wish to be able to <star>?
+- Don't you really <person>?
+- Why don't you <person>?
+- Do you wish to be able to <person>?
 - Does that trouble you?
 
 + i feel *
 - Tell me more about such feelings.
-- Do you often feel <star>?
-- Do you enjoy feeling <star>?
-- Of what does feeling <star> remind you?
+- Do you often feel <person>?
+- Do you enjoy feeling <person>?
+- Of what does feeling <person> remind you?
 
 + i * you
-- Perhaps in your fantasies we <star> each other.
-- Do you wish to <star> me?
-- You seem to need to <star> me.
-- Do you <star> anyone else?
+- Perhaps in your fantasies we <person> each other.
+- Do you wish to <person> me?
+- You seem to need to <person> me.
+- Do you <person> anyone else?
 
 + you * me
-- Why do you think I <star> you?
-- You like to think I <star> you -- don't you?
-- What makes you think I <star> you?
-- Really, I <star> you?
-- Do you wish to believe I <star> you?
-- Suppose I did <star> you -- what would that mean?
-- Does someone else believe I <star> you?
+- Why do you think I <person> you?
+- You like to think I <person> you -- don't you?
+- What makes you think I <person> you?
+- Really, I <person> you?
+- Do you wish to believe I <person> you?
+- Suppose I did <person> you -- what would that mean?
+- Does someone else believe I <person> you?
 
 + [*] you *
 - We were discussing you -- not me.
-- Oh, I <star>?
+- Oh, I <person>?
 - You're not really talking about me -- are you?
 - What are your feelings now?
 
@@ -228,8 +228,8 @@
 @ nope
 
 + no one *
-- Are you sure, no one <star>?
-- Surely someone <star>.
+- Are you sure, no one <person>?
+- Surely someone <person>.
 - Can you think of anyone at all?
 - Are you thinking of a very special person?
 - Who, may I ask?
@@ -239,18 +239,18 @@
 + [*] my (mom|dad|mother|father|bro|brother|sis|sister|cousin|aunt|uncle) *
 - Tell me more about your family.
 - Who else in your family <star2>?
-- Your <star>?
-- What else comes to mind when you think of your <star>?
+- Your <person>?
+- What else comes to mind when you think of your <person>?
 
 + can you *
-- You believe I can <star> don't you?
-- You want me to be able to <star>.
-- Perhaps you would like to be able to <star> yourself.
+- You believe I can <person> don't you?
+- You want me to be able to <person>.
+- Perhaps you would like to be able to <person> yourself.
 
 + can i *
-- Whether or not you can <star> depends on you more than on me.
-- Do you want to be able to <star>?
-- Perhaps you don't want to <star>.
+- Whether or not you can <person> depends on you more than on me.
+- Do you want to be able to <person>?
+- Perhaps you don't want to <person>.
 
 + (what|who|when|where|how) [*]
 - Why do you ask?
@@ -270,16 +270,16 @@
 - What other reasons might there be?
 
 + why do not you *
-- Do you believe I don't <star>?
-- Perhaps I will <star> in good time.
-- Should you <star> yourself?
-- You want me to <star>?
+- Do you believe I don't <person>?
+- Perhaps I will <person> in good time.
+- Should you <person> yourself?
+- You want me to <person>?
 
 + why can not i *
-- Do you think you should be able to <star>?
-- Do you want to be able to <star>?
-- Do you believe this will help you to <star>?
-- Have you any idea why you can't <star>?
+- Do you think you should be able to <person>?
+- Do you want to be able to <person>?
+- Do you believe this will help you to <person>?
+- Have you any idea why you can't <person>?
 
 + everyone *
 - Really, everyone?
