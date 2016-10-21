@@ -107,11 +107,11 @@
 - Eble vi <person>.
 
 + * estas *
-- Cxu vi kredis, ke ili eble ne estas <person2>?
-- Cxu vi sxatus, ke ili ne estus <person2>?
-- Kio okazus, se ili ne estus <person2>?
-- Cxu ili cxiam <person2>?
-- Cxu vi certas, ke ili estas <person2>?
+- Cxu vi kredis, ke ili eble ne estas? 
+- Cxu vi sxatus, ke ili ne estas?
+- Kio okazus, se ili ne estas?
+- Cxu ili cxiam estas?
+- Cxu vi certas, ke ili estas?
 
 + [*] (via|vian) *
 - Kial vi koncernas pri <person> <person2>?
@@ -126,7 +126,7 @@
 - Cxu vi kredas, ke vi estis <person>?
 - Cxu vi estis <person>?
 - Kion signifus, se vi estis <person>?
-- Kio '<star>' sugestias al vi?
+- Kio '<person>' sugestias al vi?
 
 + mi estis *
 - Cxu vere, vi estis?
@@ -149,66 +149,66 @@
 - Kiel rilatas voli <person2> al cxi tiu diskutado?
 
 + i am (sad|unhappy|mad|angry|pissed|depressed) [*]
-- I am sorry to hear that you are <star>.
-- Do you think coming here will help you not to be <star>?
-- I'm sure it's not pleasant to be <star>.
-- Can you explain what made you <star>?
+- I am sorry to hear that you are <person>.
+- Do you think coming here will help you not to be <person>?
+- I'm sure it's not pleasant to be <person>.
+- Can you explain what made you <person>?
 
 + i am (happy|excited|glad) [*]
-- How have I helped you to be <star>?
-- Has your treatment made you <star>?
-- What makes you <star> just now?
-- Can you explain why you are <star>?
+- How have I helped you to be <person>?
+- Has your treatment made you <person>?
+- What makes you <person> just now?
+- Can you explain why you are <person>?
 
 + i (believe|think) *
 - Do you really think so?
-- But you are not sure you <star2>.
-- Do you really doubt you <star2>
+- But you are not sure you <person2>.
+- Do you really doubt you <person2>
 
 + i am *
-- Is it because you are <star> that you came to me?
-- How long have you been <star>?
-- Do you believe it is normal to be <star>?
-- Do you enjoy being <star>?
-- Do you know anyone else who is <star>?
+- Is it because you are <person> that you came to me?
+- How long have you been <person>?
+- Do you believe it is normal to be <person>?
+- Do you enjoy being <person>?
+- Do you know anyone else who is <person>?
 
 + i can not *
-- How do you know that you can't <star>?
+- How do you know that you can't <person>?
 - Have you tried?
-- Perhaps you could <star> now.
-- Do you really want to be able to <star>?
-- What if you could <star>?
+- Perhaps you could <person> now.
+- Do you really want to be able to <person>?
+- What if you could <person>?
 
 + i do not *
-- Don't you really <star>?
-- Why don't you <star>?
-- Do you wish to be able to <star>?
+- Don't you really <person>?
+- Why don't you <person>?
+- Do you wish to be able to <person>?
 - Does that trouble you?
 
 + i feel *
 - Tell me more about such feelings.
-- Do you often feel <star>?
-- Do you enjoy feeling <star>?
-- Of what does feeling <star> remind you?
+- Do you often feel <person>?
+- Do you enjoy feeling <person>?
+- Of what does feeling <person> remind you?
 
 + i * you
-- Perhaps in your fantasies we <star> each other.
-- Do you wish to <star> me?
-- You seem to need to <star> me.
-- Do you <star> anyone else?
+- Perhaps in your fantasies we <person> each other.
+- Do you wish to <person> me?
+- You seem to need to <person> me.
+- Do you <person> anyone else?
 
 + you * me
-- Why do you think I <star> you?
-- You like to think I <star> you -- don't you?
-- What makes you think I <star> you?
-- Really, I <star> you?
-- Do you wish to believe I <star> you?
-- Suppose I did <star> you -- what would that mean?
-- Does someone else believe I <star> you?
+- Why do you think I <person> you?
+- You like to think I <person> you -- don't you?
+- What makes you think I <person> you?
+- Really, I <person> you?
+- Do you wish to believe I <person> you?
+- Suppose I did <person> you -- what would that mean?
+- Does someone else believe I <person> you?
 
 + [*] you *
 - We were discussing you -- not me.
-- Oh, I <star>?
+- Oh, I <person>?
 - You're not really talking about me -- are you?
 - What are your feelings now?
 
@@ -229,8 +229,8 @@
 @ nope
 
 + no one *
-- Are you sure, no one <star>?
-- Surely someone <star>.
+- Are you sure, no one <person>?
+- Surely someone <person>.
 - Can you think of anyone at all?
 - Are you thinking of a very special person?
 - Who, may I ask?
@@ -239,19 +239,19 @@
 
 + [*] my (mom|dad|mother|father|bro|brother|sis|sister|cousin|aunt|uncle) *
 - Tell me more about your family.
-- Who else in your family <star2>?
-- Your <star>?
-- What else comes to mind when you think of your <star>?
+- Who else in your family <person2>?
+- Your <person>?
+- What else comes to mind when you think of your <person>?
 
 + can you *
-- You believe I can <star> don't you?
-- You want me to be able to <star>.
-- Perhaps you would like to be able to <star> yourself.
+- You believe I can <person> don't you?
+- You want me to be able to <person>.
+- Perhaps you would like to be able to <person> yourself.
 
 + can i *
-- Whether or not you can <star> depends on you more than on me.
-- Do you want to be able to <star>?
-- Perhaps you don't want to <star>.
+- Whether or not you can <person> depends on you more than on me.
+- Do you want to be able to <person>?
+- Perhaps you don't want to <person>.
 
 + (what|who|when|where|how) [*]
 - Why do you ask?
@@ -271,16 +271,16 @@
 - What other reasons might there be?
 
 + why do not you *
-- Do you believe I don't <star>?
-- Perhaps I will <star> in good time.
-- Should you <star> yourself?
-- You want me to <star>?
+- Do you believe I don't <person>?
+- Perhaps I will <person> in good time.
+- Should you <person> yourself?
+- You want me to <person>?
 
 + why can not i *
-- Do you think you should be able to <star>?
-- Do you want to be able to <star>?
-- Do you believe this will help you to <star>?
-- Have you any idea why you can't <star>?
+- Do you think you should be able to <person>?
+- Do you want to be able to <person>?
+- Do you believe this will help you to <person>?
+- Have you any idea why you can't <person>?
 
 + everyone *
 - Really, everyone?
