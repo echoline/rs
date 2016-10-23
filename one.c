@@ -7,7 +7,7 @@
 #include <sys/un.h>
 #include <netdb.h>
 
-#define MY_SOCKET "/tmp/alice"
+char *MY_SOCKET = NULL;
 
 char *alice(char *msg, char *source) {
 	// this function relies on alicesocket.py
@@ -53,22 +53,33 @@ int main(int argc, char **argv)
 {
 	char *ptr;
 	char *user = getenv("USER");
-	int arg = 1;
+	int arg;
 
-	if (argc > 1) {
-		if (!strcmp(argv[1], "-h")) {
-			printf ("%s [-h] [-u YOURNAME] \"your message\"\n",
+	for (arg = 1; arg < argc; arg++) {
+		if (!strcmp(argv[arg], "-h")) {
+			printf ("%s [-h] [-s SOCKET] [-u YOURNAME] \"your message\"\n",
 				argv[0]);
 			return 0;
 		}
-		if ((argc > 3) && !strcmp(argv[1], "-u")) {
-			user = strdup(argv[2]);
-			arg = 3;
+		if (!strcmp(argv[arg], "-u") && (++arg < argc)) {
+			user = strdup(argv[arg]);
+		} else if (!strcmp(argv[arg], "-s") && (++arg < argc)) {
+			MY_SOCKET = strdup(argv[arg]);
+		} else {
+			ptr = argv[arg];
 		}
-		alice (argv[arg], "");
-		ptr = alice(argv[arg], user);
+	}
+
+	if (argc > 1) {
+		if (MY_SOCKET == NULL) {
+			MY_SOCKET = strdup("/tmp/alice");
+		}
+
+		alice (ptr, "");
+		ptr = alice(ptr, user);
 		printf ("%s\n", ptr);
 	}
+
 	return 0;
 }
 
