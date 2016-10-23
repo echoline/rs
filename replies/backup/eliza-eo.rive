@@ -148,121 +148,118 @@
 - Kio signifas ricevi <person2> al vi?
 - Kiel rilatas voli <person2> al cxi tiu diskutado?
 
-+ i am (sad|unhappy|mad|angry|pissed|depressed) [*]
-- I am sorry to hear that you are <person>.
-- Do you think coming here will help you not to be <person>?
-- I'm sure it's not pleasant to be <person>.
-- Can you explain what made you <person>?
++ mi estas (malgxoja|cxagrena|kolera) [*]
+- Estas bedauxrinde, ke vi estas <star>.
+- Cxu vi kredas, ke mi povas helpi vin ne esti <star>?
+- Certe, ne plezuras esti <star>.
+- Cxu vi povas ekspliki, kial vi estas <person>?
 
-+ i am (happy|excited|glad) [*]
-- How have I helped you to be <person>?
-- Has your treatment made you <person>?
-- What makes you <person> just now?
-- Can you explain why you are <person>?
++ mi estas (gxoja|felicxa) [*]
+- Kiel mi helpis vin esti <person>?
+- Cxu via kuracado faris vin esti <person>?
+- Kio faras vin esti <person> nuntempe?
+- Cxu vi povas ekspliki, kiel vi estas <person>?
 
-+ i (believe|think) *
-- Do you really think so?
-- But you are not sure you <person2>.
-- Do you really doubt you <person2>
++ Mi kredas *
+- Cxu vi vere kredas gxin?
+- Sed vi ne certas <person>.
+- Cxu vi fakte dubas <person>?
 
-+ i am *
-- Is it because you are <person> that you came to me?
-- How long have you been <person>?
-- Do you believe it is normal to be <person>?
-- Do you enjoy being <person>?
-- Do you know anyone else who is <person>?
++ mi estas *
+- Cxu estas cxar vi estas <person>, ke ni nun kunparolas?
+- Antauxe kiel longe vi estas <person>?
+- Cxu vi kredas, ke normas esti <person>?
+- Cxu vi gxuas esti <person>?
+- Cxu vi konas iun alian, kiu estas <person>?
 
-+ i can not *
-- How do you know that you can't <person>?
-- Have you tried?
-- Perhaps you could <person> now.
-- Do you really want to be able to <person>?
-- What if you could <person>?
++ mi ne povas *
+- Kiel vi scias, ke vi ne povas <person>?
+- Cxu vi provis?
+- Eble vi nun povas <person>.
+- Cxu vi vere volas povi <person>?
+- Kio se vi povus <person>?
 
-+ i do not *
-- Don't you really <person>?
-- Why don't you <person>?
-- Do you wish to be able to <person>?
-- Does that trouble you?
++ mi ne *
+- Cxu vere? Vi ne <person>?
+- Kial vi ne <person>?
+- Cxu vi deziras povi <person>?
+- Cxu vi zorgas pri tiu?
 
-+ i feel *
-- Tell me more about such feelings.
-- Do you often feel <person>?
-- Do you enjoy feeling <person>?
-- Of what does feeling <person> remind you?
++ mi sentas *
+- Diru al mi pli pri tiel sentoj.
+- Cxu vi ofte sentas <person>?
+- Cxu vi gxojas senti <person>?
+- Kio <person> memorigas vin?
 
-+ i * you
-- Perhaps in your fantasies we <person> each other.
-- Do you wish to <person> me?
-- You seem to need to <person> me.
-- Do you <person> anyone else?
++ mi * vin
+- Eble en viaj fantazioj ni <person> unu la alian.
+- Cxu vi deziras <person> min?
+- Vi sxajnas bezoni <person> min.
+- Cxu vi <person> iu ajn alian?
 
-+ you * me
-- Why do you think I <person> you?
-- You like to think I <person> you -- don't you?
-- What makes you think I <person> you?
-- Really, I <person> you?
-- Do you wish to believe I <person> you?
-- Suppose I did <person> you -- what would that mean?
-- Does someone else believe I <person> you?
++ vi * min
+- Kial vi kredas, ke mi <person> vin?
+- Vi sxatas kredi, ke mi <person> vin -- cxu ne?
+- Kio igas vi kredi mi <person> vin?
+- Cxu vere? mi <person> vin?
+- Cxu vi deziras kredi, ke mi <person> vin?
+- Se mi <person> vin -- kio tiu signifas?
+- Cxu iu alian kredas, ke mi <person> vin?
 
-+ [*] you *
-- We were discussing you -- not me.
-- Oh, I <person>?
-- You're not really talking about me -- are you?
-- What are your feelings now?
++ [*] vi *
+- ni diskutas vin -- ne min.
+- Ho, mi <person>?
+- Vi ne fakte parolas pri mi -- cxu ne?
+- Kio estas viaj sentoj nuntempe?
 
-+ [*] (yes|yeah|yep|yup) [*]
-- Please go on.
-- Please tell me more about this.
-- Why don't you tell me a little more about this.
-- I see.
-- I understand.
++ [*] jes [*]
+- Bonvolu kontinui.
+- Bonvolu diri al mi pli pri cxi tiu.
+- Kial vi ne diras al mi iomete pli pri cxi tiu?
+- Mi vidas.
+- Mi Komprenas.
 
-+ [*] (nope|nah) [*]
-- Are you saying no just to be negative?
-- Does this make you feel unhappy?
-- Why not?
-- Why 'no'?
++ [*] ne [*]
+- Cxu vi diras "ne" nur esti nea?
+- Cxu cxi tiu igas vin senti vin malgxoja?
+- Kial ne?
+- Kial 'ne'?
 
-+ no
-@ nope
++ neniu *
+- Cxu vi certas neniu <person>?
+- Certe iu <person>.
+- Cxu vi povas memorigi ecx iu ajn?
+- Cxu vi pensas pri iu tre aparta?
+- Kiu, se mi havas permeson demandi?
+- Vi pensas pri aparta homo, cxu ne?
+- Kiu vi kredas vi parolas pri?
 
-+ no one *
-- Are you sure, no one <person>?
-- Surely someone <person>.
-- Can you think of anyone at all?
-- Are you thinking of a very special person?
-- Who, may I ask?
-- You have a particular person in mind, don't you?
-- Who do you think you are talking about?
++ [*] mia (panjo|pacxjo|patrino|patro|frato|fratino|kuzo|kuzino|onklo|onklino) *
+- Diru al mi pli pri via familio.
+- Kiu alia el viaj familianoj?
+- Via <person>?
+- Kio alia vi memorigxas, kiam vi pensas pri via <person>?
 
-+ [*] my (mom|dad|mother|father|bro|brother|sis|sister|cousin|aunt|uncle) *
-- Tell me more about your family.
-- Who else in your family <person2>?
-- Your <person>?
-- What else comes to mind when you think of your <person>?
++ cxu vi povas *
+- Vi kredas mi povi <person>, cxu?
+- Vi volas me povi <person>.
+- Eble vi volas povi <person>.
 
-+ can you *
-- You believe I can <person> don't you?
-- You want me to be able to <person>.
-- Perhaps you would like to be able to <person> yourself.
++ cxu mi povas *
+- Cxu vi povas, aux ne povas <person>, dependas de vi pli ol de mi.
+- Cxu vi volas povi <person>?
+- Eble vi ne deziras <person>.
 
-+ can i *
-- Whether or not you can <person> depends on you more than on me.
-- Do you want to be able to <person>?
-- Perhaps you don't want to <person>.
-
-+ (what|who|when|where|how) [*]
-- Why do you ask?
-- Does that question interest you?
-- What is it you really want to know?
-- Are such questions much on your mind?
-- What answer would please you most?
-- What do you think?
-- What comes to mind when you ask that?
-- Have you asked such questions before?
-- Have you asked anyone else?
++ (kio|kiu|kiam|kie|kiel) [*]
+- Kial vi demandas?
+- Cxu tiu demando interesas vin?
+- Kio vi vere deziras scii?
+- Cxu tiel demandoj ofte koncernas vin?
+- Kiu respondoj plej placxus vin?
+- Kio vi pensas?
+- Kio vi memorigxas, kiam vi demandas tiu?
+- Cxu vi demandis tiel demandojn antauxe?
+- Cxu vi demandis iu ajn alian?
 
 + [*] because [*]
 - Is that the real reason?
