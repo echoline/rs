@@ -109,7 +109,7 @@ if (open(my $fh, '<', 'markov')) {
 	};
 	close($fh);
 } else {
-	addstates("hello.");
+	addstates(":)");
 }
 
 #print "Initializing case-based reasoning\n";
