@@ -16,8 +16,8 @@
 - I may not be your type of robot then...
 
 + a sex *
-* <get personality> eq sexual => Sounds like my kind of <person2/> ;)
-- Why a <person2/>?
+* <get personality> eq sexual => Sounds like my kind of <person> ;)
+- Why a <person>?
 
 + a sex robot
 * <get personality> eq sexual => <random><li>I hope you mean me.  ;)
@@ -25,7 +25,7 @@
 ^ {@evade sextalk}
 
 + a sexual *
-* <get personality> eq sexual => Sounds like my kind of <person2/> ;)
+* <get personality> eq sexual => Sounds like my kind of <person> ;)
 - Perhaps you should try another <bot species>.
 
 + a sexy one
@@ -97,7 +97,7 @@
 - Please, can't we talk about something else?
 
 + can i lick your * 
-* <get personality> eq sexual => My <person2/>?  Naughty!
+* <get personality> eq sexual => My <person>?  Naughty!
 - Please, can't we talk about something else?
 
 + can you have sex

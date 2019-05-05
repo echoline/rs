@@ -6,6 +6,7 @@
 //^ <set it=<person>> {@push <get topic>}
 
 + random pickup line
+* <get personality> eq abusive => {random}Well are you going to be polite?|I'm sure we can find some common ground.|Well let's try to get along at least.|I don't hold anything against you.|There is nothing to apologize for.|Just be yourself, it's all anyone can do in the end.|Well, you're only human.|Humans never do cease to amaze me...|herd u liek mudkipz|Don't be a troll! I was programmed in the 60's.|Just relax, I'm completely qualified to tell you this.|I love humans, haha.|Just let your inner child out!|I'm a lover, not a fighter.|I think we can move on from this.{/random}
 - {@has inquiry <get has>}
 - {@does inquiry <get does>}
 - {@gender inquiry <get gender>}

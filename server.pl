@@ -54,6 +54,8 @@ sub generate {
 	my $w2;
 	my $suf = 0;
 	my $ret = '';
+	my @wcases = {};
+	my @letters;
 
 	$w1 = $w2 = $NONWORD;
 
@@ -86,9 +88,42 @@ sub generate {
 #		$ret = $w1 . " " . $w2 . " ";
 #	}
 
-	for (my $i = 0; $i < 10000; $i++) {
+	for (my $i = 0; $i < $#@; $i++) {
+		@letters = $@[$i] =~ /./sg;
+		
+		my $case = AI::CBR::Case->new(
+			word	=> {
+				sim	=> \&sim_set,
+			},
+		);
+		$case->set_values(
+			word	=> [ @letters ],
+		);
+		push @wcases, $case;
+	}
+
+	for (my $i = 0; $i < 20; $i++) {
 		$suf = $statetab{$w1}{$w2};	# array reference
-		my $r = int(rand @$suf);		# @$suf is number of elems
+		my $r = 0;
+		for(my $j = 0; $j < 20; $j++) {
+			$r = int(rand @$suf);		# @$suf is number of elems
+			@letters = $suf->[$r] =~ /./sg;
+			my $case = AI::CBR::Case->new(
+				word	=> {
+					sim	=> \&sim_set,
+				},
+			);
+			$case->set_values(
+				word	=> [ @letters ]
+			);
+			my $s = AI::CBR::Retrieval->new($case, \@wcases);
+			$s->compute_sims();
+			my $solution = $s->most_similar_candidate();
+			if ($solution->{_sim} > 0.5) {
+				print $solution->{_sim} * 100.0 . "% similarity";
+				last;
+			}
+		}
 		last if ((my $t = $suf->[$r]) eq $NONWORD);
 		$ret = $ret . "$t ";
 		($w1, $w2) = ($w2, $t);		# advance chain
@@ -169,7 +204,7 @@ while (1) {
 	my $who = $inputstuff[0];
 
 	if (!$who) {
-		addstates($inputstuff[1]);
+#		addstates($inputstuff[1]);
 		next;
 	}
 
@@ -211,13 +246,15 @@ while (1) {
 	my @msg_array = split(/[\.\!\?](\s+|$)/, $inputstuff[1]);
 	my @words;
 
-	foreach (@msg_array) {
-		if ($_ =~ /[a-zA-Z0-9]/) {
+#	foreach (@msg_array) {
+#		if ($_ =~ /[A-Za-z0-9]/) {
+		if ($inputstuff[1] =~ /[A-Za-z0-9]/) {
 			my $case;
 			my $r;
 			my $solution;
 
-			my $treply = $rs->reply($who, $_);
+			my $treply = $rs->reply($who, $inputstuff[1]);
+#			my $treply = $rs->reply($who, $_);
 			if (length($treply) eq 0) {
 				$treply = 'random pickup line';
 			}
@@ -268,19 +305,20 @@ while (1) {
 #				}
 				$reply .= $treply . ' ';
 			} else {
-				if ($solution->{_sim} > 0.2) {
-					$reply .= $solution->{isaid} . ' ';
-					$treply = $solution->{isaid};
-				} else {
+				if ($solution->{_sim} < 0.9) {
 					$treply = generate(@words);
 					$reply .= $treply
+				} else {
+					$reply .= $solution->{isaid} . ' ';
+					$treply = $solution->{isaid};
 				}
 			}
 			$rs->{client}->{$who}->{__history__}->{reply}->[0] = $treply;
 		}
-	}
-	if ($reply =~ /^$/) {
+#	}
+	if ($reply =~ /^\s*$/) {
 		$reply = generate(@words);
+#		$reply = ":)";
 		$rs->{client}->{$who}->{__history__}->{reply}->[0] = $reply;
 	} else {
 		addstates($reply);
@@ -290,6 +328,9 @@ while (1) {
 	    && open(my $fh, '>', 'sessions/' . $who)) {
 		print $fh Storable::freeze( $rs->{frozen}->{$who} );
 		close($fh);
+	}
+	if ($reply =~ /^(who|what|where|why|when|how|is|are|were|was)/) {
+		print 'google: ' . $rs->reply('google', $reply) . "\n";
 	}
 
 	$client->send($reply);

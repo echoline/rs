@@ -1,26 +1,43 @@
 + xfind *
 - <call>xfind <star></call>
 
-+ search *
-- <call>xfind <star></call>
++ (what|where|who|why|when) (is|are|am|was) *
+- <call>xfind <star> <star2> <star3></call>
 
 > object xfind perl
 	my ($self, @args) = @_;
 	my $str = join("%20", @args);
+	my $received;
 
-	return "http://google.com/search?q=" . $str . "  ";
+	$received = `wget -O - -U "alice the cute robot" "https://google.com/search?q="$str | sed -e "s,<script.*/script>, ,g" -e "s,<style.*/style>, ,g" -e "s/<[^>]*>/ /g" -e "s/\&nbsp\;/ /g" -e "s,\&quot;,\\\",g" -e "s/\&\#39;/'/g" -e "s/\&middot;/\./g"`;
+
+#	return $received;
+	return $self->reply('google', $received);
+#	return "http://google.com/search?q=" . $str;
 < object
+
++ what day is it [today]
+- <call>today</call>
 
 > object today perl
-	use DateTime;
-	my ($self, @args) = @_;
-
-	return DateTime->now()->day_name;
+	my @date = split(" ", localtime());
+	my $day = $date[0];
+	my %days = ("Mon", "Monday", "Tue", "Tuesday", "Wed", "Wednesday", "Thur", "Thursday", "Fri", "Friday", "Sat", "Saturday", "Sun", "Sunday");
+	return $days{$day};
 < object
+
++ what time is it [right] [now]
+- <call>time</call>
 
 > object time perl
 	return localtime();
 < object
+
++ how is the weather
+- <call>weather <bot location></call>
+
++ how is the weather * (in|at) *
+- <call>weather <star3></call>
 
 > object weather perl
 	use Weather::Underground;
