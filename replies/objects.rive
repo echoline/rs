@@ -1,8 +1,8 @@
 + xfind *
 - <call>xfind <star></call>
 
-+ (what|where|who|why|when) (is|are|am|was) *
-- <call>xfind <star> <star2> <star3></call>
+//+ (what|where|who|why|when) (is|are|am|was) *
+//- <call>xfind <star> <star2> <star3></call>
 
 > object xfind perl
 	my ($self, @args) = @_;
@@ -33,38 +33,38 @@
 	return localtime();
 < object
 
-+ how is the weather
-- <call>weather <bot location></call>
+//+ how is the weather
+//- <call>weather <bot location></call>
 
-+ how is the weather * (in|at) *
-- <call>weather <star3></call>
+//+ how is the weather * (in|at) *
+//- <call>weather <star3></call>
 
-> object weather perl
-	use Weather::Underground;
+//> object weather perl
+//	use Weather::Underground;
 
-	my ($self, @args) = @_;
-	my $loc = join(' ', @args);
-	my $ret = '';
+//	my ($self, @args) = @_;
+//	my $loc = join(' ', @args);
+//	my $ret = '';
 
-	my $weather = Weather::Underground->new(place => $loc);
-	if (!$weather) {
-		return 'invalid location';
-	}
+//	my $weather = Weather::Underground->new(place => $loc);
+//	if (!$weather) {
+//		return 'invalid location';
+//	}
 
-	my $info = $weather->get_weather();
-	if (!$info) {
-		return 'invalid location';
-	}
+//	my $info = $weather->get_weather();
+//	if (!$info) {
+//		return 'invalid location';
+//	}
 
-	foreach (@$info) {
-		while ((my $key, my $value) = each %{$_}) {
-			if ($key =~ /(conditions|wind_milesperhour|humidity|wind_direction|temperature_fahrenheit)/) {
-				$ret = $ret . $key . ": " . $value . ", ";
-			}
-		}
-	}
+//	foreach (@$info) {
+//		while ((my $key, my $value) = each %{$_}) {
+//			if ($key =~ /(conditions|wind_milesperhour|humidity|wind_direction|temperature_fahrenheit)/) {
+//				$ret = $ret . $key . ": " . $value . ", ";
+//			}
+//		}
+//	}
 
-	$ret = substr $ret, 0, -2;
+//	$ret = substr $ret, 0, -2;
 
-	return $ret;
-< object
+//	return $ret;
+//< object

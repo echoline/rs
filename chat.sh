@@ -1,3 +1,3 @@
 #!/bin/sh
 
-while true; do echo -n \>\ ; read one; two=`./one $@ "$one"`; echo $two; done
+while true; do read one; two=`./one $@ "$one"`; echo $two; done
