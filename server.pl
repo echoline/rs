@@ -246,15 +246,15 @@ while (1) {
 	my @msg_array = split(/[\.\!\?](\s+|$)/, $inputstuff[1]);
 	my @words;
 
-#	foreach (@msg_array) {
-#		if ($_ =~ /[A-Za-z0-9]/) {
-		if ($inputstuff[1] =~ /[A-Za-z0-9]/) {
+	foreach (@msg_array) {
+		if ($_ =~ /[A-Za-z0-9]/) {
+#		if ($inputstuff[1] =~ /[A-Za-z0-9]/) {
 			my $case;
 			my $r;
 			my $solution;
 
-			my $treply = $rs->reply($who, $inputstuff[1]);
-#			my $treply = $rs->reply($who, $_);
+#			my $treply = $rs->reply($who, $inputstuff[1]);
+			my $treply = $rs->reply($who, $_);
 			if (length($treply) eq 0) {
 				$treply = 'random pickup line';
 			}
@@ -315,7 +315,7 @@ while (1) {
 			}
 			$rs->{client}->{$who}->{__history__}->{reply}->[0] = $treply;
 		}
-#	}
+	}
 	if ($reply =~ /^\s*$/) {
 		$reply = generate(@words);
 #		$reply = ":)";
