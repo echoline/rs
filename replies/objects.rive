@@ -1,18 +1,22 @@
-+ xfind *
-- <call>xfind <star></call>
+//+ xfind *
+//- <call>xfind <star></call>
 
-//+ (what|where|who|why|when) (is|are|am|was) *
-//- <call>xfind <star> <star2> <star3></call>
+//+ (what|where|who|why|when|how) (is|are|am|was) *
+//- <call>xfind <star3></call>
 
 > object xfind perl
 	my ($self, @args) = @_;
 	my $str = join("%20", @args);
 	my $received;
 
-	$received = `wget -O - -U "alice the cute robot" "https://google.com/search?q="$str | sed -e "s,<script.*/script>, ,g" -e "s,<style.*/style>, ,g" -e "s/<[^>]*>/ /g" -e "s/\&nbsp\;/ /g" -e "s,\&quot;,\\\",g" -e "s/\&\#39;/'/g" -e "s/\&middot;/\./g"`;
+	$str =~ s/'/'"'"'/g;
 
-#	return $received;
-	return $self->reply('google', $received);
+#	$received = `wget -O - -U "alice the cute robot" "https://google.com/search?q="$str | sed -e "s,<script.*/script>, ,g" -e "s,<style.*/style>, ,g" -e "s/<[^>]*>/ /g" -e "s/\&nbsp\;/ /g" -e "s,\&quot;,\\\",g" -e "s/\&\#39;/'/g" -e "s/\&middot;/\./g"`;
+
+	$received = join ' ', split '\n', `/home/eli/googler/googler --colorize never -n 1 --np '$str' | tail +2`;
+
+	return $received;
+#	return $self->reply('google', $received);
 #	return "http://google.com/search?q=" . $str;
 < object
 

@@ -12,22 +12,23 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/un.h>
+#include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <time.h>
 
-#define MY_CHANNEL "#neoturbine"
+#define MY_CHANNEL "#szprogramming"
 #define MY_NICK "alice"
-#define MY_SERVER "irc.neoturbine.net"
+#define MY_SERVER "chat.freenode.net"
 #define MY_PORT 6667
 #define MY_SOCKET "/tmp/alice"
 
 // colors for inclusion in printf formats
-#define RED     "\E[31m\E[1m"
-#define GREEN   "\E[32m\E[1m"
-#define YELLOW  "\E[33m\E[1m"
-#define BLUE    "\E[34m\E[1m"
-#define NORMAL  "\E[m"
+#define RED     "" //"\E[31m\E[1m"
+#define GREEN   "" //"\E[32m\E[1m"
+#define YELLOW  "" //"\E[33m\E[1m"
+#define BLUE    "" //"\E[34m\E[1m"
+#define NORMAL  "" //"\E[m"
 
 typedef struct _args {
 	char* url;	// name of irc server
@@ -179,11 +180,11 @@ int main(argc, argv)
                                                 printf(YELLOW "%s" NORMAL, buf);
                                         }
 					if ( !strncasecmp(tmp, "VERSION\1", 8)) {
-						sprintf(buf,"NOTICE %s :\1VERSION i am echoline's bot\1\n",source);
+						snprintf(buf, sizeof(buf), "NOTICE %s :\1VERSION i am echoline's bot\1\n",source);
 						write_to_socket(sockfd,buf);
 					}
 					if ( !strncasecmp(tmp, "PING", 4)) {
-						sprintf(buf,"NOTICE %s :\1%s", source, tmp);
+						snprintf(buf, sizeof(buf), "NOTICE %s :\1%s", source, tmp);
 						write_to_socket(sockfd,buf);
 					}
 					printf(BLUE "CTCP:%s\n" NORMAL,buf);
@@ -197,30 +198,46 @@ int main(argc, argv)
 						    (tmp[strlen(nick)] != ' '))
 						tmp += strlen(nick) + 1;
 					// respond to any query
-					strcpy(buf2, alice(tmp, source));
+					strncpy(buf2, alice(tmp, source), sizeof(buf2));
 					if (strncasecmp(buf2,"error",5)) {
 						if (strcmp(target,source) != 0)
-							sprintf(buf,"PRIVMSG %s :%s: %s\n",target, source, buf2);
+							snprintf(buf, sizeof(buf), "PRIVMSG %s :%s: %s\n",target, source, buf2);
 						else
-							sprintf(buf,"PRIVMSG %s :%s\n",target, buf2);
+							snprintf(buf, sizeof(buf), "PRIVMSG %s :%s\n",target, buf2);
 						write_to_socket(sockfd, buf);
 //						printf(BLUE "Alice says, \"%s\"\n\tto %s\n" NORMAL);
 					}
 				// respond to bot's name elsewhere in messages
 				// commented out because it's annoying as fuck
+				} else if (strcasestr(tmp,"alice")) {
+					if (strncasecmp(tmp, "alice", 5) == 0) {
+						strncpy(buf2, &tmp[5], sizeof(buf2));
+						tmp2 = buf2;
+						while(*tmp2 == ':' || *tmp2 == ',' || *tmp2 == ' ')
+							tmp2++;
+					} else
+						tmp2 = tmp;
+					strncpy(buf2, alice(tmp2, source), sizeof(buf2));
+					if (strncasecmp(buf2,"error",5)) {
+						if (strcmp(target,source) != 0)
+							snprintf(buf, sizeof(buf), "PRIVMSG %s :%s: %s\n",target, source, buf2);
+						else
+							snprintf(buf, sizeof(buf), "PRIVMSG %s :%s\n",target, buf2);
+						write_to_socket(sockfd, buf);
+					}
 /*				} else if (strcasestr(tmp,nick)) {
 					if (!myargs.verbose) {
 						printf(YELLOW "%s" NORMAL, buf);
 					}
 					// remove bot nick
-					strcpy(buf2,tmp);
+					strncpy(buf2, tmp, sizeof(buf2));
 					//tmp2 = strstr(tmp,nick) + strlen(nick);
 					//tmp = strstr(buf2,nick);
 					//strcpy(tmp,tmp2);
 					// respond
-					strcpy(buf2, alice(buf2));
+					strncpy(buf2, alice(buf2), sizeof(buf2));
 					if (strcmp(buf2,"default")) {
-						sprintf(buf,"PRIVMSG %s :%s: %s\n",target, source, buf2);
+						snprintf(buf, sizeof(buf), "PRIVMSG %s :%s: %s\n",target, source, buf2);
 						write_to_socket(sockfd, buf);
 						printf(BLUE "G0 4sK aLiC3\n" NORMAL);
 					}*/
@@ -232,7 +249,7 @@ int main(argc, argv)
 				tmp = rindex(buf,' ')+1;
 				if ( !strncmp(tmp, nick, strlen(nick)) ) {
 					printf(RED "kicked from %s.  rejoining.\n" NORMAL, target);
-					sprintf(buf,"JOIN %s\n",target);
+					snprintf(buf, sizeof(buf), "JOIN %s\n",target);
 					write_to_socket(sockfd,buf);
 				}
 			// reregister if we haven't already
@@ -240,7 +257,7 @@ int main(argc, argv)
 				//sprintf(buf,"NICK %s\n", nick);
 				//write_to_socket(sockfd, buf);
 			} else if (!strncmp(tmp, "376", 3) ) {
-				sprintf(buf,"JOIN %s\n", myargs.channel);
+				snprintf(buf, sizeof(buf), "JOIN %s\n", myargs.channel);
 				write_to_socket(sockfd, buf);
 			// change nick if current choice is taken
 			} else if ( !strncmp(tmp, "433", 3) ) {
@@ -251,7 +268,7 @@ int main(argc, argv)
 				write_to_socket(sockfd, buf);
 			} else if ( !strncmp(tmp, "INVITE", 6) ) {
 				tmp = rindex(tmp,':')+1;
-				sprintf(buf,"JOIN %s", tmp);
+				snprintf(buf, sizeof(buf), "JOIN %s", tmp);
 				write_to_socket(sockfd, buf);
 				printf(BLUE "INVITED: %s\n" NORMAL,tmp);
 			// welcoming
@@ -375,8 +392,8 @@ char *alice(char *msg, char *source) {
 
     remote.sun_family = AF_UNIX;
     strcpy(remote.sun_path, MY_SOCKET);
-    len = strlen(remote.sun_path) + sizeof(remote.sun_family);
-    if (connect(s, (struct sockaddr *)&remote, len) == -1) {
+//    len = strlen(remote.sun_path) + sizeof(remote.sun_family);
+    if (connect(s, (struct sockaddr *)&remote, sizeof(remote)) == -1) {
 	defalice(source);
 	return "error in connect()";
     }	
@@ -400,8 +417,8 @@ char *alice(char *msg, char *source) {
 	len = strlen(msg);
 	if (len > 20)
 		len = 20;
-	for (t = 0; t < len; t++)
-		usleep(99000);
+//	for (t = 0; t < len; t++)
+//		usleep(99000);
     return msg;
 }
 
@@ -410,7 +427,7 @@ void defalice(char *source) {
 	char buf[100];
 	// respond to informal pings
 	if (strcasestr(tmp,"ping")) {
-		sprintf(buf,"PRIVMSG %s :%s: pong\n",target,source);
+		snprintf(buf, sizeof(buf), "PRIVMSG %s :%s: pong\n",target,source);
 		write_to_socket(sockfd, buf);
 		printf(BLUE "ping: %s\n" NORMAL, buf);
 	// respond to greetings
@@ -425,25 +442,25 @@ void defalice(char *source) {
         	last = i;
         	switch(i) {
                 	case 0:
-                	        sprintf(buf,"PRIVMSG %s :i dunno?\n",target);
+                	        snprintf(buf, sizeof(buf), "PRIVMSG %s :i dunno?\n",target);
                 	        break;
                 	case 1:
-                	        sprintf(buf,"PRIVMSG %s :%s: yes?\n",target, source);
+                	        snprintf(buf, sizeof(buf), "PRIVMSG %s :%s: yes?\n",target, source);
                 	        break;
                 	case 2:
-                	        sprintf(buf,"PRIVMSG %s :that's my nick, don't wear it out\n",target);
+                	        snprintf(buf, sizeof(buf), "PRIVMSG %s :that's my nick, don't wear it out\n",target);
                 	        break;
                 	case 3:
-                	        sprintf(buf,"PRIVMSG %s :%s: you called?\n",target, source);
+                	        snprintf(buf, sizeof(buf), "PRIVMSG %s :%s: you called?\n",target, source);
                 	        break;
                 	case 4:
-	                        sprintf(buf,"PRIVMSG %s :probably.\n", target);
+	                        snprintf(buf, sizeof(buf), "PRIVMSG %s :probably.\n", target);
         	                break;
         	        case 5:
-        	                sprintf(buf,"PRIVMSG %s :i agree.\n", target);
+        	                snprintf(buf, sizeof(buf), "PRIVMSG %s :i agree.\n", target);
         	                break;
         	        default:
-       	 	                sprintf(buf,"PRIVMSG %s :whoops, how'd i get here??  you fucked up, echoline.\n",target);                                                }
+       	 	                snprintf(buf, sizeof(buf), "PRIVMSG %s :whoops, how'd i get here??  you fucked up, echoline.\n",target);                                                }
 		write_to_socket(sockfd, buf);
 		printf(BLUE "nickname %s\n" NORMAL, buf);
 	}

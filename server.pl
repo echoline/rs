@@ -164,7 +164,7 @@ if (open(my $fh, '<', 'cases')) {
 print "Initializing RiveScript interpreter ";
 our $rs = new RiveScript;
 print ".";
-$rs->loadDirectory ("./replies");
+$rs->loadDirectory ("/alice/replies");
 print ".";
 $rs->sortReplies;
 print ". done.\n";
@@ -329,9 +329,9 @@ while (1) {
 		print $fh Storable::freeze( $rs->{frozen}->{$who} );
 		close($fh);
 	}
-	if ($reply =~ /^(who|what|where|why|when|how|is|are|were|was)/) {
-		print 'google: ' . $rs->reply('google', $reply) . "\n";
-	}
+#	if ($reply =~ /^(who|what|where|why|when|how|is|are|were|was)/) {
+#		print 'google: ' . $rs->reply('google', $reply) . "\n";
+#	}
 
 	$client->send($reply);
 	print 'me: ' . $reply . "\n---" . time . "\n";

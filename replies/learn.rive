@@ -1,9 +1,9 @@
 // aiml2rs -- Generated on Mon Jan 18 21:14:58 2010
 
-! var xrs = replies/learned.rive
+! var xrs = /alice/replies/learned.rive
 
 + good answer{weight=1000}
-* <reply> ne undefined => <call>learn <bot xrs> {sentence}<reply>{/sentence}:<input></call>
+* <reply> ne undefined => <call>learn <bot xrs> {sentence}<reply>{/sentence}::::<input></call>
 - I haven't said anything yet.
 
 + bad answer{weight=1000}
@@ -26,12 +26,12 @@
 
 > topic badanswer-learn
 	+ *
-	- <call>learn <bot xrs> {sentence}<star>.{/sentence}:<get badanswer-input></call>{topic=random}
+	- <call>learn <bot xrs> {sentence}<star>.{/sentence}::::<get badanswer-input></call>{topic=random}
 < topic
 
 > object learn perl
 	my ($rs, $xrs, @args) = @_;
-	@args = split(':', join(' ', @args));
+	@args = split('::::', join(' ', @args));
 	if (scalar(@args) >= 2) {
 		for (my $i = 0; $i < scalar(@args); $i++) {
 			if ($args[$i] =~ /^\s*$/) {
@@ -65,7 +65,7 @@
 		}
 		$rs->loadFile($xrs);
 		$rs->sortReplies;
-		if (scalar(@args) == 3 && $args[2] eq 'silent') {
+		if (scalar(@args) == 3 && $args[2] =~ /silent/) {
 			return "";
 		}
 
@@ -143,4 +143,16 @@
 
 + you do not know what * is{weight=1000}
 - {@can i teach you}
+
++ correct{weight=1000}
+- {@good answer}
+
++ exactly{weight=1000}
+- {@good answer}
+
++ (who|what|where|why|how) (is|are) *
+@ <star3>
+
++ * (is|are) *
+- <call>learn <bot xrs> {sentence}<star> <star2> <star3>.{/sentence}::::<star></call>
 

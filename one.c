@@ -5,6 +5,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/un.h>
+#include <sys/socket.h>
 #include <netdb.h>
 
 char *MY_SOCKET = NULL;
@@ -28,8 +29,7 @@ char *alice(char *msg, char *source) {
 
 	remote.sun_family = AF_UNIX;
 	strcpy(remote.sun_path, MY_SOCKET);
-	len = strlen(remote.sun_path) + sizeof(remote.sun_family);
-	if (connect(s, (struct sockaddr *)&remote, len) == -1) {
+	if (connect(s, (struct sockaddr *)&remote, sizeof(struct sockaddr_un)) == -1) {
 		return "error in connect()";
 	}	
 
