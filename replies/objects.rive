@@ -1,25 +1,3 @@
-//+ xfind *
-//- <call>xfind <star></call>
-
-//+ (what|where|who|why|when|how) (is|are|am|was) *
-//- <call>xfind <star3></call>
-
-> object xfind perl
-	my ($self, @args) = @_;
-	my $str = join("%20", @args);
-	my $received;
-
-	$str =~ s/'/'"'"'/g;
-
-#	$received = `wget -O - -U "alice the cute robot" "https://google.com/search?q="$str | sed -e "s,<script.*/script>, ,g" -e "s,<style.*/style>, ,g" -e "s/<[^>]*>/ /g" -e "s/\&nbsp\;/ /g" -e "s,\&quot;,\\\",g" -e "s/\&\#39;/'/g" -e "s/\&middot;/\./g"`;
-
-	$received = join ' ', split '\n', `/home/eli/googler/googler --colorize never -n 1 --np '$str' | tail +2`;
-
-	return $received;
-#	return $self->reply('google', $received);
-#	return "http://google.com/search?q=" . $str;
-< object
-
 + what day is it [today]
 - <call>today</call>
 
@@ -36,39 +14,3 @@
 > object time perl
 	return localtime();
 < object
-
-//+ how is the weather
-//- <call>weather <bot location></call>
-
-//+ how is the weather * (in|at) *
-//- <call>weather <star3></call>
-
-//> object weather perl
-//	use Weather::Underground;
-
-//	my ($self, @args) = @_;
-//	my $loc = join(' ', @args);
-//	my $ret = '';
-
-//	my $weather = Weather::Underground->new(place => $loc);
-//	if (!$weather) {
-//		return 'invalid location';
-//	}
-
-//	my $info = $weather->get_weather();
-//	if (!$info) {
-//		return 'invalid location';
-//	}
-
-//	foreach (@$info) {
-//		while ((my $key, my $value) = each %{$_}) {
-//			if ($key =~ /(conditions|wind_milesperhour|humidity|wind_direction|temperature_fahrenheit)/) {
-//				$ret = $ret . $key . ": " . $value . ", ";
-//			}
-//		}
-//	}
-
-//	$ret = substr $ret, 0, -2;
-
-//	return $ret;
-//< object

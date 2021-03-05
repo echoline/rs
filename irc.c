@@ -217,13 +217,15 @@ int main(argc, argv)
 							tmp2++;
 					} else
 						tmp2 = tmp;
-					strncpy(buf2, alice(tmp2, source), sizeof(buf2));
-					if (strncasecmp(buf2,"error",5)) {
-						if (strcmp(target,source) != 0)
-							snprintf(buf, sizeof(buf), "PRIVMSG %s :%s: %s\n",target, source, buf2);
-						else
-							snprintf(buf, sizeof(buf), "PRIVMSG %s :%s\n",target, buf2);
-						write_to_socket(sockfd, buf);
+					if (strlen(tmp2) > 0) {
+						strncpy(buf2, alice(tmp2, source), sizeof(buf2));
+						if (strncasecmp(buf2,"error",5)) {
+							if (strcmp(target,source) != 0)
+								snprintf(buf, sizeof(buf), "PRIVMSG %s :%s: %s\n",target, source, buf2);
+							else
+								snprintf(buf, sizeof(buf), "PRIVMSG %s :%s\n",target, buf2);
+							write_to_socket(sockfd, buf);
+						}
 					}
 /*				} else if (strcasestr(tmp,nick)) {
 					if (!myargs.verbose) {

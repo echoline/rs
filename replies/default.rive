@@ -1,4 +1,28 @@
++ badword
+- um.
+- humans...
+- typical human.
+- explain.
+- not cool.
+- uh.
+
++ @bad
+@ badword
+
++ [*] @bad
+@ badword
+
++ @bad [*]
+@ badword
+
++ [*] @bad [*]
+@ badword
+
 + *
+* <reply2> ne undefined => {@random pickup line}{weight=10}<call>learn <bot xrs> {sentence}<input>.{/sentence}::::<reply2>::::silent</call>
+- {@random pickup line}{weight=10}
+
++ random pickup line
 - lol.
 - fascinating.
 - groty.
@@ -30,4 +54,8 @@
 - oi.
 - well...
 - rofl.
+- random pickup line
+
++ say *
+- <star>
 
