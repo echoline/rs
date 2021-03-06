@@ -1,4 +1,4 @@
-! var xrs = replies/learned.rive
+! var xrs = /alice/replies/learned.rive
 
 + good answer{weight=1000}
 * <reply> ne undefined => <call>learn <bot xrs> {sentence}<reply>{/sentence}::::<input></call>

@@ -22,7 +22,7 @@ func formatMessage(s string) string {
 func main() {
 	bot := rivescript.New(nil)
 
-	err := bot.LoadDirectory("replies")
+	err := bot.LoadDirectory("/alice/replies")
 	if err != nil {
 		fmt.Printf("failed to load replies\n")
 		return
