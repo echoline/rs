@@ -13,6 +13,12 @@ import (
 	"regexp"
 )
 
+func formatMessage(s string) string {
+	s = strings.ToLower(s)
+	s = regexp.MustCompile(`[^a-z0-9 ]`).ReplaceAllString(s, "")
+	return s
+}
+
 func main() {
 	bot := rivescript.New(nil)
 
@@ -42,7 +48,7 @@ func main() {
 			if err == nil {
 				reader := bufio.NewReader(file)
 				for {
-					m := "+ " + s[1] + "\n"
+					m := "+ " + formatMessage(s[1]) + "\n"
 					line, err := reader.ReadString('\n')
 				        if err != nil && err != io.EOF {
 						break
@@ -61,7 +67,7 @@ func main() {
 				file.Close()
 			}
 			if found == false {
-				contents += "\n+ " + s[1] + "\n- " + s[0] + "\n"
+				contents += "\n+ " + formatMessage(s[1]) + "\n- " + s[0] + "\n"
 			}
 			data := []byte(contents)
 			err = ioutil.WriteFile(xrs, data, 0644)
