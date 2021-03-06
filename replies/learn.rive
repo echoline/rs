@@ -1,6 +1,4 @@
-// aiml2rs -- Generated on Mon Jan 18 21:14:58 2010
-
-! var xrs = /alice/replies/learned.rive
+! var xrs = replies/learned.rive
 
 + good answer{weight=1000}
 * <reply> ne undefined => <call>learn <bot xrs> {sentence}<reply>{/sentence}::::<input></call>
@@ -29,51 +27,51 @@
 	- <call>learn <bot xrs> {sentence}<star>.{/sentence}::::<get badanswer-input></call>{topic=random}
 < topic
 
-> object learn perl
-	my ($rs, $xrs, @args) = @_;
-	@args = split('::::', join(' ', @args));
-	if (scalar(@args) >= 2) {
-		for (my $i = 0; $i < scalar(@args); $i++) {
-			if ($args[$i] =~ /^\s*$/) {
-				return "";
-			}
-		}
-
-		$rs->{addcase}->($args[0], $args[1], split(/\s+/, $args[1]));
-
-		open(READ, '<' . $xrs);
-		my $query = $rs->_formatMessage($args[1]);
-		my $found = 0;
-		my $contents = '';
-		while (<READ>) {
-			$contents .= $_;
-			if (/^\+\ $query$/) {
-				$contents .= '- ' . $args[0] . "\n";
-				$found = 1;
-			}
-		}
-		close (READ);
-		if ($found == 0) {
-			open(APPEND, '>>' . $xrs);
-			print APPEND '+ ' . $rs->_formatMessage($args[1]) . "\n";
-			print APPEND '- ' . $args[0] . "\n\n";
-			close(APPEND);
-		} else {
-			open (WRITE, ">" . $xrs);
-			print WRITE $contents;
-			close(WRITE);
-		}
-		$rs->loadFile($xrs);
-		$rs->sortReplies;
-		if (scalar(@args) == 3 && $args[2] =~ /silent/) {
-			return "";
-		}
-
-		return "Okay, I'll try to remember to respond, \"" . $args[0] . "\" when you say, \"" . $args[1] . "\"";
-	} else {
-		return scalar(@args) . " is not a valid arity to this object";
-	}
-< object
+//> object learn perl
+//	my ($rs, $xrs, @args) = @_;
+//	@args = split('::::', join(' ', @args));
+//	if (scalar(@args) >= 2) {
+//		for (my $i = 0; $i < scalar(@args); $i++) {
+//			if ($args[$i] =~ /^\s*$/) {
+//				return "";
+//			}
+//		}
+//
+//		$rs->{addcase}->($args[0], $args[1], split(/\s+/, $args[1]));
+//
+//		open(READ, '<' . $xrs);
+//		my $query = $rs->_formatMessage($args[1]);
+//		my $found = 0;
+//		my $contents = '';
+//		while (<READ>) {
+//			$contents .= $_;
+//			if (/^\+\ $query$/) {
+//				$contents .= '- ' . $args[0] . "\n";
+//				$found = 1;
+//			}
+//		}
+//		close (READ);
+//		if ($found == 0) {
+//			open(APPEND, '>>' . $xrs);
+//			print APPEND '+ ' . $rs->_formatMessage($args[1]) . "\n";
+//			print APPEND '- ' . $args[0] . "\n\n";
+//			close(APPEND);
+//		} else {
+//			open (WRITE, ">" . $xrs);
+//			print WRITE $contents;
+//			close(WRITE);
+//		}
+//		$rs->loadFile($xrs);
+//		$rs->sortReplies;
+//		if (scalar(@args) == 3 && $args[2] =~ /silent/) {
+//			return "";
+//		}
+//
+//		return "Okay, I'll try to remember to respond, \"" . $args[0] . "\" when you say, \"" . $args[1] . "\"";
+//	} else {
+//		return scalar(@args) . " is not a valid arity to this object";
+//	}
+//< object
 
 + wrong{weight=1000}
 - {@bad answer}

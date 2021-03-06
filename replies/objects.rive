@@ -1,16 +1,17 @@
 + what day is it [today]
 - <call>today</call>
 
-> object today perl
-	my @date = split(" ", localtime());
-	my $day = $date[0];
-	my %days = ("Mon", "Monday", "Tue", "Tuesday", "Wed", "Wednesday", "Thur", "Thursday", "Fri", "Friday", "Sat", "Saturday", "Sun", "Sunday");
-	return $days{$day};
-< object
+//> object today perl
+//	my @date = split(" ", localtime());
+//	my $day = $date[0];
+//	my %days = ("Mon", "Monday", "Tue", "Tuesday", "Wed", "Wednesday", "Thur", "Thursday", "Fri", "Friday", "Sat", "Saturday", "Sun", "Sunday");
+//	return $days{$day};
+//< object
 
 + what time is it [right] [now]
 - <call>time</call>
 
-> object time perl
-	return localtime();
-< object
+//> object time perl
+//	return localtime();
+//< object
+

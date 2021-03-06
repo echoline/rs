@@ -75,7 +75,6 @@ int main(int argc, char **argv)
 			MY_SOCKET = strdup("/tmp/alice");
 		}
 
-		alice (ptr, "");
 		ptr = alice(ptr, user);
 		printf ("%s\n", ptr);
 	}
