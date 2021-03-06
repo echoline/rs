@@ -74,11 +74,11 @@ func main() {
 			if err != nil {
 				return "error writing to " + xrs
 			}
+			bot.LoadFile(xrs)
+			bot.SortReplies()
 			if len(s) == 3 {
 				return ""
 			}
-			bot.LoadFile(xrs)
-			bot.SortReplies()
 			return "Okay, I'll try to remember to respond, \"" + s[0] + "\" when you say, \"" + s[1] + "\""
 		}
 		return ""
