@@ -8,6 +8,7 @@ import (
 	"syscall"
 	"net"
 	"strings"
+	"math/rand"
 
 	"github.com/bwmarrin/discordgo"
 )
@@ -67,7 +68,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	msg := strings.ToLower(m.Content)
 
-	if strings.Contains(msg, "alice") {
+	if strings.Contains(msg, "alice") || rand.Intn(1000) == 173 {
 		msg = strings.TrimPrefix(msg, "alice")
 		msg = strings.TrimLeft(msg, ":, ")
 
