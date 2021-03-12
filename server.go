@@ -124,6 +124,8 @@ func main() {
 			fmt.Printf("unix socket write failed\n")
 			return
 		}
+
+		fd.Close()
 	}
 }
 
