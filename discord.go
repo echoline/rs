@@ -87,15 +87,15 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		}
 
 		out := make([]byte, 8192)
-		_, err = fd.Read(out)
+		n, err := fd.Read(out)
 		if err != nil {
 			fmt.Printf("read failed\n")
 			return
 		}
 
-		fmt.Printf("me: %s\n", string(out))
+		fmt.Printf("me: %s\n", string(out[:n]))
 
-		s.ChannelMessageSend(m.ChannelID, string(out))
+		s.ChannelMessageSend(m.ChannelID, string(out[:n]))
 
 		fd.Close()
 	}
