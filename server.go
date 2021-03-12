@@ -98,20 +98,20 @@ func main() {
 		}
 
 		buf := make([]byte, 8192)
-		_, err = fd.Read(buf)
+		n, err := fd.Read(buf)
 		if err != nil {
 			fmt.Printf("unix socket read failed\n")
 			return
 		}
 
-		str := strings.TrimSpace(string(buf))
+		str := strings.TrimSpace(string(buf[:n]))
 		s := strings.Split(str, "\007")
-		fmt.Printf("%s: %s\n", s[0], s[1])
-		sentences := regexp.MustCompile(`[\.\?\!]`).Split(s[1], -1)
+		sentences := regexp.MustCompile(`[\.\?\!]+`).Split(s[1], -1)
 		r := ""
 		for _, a := range sentences {
 			b := strings.TrimSpace(a)
 			if len(b) > 0 {
+				fmt.Printf("%s: (%d) %s\n", s[0], len(b), b)
 				reply, _ := bot.Reply(s[0], b)
 				r += reply + " "
 			}
