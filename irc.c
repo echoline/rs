@@ -171,7 +171,7 @@ int main(argc, argv)
 				}
 				tmp = index(tmp,':')+1;
 
-				alice(tmp, "");
+				//alice(tmp, "");
 
 				// ctcp stuff
 				if (tmp[0] == '\1') {
