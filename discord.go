@@ -68,6 +68,8 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	msg := strings.ToLower(m.Content)
 
+	fmt.Printf("%s: %s\n", m.Author.ID, msg)
+
 	if strings.Contains(msg, "alice") || rand.Intn(1000) == 173 {
 		msg = strings.TrimPrefix(msg, "alice")
 		msg = strings.TrimLeft(msg, ":, ")
@@ -77,8 +79,6 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 			fmt.Printf("unix socket connect failed\n")
 			return
 		}
-
-		fmt.Printf("%s: %s\n", m.Author.ID, msg)
 
 		buf := m.Author.ID + "\007" + msg
 		_, err = fd.Write([]byte(buf))

@@ -108,18 +108,21 @@ func main() {
 		s := strings.Split(str, "\007")
 		sentences := regexp.MustCompile(`[\.\?\!]+`).Split(s[1], -1)
 		r := ""
-		for _, a := range sentences {
+		for i, a := range sentences {
 			b := strings.TrimSpace(a)
 			if len(b) > 0 {
-				fmt.Printf("%s: (%d) %s\n", s[0], len(b), b)
-				reply, _ := bot.Reply(s[0], b)
+				fmt.Printf("%s: (%d:%d) %s\n", s[0], i, len(b), b)
+				reply, err := bot.Reply(s[0], b)
+				if err != nil {
+					r += err.Error() + " "
+				}
 				r += reply + " "
 			}
 		}
 
 		fmt.Printf("me: %s\n", r)
 
-		_, err = fd.Write([]byte(r))
+		n, err = fd.Write([]byte(r))
 		if err != nil {
 			fmt.Printf("unix socket write failed\n")
 			return
