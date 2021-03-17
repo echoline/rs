@@ -151,6 +151,9 @@
 + (who|what|where|why|how) (is|are) *
 @ <star3>
 
++ define *
+@ <star>
+
 + * (is|are) *
 - <call>learn <bot xrs> {sentence}<star> <star2> <star3>.{/sentence}::::<star></call>
 

@@ -1,0 +1,15 @@
++ # plus #{weight=10}
+- <set acc=<star>><add acc=<star2>><get acc>
+
++ # minus #{weight=10}
+- <set acc=<star>><sub acc=<star2>><get acc>
+
++ # divided [by] #{weight=10}
+- <set acc=<star>><div acc=<star2>><get acc>
+
++ # times #{weight=10}
+- <set acc=<star>><mult acc=<star2>><get acc>
+
++ # multiplied by #{weight=10}
+- <set acc=<star>><mult acc=<star2>><get acc>
+
