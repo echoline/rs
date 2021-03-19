@@ -1,4 +1,4 @@
-! var xrs = /alice/replies/learned.rive
+! var xrs = ./alice/replies/learned.rive
 
 + good answer{weight=1000}
 * <reply> ne undefined => <call>learn <bot xrs> {sentence}<reply>{/sentence}::::<input></call>
@@ -148,7 +148,7 @@
 + exactly{weight=1000}
 - {@good answer}
 
-+ (who|what|where|why|how) (is|are) *
++ (who|what|when|where|why|how) (is|are) *
 @ <star3>
 
 + define *

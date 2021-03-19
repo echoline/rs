@@ -30,6 +30,8 @@ func main() {
 
 	bot.SortReplies()
 
+	fmt.Println("loaded replies")
+
 	bot.SetSubroutine("time", func(rs *rivescript.RiveScript, args []string) string {
 		return time.Now().Format(time.RFC1123)
 	})
