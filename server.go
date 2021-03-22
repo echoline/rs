@@ -8,6 +8,7 @@ import (
 	"strings"
 	"bufio"
 	"os"
+	"os/exec"
 	"io/ioutil"
 	"io"
 	"regexp"
@@ -38,6 +39,16 @@ func main() {
 
 	bot.SetSubroutine("today", func(rs *rivescript.RiveScript, args []string) string {
 		return time.Now().Weekday().String()
+	})
+
+	bot.SetSubroutine("search", func(rs *rivescript.RiveScript, args []string) string {
+		s := strings.Join(args, " ")
+		cmd := exec.Command("/wiki", "-short", s)
+		o, err := cmd.Output()
+		if err != nil {
+			return err.Error()
+		}
+		return string(o)
 	})
 
 	bot.SetSubroutine("learn", func(rs *rivescript.RiveScript, args []string) string {
