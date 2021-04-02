@@ -15,3 +15,25 @@
 //	return localtime();
 //< object
 
++ (who|what|where|why|how|when) (was|is|are) *
+@ xsearch <star3>
+
++ (who|what|where|why|how|when) (was|is|are) (a|an|the|that|these|those|this) *
+@ xsearch <star4>
+
++ what does * mean{weight=10}
+- <call>translate <star></call>
+
++ translate *{weight=10}
+- <call>translate <star></call>
+
++ what does this mean *{weight=10}
+@ translate <star>
+
++ no you
+* <reply1> ne undefined => {@<reply1>}
+
++ <input1>
+* <input1> eq <input2> => If you repeat yourself again I'll stop talking to you.
+- Please don't repeat yourself.
+

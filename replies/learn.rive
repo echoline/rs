@@ -148,11 +148,8 @@
 + exactly{weight=1000}
 - {@good answer}
 
-+ (who|what|when|where|why|how) (is|are) *
-@ <star3>
-
-+ define *
-@ <star>
++ true{weight=1000}
+- {@good answer}
 
 + * (is|are) *
 - <call>learn <bot xrs> {sentence}<star> <star2> <star3>.{/sentence}::::<star></call>

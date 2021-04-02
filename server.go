@@ -45,16 +45,29 @@ func main() {
 		s := strings.Join(args, " ")
 		cmd := exec.Command("/wiki", "-short", s)
 		o, err := cmd.Output()
-		if err != nil {
-			return err.Error()
+		if err != nil || len(o) == 0 {
+			return "Wikipedia doesn't have an article on " + s + "."
 		}
 		return string(o)
+	})
+
+	bot.SetSubroutine("translate", func(rs *rivescript.RiveScript, args []string) string {
+		s := strings.Join(args, " ")
+		cmd := exec.Command("/translate", "--brief", s)
+		o, err := cmd.Output()
+		if err != nil || len(o) == 0 {
+			return "Cannot translate " + s + "."
+		}
+		return strings.TrimSpace(string(o)) + "."
 	})
 
 	bot.SetSubroutine("learn", func(rs *rivescript.RiveScript, args []string) string {
 		xrs := args[0]
 		s := strings.Split(strings.Join(args[1:], " "), "::::")
 		if len(s) >= 2 {
+			if len(formatMessage(s[1])) == 0 {
+				return "[err: no message found]"
+			}
 			file, err := os.Open(xrs)
 			found := false
 			contents := ""
@@ -119,6 +132,9 @@ func main() {
 
 		str := strings.TrimSpace(string(buf[:n]))
 		s := strings.Split(str, "\007")
+		if (len(s) != 2) {
+			continue
+		}
 		sentences := regexp.MustCompile(`[\.\?\!]+`).Split(s[1], -1)
 		r := ""
 		for i, a := range sentences {
