@@ -152,5 +152,5 @@
 - {@good answer}
 
 + * (is|are) *
-- <call>learn <bot xrs> {sentence}<star> <star2> <star3>.{/sentence}::::<star></call>
+- <call>learn <bot xrs> {sentence}<star> <star2> <star3>.{/sentence}::::what <star2> <star></call>
 

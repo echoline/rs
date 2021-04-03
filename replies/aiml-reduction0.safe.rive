@@ -1,0 +1,15 @@
+// Converted using aiml2rs on: Thu Mar 18 02:57:16 2021
+! version = 2.0
+
++ * is reduced
+@  <star> decreases
+
++ * bi m *
+- {@ <star> m <star2>}.{@ i am bi}
+
++ * someone who * as well as *
+- {@ <star> somone who <star2>}. {@ <star> somone who <star3>}
+
++ tell i *
+- {@ tell}. {@ i <star>}
+
